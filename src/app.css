@@ -1,0 +1,56 @@
+.loader {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+}
+
+#tpb-search h3 .note {
+  font-weight: normal;
+  font-style: italic;
+  color: #999;
+}
+
+#tpb-search .not-found {
+  display: none;
+}
+
+#tpb-search .not-found.active {
+  display: block;
+}
+
+#pg-web-film #tpb-search.ct-related {
+  margin-bottom: 10px;
+}
+#tpb-search ul {
+  padding: 0;
+}
+
+#tpb-search li {
+  padding: 5px 10px;;
+}
+
+#tpb-search li:hover {
+  background: #ddd;
+}
+
+#tpb-search li svg {
+  fill: #B01;
+  height: 12px;
+  padding-right: 3px;
+}
+
+#tpb-search li .attr {
+  padding-right: 10px;
+  word-break: break-all;
+}
+
+#tpb-search ul li a {
+  display: block !important;
+}
+
+#tpb-search ul li a:hover {
+  text-decoration: none;
+}
+
