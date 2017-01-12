@@ -1,0 +1,22 @@
+{
+  "appName": {
+    "message": "CSFD Magnets",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Magnet links for CSFD films",
+    "description": "The description of the application, displayed in the web store."
+  },
+  "search": {
+    "message": "Search",
+    "description": "Search link title."
+  },
+  "notOfficial": {
+    "message": "unofficial extension",
+    "description": "Unofficial statement."
+  },
+  "magnets": {
+    "message": "Magnets",
+    "description": "Box title."
+  }
+}

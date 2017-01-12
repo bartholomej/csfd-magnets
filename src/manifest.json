@@ -1,7 +1,8 @@
 {
-  "name": "CSFD Magnets",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
   "short_name": "csfd-magnets",
-  "description": "Magnet links for CSFD films",
+  "default_locale": "en",
   "version": "0.0.1",
   "icons": {
     "16": "images/icon-16.png",
