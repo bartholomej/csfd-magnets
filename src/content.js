@@ -17,7 +17,7 @@ class CsfdMagnets {
         if (!placingNode.length) {
           placingNode = document.querySelectorAll('#rating')
         }
-        let pageTitle = document.title.split('/').pop().split('|').shift().trim();
+        let pageTitle = document.title;
         let movieTitle = this.cleanTitle(pageTitle);
 
         this.searchUrl = this.buildSearchUrl(movieTitle);
@@ -30,8 +30,9 @@ class CsfdMagnets {
   /**
    * Clean page title and prepare for search
    */
-  cleanTitle(movieTitle) {
-    return movieTitle.replace(/\(TV film\)/ig, '')
+  cleanTitle(pageTitle) {
+    return pageTitle.split('/').pop().split('|').shift()
+      .replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
       .replace(/\(TV seriál\)/ig, '')
       .replace(/\(divadelní záznam\)/ig, '')
