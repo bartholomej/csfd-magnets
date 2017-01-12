@@ -27,6 +27,29 @@ class CsfdMagnets {
     }
   }
 
+  cleanTitle(movieTitle) {
+    return movieTitle.replace(/\(TV film\)/ig, '')
+      .replace(/\(TV pořad\)/ig, '')
+      .replace(/\(TV seriál\)/ig, '')
+      .replace(/\(divadelní záznam\)/ig, '')
+      .replace(/\(koncert\)/ig, '')
+      .replace(/\(studentský film\)/ig, '')
+      .replace(/\(amatérský film\)/ig, '')
+      .replace(/\(hudební videoklip\)/ig, '')
+      .replace(/\(epizoda\)/ig, '')
+      .replace(/\'/ig, '')
+      .replace(/\)/ig, '')
+      .replace(/\(/ig, '')
+      .replace(/\s+/g, ' ')
+      .toLowerCase()
+      .trim();
+  }
+
+  buildSearchUrl(movieTitle) {
+    var searchUrl = '//thepiratebay.cr/search/' + encodeURIComponent(movieTitle) + '/0/7/0';
+    return searchUrl;
+  }
+
   prepareBox(placingNode) {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
@@ -68,33 +91,6 @@ class CsfdMagnets {
       // Handle items
       this.handleItems(this.wrapper, items);
     });
-  }
-
-  buildSearchUrl(movieTitle) {
-    var searchUrl = '//thepiratebay.cr/search/' + encodeURIComponent(movieTitle) + '/0/7/0';
-    return searchUrl;
-  }
-
-  insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-  }
-
-  cleanTitle(movieTitle) {
-    return movieTitle.replace(/\(TV film\)/ig, '')
-      .replace(/\(TV pořad\)/ig, '')
-      .replace(/\(TV seriál\)/ig, '')
-      .replace(/\(divadelní záznam\)/ig, '')
-      .replace(/\(koncert\)/ig, '')
-      .replace(/\(studentský film\)/ig, '')
-      .replace(/\(amatérský film\)/ig, '')
-      .replace(/\(hudební videoklip\)/ig, '')
-      .replace(/\(epizoda\)/ig, '')
-      .replace(/\'/ig, '')
-      .replace(/\)/ig, '')
-      .replace(/\(/ig, '')
-      .replace(/\s+/g, ' ')
-      .toLowerCase()
-      .trim();
   }
 
   handleItems(wrapper, items) {
@@ -146,6 +142,10 @@ class CsfdMagnets {
         </a>`;
     item.innerHTML = anchor;
     list.appendChild(item);
+  }
+
+  insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 }
 
