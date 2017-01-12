@@ -1,0 +1,17 @@
+{
+  "appName": {
+    "message": "CSFD Magnets"
+  },
+  "appDesc": {
+    "message": "Okořeňuje profil filmu o Magnet linky..."
+  },
+  "search": {
+    "message": "Hledat"
+  },
+  "notOfficial": {
+    "message": "není oficiální součástí služby"
+  },
+  "magnets": {
+    "message": "Magnets"
+  }
+}
