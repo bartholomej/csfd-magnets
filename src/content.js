@@ -1,9 +1,9 @@
 /**
- * @file Chrome Extension content Script
- * @name CSFD Magnets
+ * CSFD Magnets adds a small widget within each
+ * movie detail to show information about magnet links...
+ * ...or something like that...
  *
- * Extension client script code.
- *
+ * @name CsfdMagnets
  * @author Bartholomej
  */
 
@@ -27,6 +27,9 @@ class CsfdMagnets {
     }
   }
 
+  /**
+   * Clean page title and prepare for search
+   */
   cleanTitle(movieTitle) {
     return movieTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
@@ -45,11 +48,17 @@ class CsfdMagnets {
       .trim();
   }
 
+  /**
+   * Assemble search url
+   */
   buildSearchUrl(movieTitle) {
     var searchUrl = '//thepiratebay.cr/search/' + encodeURIComponent(movieTitle) + '/0/7/0';
     return searchUrl;
   }
 
+  /**
+   * Assemble box, wrapper and put it on the right place
+   */
   prepareBox(placingNode) {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
@@ -74,11 +83,14 @@ class CsfdMagnets {
     return wrapper;
   }
 
+  /**
+   * Fetch items and create virtual node
+   */
   getItems(searchUrl) {
     fetch(searchUrl).then(res => {
       return res.text();
     }).then(html => {
-      // create virtual node for DOM traversing
+      // Create virtual node for DOM traversing
       let virtualNode = document.createElement('html');
       virtualNode.innerHTML = html;
 
@@ -93,6 +105,9 @@ class CsfdMagnets {
     });
   }
 
+  /**
+   * Parse and handle data for every loop
+   */
   handleItems(wrapper, items) {
     let list = wrapper.getElementsByTagName('ul')[0];
     let sizePattern = /.+Size (.+?),.+/i;
@@ -116,6 +131,9 @@ class CsfdMagnets {
     }
   }
 
+  /**
+   * Assemble markup for every item
+   */
   createListItem(data, list) {
     let item = document.createElement('li');
     let anchor = `
@@ -144,6 +162,9 @@ class CsfdMagnets {
     list.appendChild(item);
   }
 
+  /**
+   * Helper for inserting node after some element
+   */
   insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
