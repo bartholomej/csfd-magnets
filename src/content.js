@@ -11,19 +11,18 @@
 
 class CsfdMagnets {
   constructor() {
-    if (window.location.href.indexOf('//www.csfd.cz/')) {
-      if (window.location.href.indexOf('/film/')) {
-        let placingNode = document.querySelectorAll('#my-rating');
-        if (!placingNode.length) {
-          placingNode = document.querySelectorAll('#rating')
-        }
-        let pageTitle = document.title;
-        let movieTitle = this.cleanTitle(pageTitle);
-
-        this.searchUrl = this.buildSearchUrl(movieTitle);
-        this.wrapper = this.prepareBox(placingNode[0]);
-        this.getItems(this.searchUrl);
+    let url = window.location.href.split('/');
+    if (url[2].includes('csfd.cz') && url[3] === 'film') {
+      let placingNode = document.querySelectorAll('#my-rating');
+      if (!placingNode.length) {
+        placingNode = document.querySelectorAll('#rating')
       }
+      let pageTitle = document.title;
+      let movieTitle = this.cleanTitle(pageTitle);
+
+      this.searchUrl = this.buildSearchUrl(movieTitle);
+      this.wrapper = this.prepareBox(placingNode[0]);
+      this.getItems(this.searchUrl);
     }
   }
 
