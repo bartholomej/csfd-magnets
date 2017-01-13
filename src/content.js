@@ -30,12 +30,20 @@ class CsfdMagnets {
    * Clean page title and prepare for search
    */
   cleanTitle(pageTitle) {
-    return pageTitle.split('/').pop().split('|').shift()
-      .replace(/\(TV film\)/ig, '')
+    let pTitle = pageTitle.split('/').pop().split('|').shift().trim();
+    let yearPattern = /\([0-9]{4}\)/ig;
+
+    pTitle = this.prepareTvSeries(pTitle, yearPattern);
+    pTitle = this.prepareSeasons(pTitle, yearPattern);
+    pTitle = this.prepareEpisode(pTitle);
+
+    return pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
       .replace(/\(TV seriál\)/ig, '')
       .replace(/\(divadelní záznam\)/ig, '')
       .replace(/\(koncert\)/ig, '')
+      .replace(/\(série\)/ig, '')
+      .replace(/\(epizoda\)/ig, '')
       .replace(/\(studentský film\)/ig, '')
       .replace(/\(amatérský film\)/ig, '')
       .replace(/\(hudební videoklip\)/ig, '')
@@ -46,6 +54,49 @@ class CsfdMagnets {
       .replace(/\s+/g, ' ')
       .toLowerCase()
       .trim();
+  }
+
+  /**
+   * Prepare search query for TV Series
+   */
+  prepareTvSeries(pTitle, yearPattern) {
+    if (pTitle.includes('(TV seriál)')) {
+      // Remove year
+      pTitle = pTitle.replace(yearPattern, '');
+    }
+    return pTitle;
+  }
+
+  /**
+   * Prepare search query for Seasons
+   */
+  prepareSeasons(pTitle, yearPattern) {
+    if (pTitle.includes('(série)')) {
+      let numSeriesPattern = /Série\s*(\d+)/;
+      let numSeries = pTitle.match(numSeriesPattern);
+
+      // Add info about series (add leading zero)
+      pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
+
+      // Clean unused string
+      pTitle = pTitle.replace(yearPattern, '')
+        .replace(numSeriesPattern, '');
+    }
+    return pTitle;
+  }
+
+  /**
+   * Prepare search query for Episodes
+   */
+  prepareEpisode(pTitle) {
+    if (pTitle.includes('(epizoda)')) {
+      let pTitleSplit = pTitle.split('-');
+      let episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
+      let episode = pTitleSplit[1].match(episodePattern);
+
+      pTitle = `${pTitleSplit[0]} ${episode[0]}`;
+    }
+    return pTitle;
   }
 
   /**
