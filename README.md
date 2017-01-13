@@ -11,6 +11,24 @@ A picture is worth a thousand words.
 
 ![Screenshot](https://raw.githubusercontent.com/bartholomej/csfd-magnets/master/_assets/csfd-magnets-promo.png)
 
+## Installation
+_- Shut up and give me those little... magnets! I need it!_
+
+_- OK, it is easy..._
+
+### Automatically (for humans)
+
+**[Install CSFD Magnets](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official Chrome Web Store.
+
+### Manually (for ~~robots~~ developers)
+Load your extension on Chrome following:
+
+1. Fork and clone this repository
+2. Access `chrome://extensions/`
+3. Check `Developer mode`
+4. Click on `Load unpacked extension`
+5. Select the `src` folder.
+
 ### Contribution
 I welcome you to customize this according to your needs ;)
 
