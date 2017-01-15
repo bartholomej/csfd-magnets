@@ -51,6 +51,7 @@ class CsfdMagnets {
       .replace(/\'/ig, '')
       .replace(/\)/ig, '')
       .replace(/\(/ig, '')
+      .replace(/\./ig, '')
       .replace(/\s+/g, ' ')
       .toLowerCase()
       .trim();
