@@ -92,7 +92,7 @@ class CsfdMagnets {
     if (pTitle.includes('(epizoda)')) {
       let pTitleSplit = pTitle.split('-');
       let episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
-      let episodeArray = pTitleSplit[1].match(episodePattern);
+      let episodeArray = pTitle.match(episodePattern);
 
       let seasonSlug = `S`;
       let episodeSlug = `E`;
