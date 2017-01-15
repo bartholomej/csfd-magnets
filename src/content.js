@@ -92,9 +92,20 @@ class CsfdMagnets {
     if (pTitle.includes('(epizoda)')) {
       let pTitleSplit = pTitle.split('-');
       let episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
-      let episode = pTitleSplit[1].match(episodePattern);
+      let episodeArray = pTitleSplit[1].match(episodePattern);
 
-      pTitle = `${pTitleSplit[0]} ${episode[0]}`;
+      let seasonSlug = `S`;
+      let episodeSlug = `E`;
+
+      // If season doesn't exist, set as season 01
+      if (episodeArray[1]) {
+        seasonSlug += episodeArray[1].replace(/^\d$/, '0$&');
+      } else {
+        seasonSlug += `01`;
+      }
+      episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
+
+      pTitle = `${pTitleSplit[0]} ${seasonSlug}${episodeSlug}`;
     }
     return pTitle;
   }
