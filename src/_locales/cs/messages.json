@@ -6,10 +6,13 @@
     "message": "Okořeňuje detail filmu o \"magnet linky...\""
   },
   "search": {
-    "message": "Hledat"
+    "message": "hledat"
   },
   "notOfficial": {
     "message": "není oficiální součástí služby"
+  },
+  "searchingFor": {
+    "message": "Hledám"
   },
   "magnets": {
     "message": "Magnets"

@@ -8,12 +8,15 @@
     "description": "The description of the application, displayed in the web store."
   },
   "search": {
-    "message": "Search",
+    "message": "search",
     "description": "Search link title."
   },
   "notOfficial": {
     "message": "unofficial extension",
     "description": "Unofficial statement."
+  },
+  "searchingFor": {
+    "message": "Searching for"
   },
   "magnets": {
     "message": "Magnets",

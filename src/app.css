@@ -21,6 +21,12 @@
   display: block;
 }
 
+#tpb-search .search-term {
+  text-align: center;
+  color: #999;
+  margin-bottom: 5px;
+}
+
 #pg-web-film #tpb-search.ct-related {
   margin-bottom: 10px;
 }
