@@ -138,6 +138,8 @@ class CsfdMagnets {
           </div>
         </div>
         <div class="content">
+          <div class="search-term">${chrome.i18n.getMessage('searchingFor')} ${this.movieTitle}...</div>
+
           <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
           <svg class="loader" width="120" height="30" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
               <circle cx="15" cy="15" r="15">
