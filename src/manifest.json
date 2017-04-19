@@ -28,10 +28,10 @@
         "app.css"
       ],
       "js": [
-        "alternatives.js",
-        "cleaner.js",
-        "renderer.js",
-        "content.js"
+        "js/alternatives.js",
+        "js/cleaner.js",
+        "js/renderer.js",
+        "app.js"
       ]}
   ],
   "update_url": "https://clients2.google.com/service/update2/crx",
