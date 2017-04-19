@@ -22,6 +22,9 @@ class Cleaner {
     pTitle = this.prepareSeasons(pTitle, yearPattern);
     pTitle = this.prepareEpisode(pTitle);
 
+    // set year for alternative titles eventually
+    this.setYear(pTitle.match(yearPattern));
+
     return pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
       .replace(/\(TV seriál\)/ig, '')
@@ -94,5 +97,13 @@ class Cleaner {
       pTitle = `${pTitleSplit[0]} ${seasonSlug}${episodeSlug}`;
     }
     return pTitle;
+  }
+
+  setYear(year) {
+    this.year = year;
+  }
+
+  getYear() {
+    return this.year;
   }
 }

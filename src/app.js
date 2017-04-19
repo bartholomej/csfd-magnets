@@ -100,7 +100,9 @@ class CsfdMagnets {
       if (altTitle) {
         // Remove box and do it again
         this.wrapper.parentNode.removeChild(this.wrapper);
-        this.searchMovie(altTitle);
+
+        let year = this.cleaner.getYear() || '';
+        this.searchMovie(`${altTitle} ${year}`);
         this.attempt++;
       } else {
         wrapper.querySelector('.not-found').classList.add('active');
