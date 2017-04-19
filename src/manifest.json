@@ -19,6 +19,7 @@
     "https://thepiratebay.cr/"
   ],
   "content_scripts": [{
+      "run_at": "document_end",
       "matches": [
         "http://www.csfd.cz/*",
         "https://www.csfd.cz/*"
