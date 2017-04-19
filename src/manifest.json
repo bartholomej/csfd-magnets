@@ -28,6 +28,9 @@
         "app.css"
       ],
       "js": [
+        "alternatives.js",
+        "cleaner.js",
+        "renderer.js",
         "content.js"
       ]}
   ],
