@@ -15,7 +15,7 @@ class Cleaner {
    * Clean page title and prepare for search
    */
   cleanTitle(pageTitle) {
-    let pTitle = pageTitle.split('/').pop().split('|').shift().trim();
+    let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
     let yearPattern = /\([0-9]{4}\)/ig;
 
     pTitle = this.prepareTvSeries(pTitle, yearPattern);
