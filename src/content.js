@@ -11,6 +11,10 @@
 
 class CsfdMagnets {
   constructor() {
+    this.attempt = 0;
+    this.altTitlesPattern = ['USA', 'anglický'];
+    this.altTitles = [];
+
     let url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
       this.placingNode = document.querySelectorAll('#my-rating');
@@ -18,11 +22,42 @@ class CsfdMagnets {
         this.placingNode = document.querySelectorAll('#rating')
       }
       let pageTitle = document.title;
-      this.searchAlternative(pageTitle);
+      this.searchMovie(pageTitle);
+      this.altTitles = this.getAltTitles();
     }
   }
 
-  searchAlternative(title) {
+  /**
+   * Get all alt titles
+   */
+  getAltTitles() {
+    let altTitles = [];
+    let altTitle;
+    for (let value of this.altTitlesPattern) {
+      altTitles.push(this.getAltTitle(value));
+    }
+    return altTitles.filter(title => title);
+  }
+
+  /**
+   * Get single alt title by country name
+   */
+  getAltTitle(name) {
+    let nextName;
+    let countryFlag = document.querySelector(".names img[alt=" + name + "]");
+    if (countryFlag) {
+      nextName = countryFlag.nextElementSibling;
+      if (nextName) {
+        return nextName.textContent;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Search movie (trigger)
+   */
+  searchMovie(title) {
     this.movieTitle = this.cleanTitle(title);
     this.searchUrl = this.buildSearchUrl(this.movieTitle);
     this.wrapper = this.prepareBox(this.placingNode[0]);
@@ -228,7 +263,17 @@ class CsfdMagnets {
 
     // No items found
     if (!items.length) {
-      wrapper.querySelector('.not-found').classList.add('active');
+      // Give me one more chance to find it for you!
+      let altTitle = this.altTitles[this.attempt];
+
+      if (altTitle) {
+        // Remove box and do it again
+        this.wrapper.parentNode.removeChild(this.wrapper);
+        this.searchMovie(altTitle);
+        this.attempt++;
+      } else {
+        wrapper.querySelector('.not-found').classList.add('active');
+      }
     }
   }
 
