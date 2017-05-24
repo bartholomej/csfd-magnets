@@ -4,8 +4,8 @@
   "short_name": "csfd-magnets",
   "author": "bartholomej",
   "default_locale": "en",
-  "version": "1.0.1",
-  "version_name": "1.0.1 - Alternative Titles",
+  "version": "1.1.0",
+  "version_name": "1.1.0 - Firefox support",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
