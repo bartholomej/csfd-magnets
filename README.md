@@ -18,7 +18,8 @@ _- OK, it is easy..._
 
 ### Automatically (for humans)
 
-**[Install CSFD Magnets](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official Chrome Web Store.
+- **[Install for Chrome](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official Chrome Web Store.
+- **[Install for Firefox](https://addons.mozilla.org/en-US/firefox/addon/csfd-magnets/)** from official Mozilla Addons.
 
 ### Manually (for ~~robots~~ developers)
 Load your extension on Chrome following:
