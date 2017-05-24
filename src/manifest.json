@@ -14,10 +14,10 @@
   },
   "permissions": [
     "tabs",
-    "http://.thepiratebay.cr/",
-    "http://thepiratebay.cr/",
-    "https://.thepiratebay.cr/",
-    "https://thepiratebay.cr/"
+    "http://.thepiratebay.org/",
+    "http://thepiratebay.org/",
+    "https://.thepiratebay.org/",
+    "https://thepiratebay.org/"
   ],
   "content_scripts": [{
       "run_at": "document_end",
