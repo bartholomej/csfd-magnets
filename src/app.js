@@ -46,7 +46,7 @@ class CsfdMagnets {
    * Assemble search url
    */
   buildSearchUrl(movieTitle) {
-    var searchUrl = '//thepiratebay.cr/search/' + encodeURIComponent(movieTitle) + '/0/7/0';
+    var searchUrl = 'https://thepiratebay.cr/search/' + encodeURIComponent(movieTitle) + '/0/7/0';
     return searchUrl;
   }
 
