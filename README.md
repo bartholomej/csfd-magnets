@@ -24,11 +24,23 @@ _- OK, it is easy..._
 ### Manually (for ~~robots~~ developers)
 Load your extension on Chrome following:
 
+#### Development / Contribution
 1. Fork and clone this repository
-2. Access `chrome://extensions/`
-3. Check `Developer mode`
-4. Click on `Load unpacked extension`
-5. Select the `src` folder.
+2. Install dependencies: `yarn`
+3. Run server: `yarn start`
+4. Access `chrome://extensions/`
+5. Check `Developer mode`
+6. Click on `Load unpacked extension`
+7. Select `dist` folder
+8. Open some movie/TV series/episode on [CSFD](https://www.csfd.cz/film/70049-mestecko-twin-peaks)
+9. Make some awesome features or bugfixes in code
+10. Save and wait for auto reload in browser
+
+#### Build production for specific browsers
+- `yarn run build:chrome`
+- `yarn run build:firefox`
+- `yarn run build:opera`
+- `yarn run build:edge`
 
 ### Contribution
 I welcome you to customize this according to your needs ;)
