@@ -54,3 +54,5 @@ jspm_packages
 
 # Binary
 *.zip
+*.nex
+*.pem
