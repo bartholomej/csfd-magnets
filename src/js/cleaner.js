@@ -10,7 +10,7 @@
 
 'use strict';
 
-class Cleaner {
+export default class Cleaner {
   /**
    * Clean page title and prepare for search
    */

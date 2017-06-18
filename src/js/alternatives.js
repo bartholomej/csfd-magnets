@@ -10,7 +10,7 @@
 
 'use strict';
 
-class Alternatives {
+export default class Alternatives {
   constructor() {
     this.altTitlesPattern = ['USA', 'anglický'];
     this.altTitles = [];

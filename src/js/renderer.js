@@ -10,7 +10,7 @@
 
 'use strict';
 
-class Renderer {
+export default class Renderer {
   /**
    * Assemble box, wrapper and put it on the right place
    */

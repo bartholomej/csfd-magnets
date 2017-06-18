@@ -1,3 +1,7 @@
+import Alternatives from './js/alternatives'
+import Renderer from './js/renderer'
+import Cleaner from './js/cleaner'
+
 /**
  * @class CsfdMagnets
  *

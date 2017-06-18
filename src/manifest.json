@@ -29,9 +29,6 @@
         "app.css"
       ],
       "js": [
-        "js/alternatives.js",
-        "js/cleaner.js",
-        "js/renderer.js",
         "app.js"
       ]}
   ],
