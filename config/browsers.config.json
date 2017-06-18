@@ -1,0 +1,23 @@
+{
+  "chrome": {
+    "update_url": "https://clients2.google.com/service/update2/crx"
+  },
+  "firefox": {
+    "applications": {
+      "gecko": {
+        "strict_min_version": "49.0"
+      }
+    }
+  },
+  "opera": {
+    "update_url": "https://extension-updates.opera.com/api/omaha/update/"
+  },
+  "edge": {
+    "author": "Bartholomej",
+    "browser_specific_settings": {
+      "edge": {
+        "browser_action_next_to_addressbar": true
+      }
+    }
+  }
+}

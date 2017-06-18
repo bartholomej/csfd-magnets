@@ -5,7 +5,11 @@
   "main": "src/app.js",
   "scripts": {
     "start": "webpack --config config/webpack.dev.js --env.dev --watch",
-    "build": "webpack --config config/webpack.prod.js --env.production"
+    "build": "npm run build:chrome",
+    "build:chrome": "webpack --config config/webpack.prod.js --progress --env.production --env.target=chrome",
+    "build:firefox": "webpack --config config/webpack.prod.js --env.production --env.target=firefox",
+    "build:edge": "webpack --config config/webpack.prod.js --env.production --env.target=edge",
+    "build:opera": "webpack --config config/webpack.prod.js --env.production --env.target=opera"
   },
   "repository": {
     "url": "git+https://github.com/bartholomej/csfd-magnets.git",

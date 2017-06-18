@@ -4,7 +4,6 @@
   "short_name": "csfd-magnets",
   "author": "bartholomej",
   "default_locale": "en",
-  "version": "1.2.0",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -31,6 +30,5 @@
         "app.bundle.js"
       ]}
   ],
-  "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 2
 }
