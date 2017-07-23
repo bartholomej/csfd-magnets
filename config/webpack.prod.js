@@ -13,7 +13,9 @@ module.exports = function (options) {
   }
   return webpackMerge(commonConfig(), {
     plugins: [
-      new webpack.optimize.UglifyJsPlugin,
+      new webpack.optimize.UglifyJsPlugin({
+        compress: false
+      }),
       new CopyWebpackPlugin([
         {
           from: 'src/manifest-common.json',
