@@ -3,6 +3,8 @@
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 # CSFD Magnets
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bartholomej/csfd-magnets.svg)](https://greenkeeper.io/)
+
 Simple Chrome extension for ČSFD *(Czech-Slovak Movie Database)*.
 
 **CSFD Magnets** adds a small widget within each **movie detail** to show information about **magnet links**... or something like that...
