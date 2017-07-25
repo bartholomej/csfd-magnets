@@ -1,6 +1,6 @@
+[![Build Status](https://travis-ci.org/bartholomej/csfd-magnets.svg?branch=master)](https://travis-ci.org/bartholomej/csfd-magnets)
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
-
 # CSFD Magnets
 
 Simple Chrome extension for ČSFD *(Czech-Slovak Movie Database)*.
@@ -18,9 +18,9 @@ _- OK, it is easy..._
 
 ### Automatically (for humans)
 
-- **[Install for Chrome](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official Chrome Web Store.
-- **[Install for Firefox](https://addons.mozilla.org/en-US/firefox/addon/csfd-magnets/)** from official Mozilla Addons.
-- **[Install for Opera](https://addons.opera.com/en/extensions/details/csfd-magnets/)** from official Opera add-ons.
+- **[Install for Chrome](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official **Chrome Web Store**
+- **[Install for Firefox](https://addons.mozilla.org/en-US/firefox/addon/csfd-magnets/)** from official **Mozilla Addons**
+- **[Install for Opera](https://addons.opera.com/en/extensions/details/csfd-magnets/)** from official **Opera add-ons**
 - **Install for Edge** coming soon...
 ### Manually (for ~~robots~~ developers)
 Load your extension on Chrome following:
