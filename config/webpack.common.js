@@ -27,8 +27,8 @@ module.exports = function (options) {
     },
     plugins: [
       new webpack.ProvidePlugin({
-        Promise: 'es6-promise',
-        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        Promise: 'es6-promise'
+        // fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
       }),
       new CopyWebpackPlugin([
         // {

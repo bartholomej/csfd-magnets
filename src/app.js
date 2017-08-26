@@ -58,22 +58,27 @@ class CsfdMagnets {
    * Fetch items and create virtual node
    */
   getItems(searchUrl) {
-    fetch(searchUrl).then(res => {
-      return res.text();
-    }).then(html => {
-      // Create virtual node for DOM traversing
-      let virtualNode = document.createElement('html');
-      virtualNode.innerHTML = html;
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        let html = xhr.responseText;
 
-      // Get first five search results
-      let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
+        // Create virtual node for DOM traversing
+        let virtualNode = document.createElement('html');
+        virtualNode.innerHTML = html;
 
-      // Remove loader
-      this.wrapper.getElementsByClassName('loader')[0].remove();
+        // Get first five search results
+        let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
 
-      // Handle items
-      this.handleItems(this.wrapper, items);
-    });
+        // Remove loader
+        this.wrapper.getElementsByClassName('loader')[0].remove();
+
+        // Handle items
+        this.handleItems(this.wrapper, items);
+      }
+    }
+    xhr.open("GET", searchUrl, true);
+    xhr.send(null);
   }
 
   /**
