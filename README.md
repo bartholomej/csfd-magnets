@@ -1,11 +1,12 @@
+[![Join the chat at https://gitter.im/csfd-magnets/Lobby](https://badges.gitter.im/csfd-magnets/Lobby.svg)](https://gitter.im/csfd-magnets/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Greenkeeper badge](https://badges.greenkeeper.io/bartholomej/csfd-magnets.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/bartholomej/csfd-magnets.svg?branch=master)](https://travis-ci.org/bartholomej/csfd-magnets)
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
+
+
+
 # CSFD Magnets
-
-[![Join the chat at https://gitter.im/csfd-magnets/Lobby](https://badges.gitter.im/csfd-magnets/Lobby.svg)](https://gitter.im/csfd-magnets/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/bartholomej/csfd-magnets.svg)](https://greenkeeper.io/)
 
 Simple Chrome extension for ČSFD *(Czech-Slovak Movie Database)*.
 
