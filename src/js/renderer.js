@@ -21,13 +21,16 @@ export default class Renderer {
     let box = `
       <div id="tpb-search" class="ct-related">
         <div class="header">
-          <h3>${chrome.i18n.getMessage('magnets')} <span class="note">(${chrome.i18n.getMessage('notOfficial')})</span></h3>
+          <h3>${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
           <div class="controls">
             <a href="#" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
           </div>
         </div>
         <div class="content">
-          <div class="search-term">${chrome.i18n.getMessage('searchingFor')} ${movieTitle}...</div>
+          <!-- <div class="search-header search-state">${chrome.i18n.getMessage('searchingFor')}</a></div> -->
+          <div class="search-header search-term">
+            <strong>${movieTitle}</strong>
+          </div>
 
           <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
           <svg class="loader" width="120" height="30" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
