@@ -1,3 +1,4 @@
+import Accent from './accent';
 /**
  * @class Cleaner
  *
@@ -11,6 +12,9 @@
 'use strict';
 
 export default class Cleaner {
+  constructor() {
+    this.accent = new Accent();
+  }
   /**
    * Clean page title and prepare for search
    */
@@ -25,7 +29,7 @@ export default class Cleaner {
     // set year for alternative titles eventually
     this.setYear(pTitle.match(yearPattern));
 
-    return pTitle.replace(/\(TV film\)/ig, '')
+    let trimmedTitle = pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
       .replace(/\(TV seriál\)/ig, '')
       .replace(/\(divadelní záznam\)/ig, '')
@@ -43,6 +47,8 @@ export default class Cleaner {
       .replace(/\s+/g, ' ')
       .toLowerCase()
       .trim();
+
+      return this.accent.removeAccents(trimmedTitle);
   }
 
   /**
