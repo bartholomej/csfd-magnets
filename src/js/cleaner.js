@@ -1,3 +1,4 @@
+import Accent from './accent';
 /**
  * @class Cleaner
  *
@@ -15,6 +16,7 @@ export default class Cleaner {
     this.yearPattern = /\([0-9]{4}\)/ig;
     this.numSeriesPattern = /Série\s*(\d+)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
+    this.accent = new Accent();
   }
   /**
    * Clean page title and prepare for search
@@ -29,7 +31,7 @@ export default class Cleaner {
     // set year for alternative titles eventually
     this.setYear(pTitle.match(this.yearPattern));
 
-    return pTitle.replace(/\(TV film\)/ig, '')
+    let trimmedTitle = pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
       .replace(/\(TV seriál\)/ig, '')
       .replace(/\(divadelní záznam\)/ig, '')
@@ -47,6 +49,8 @@ export default class Cleaner {
       .replace(/\s+/g, ' ')
       .toLowerCase()
       .trim();
+
+      return this.accent.removeAccents(trimmedTitle);
   }
 
   /**
