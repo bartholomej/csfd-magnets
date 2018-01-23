@@ -14,7 +14,7 @@ export default class Renderer {
   /**
    * Assemble box, wrapper and put it on the right place
    */
-  prepareBox(placingNode, movieTitle) {
+  prepareBox(placingNode, movieTitle, searchUrl) {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
 
@@ -23,7 +23,7 @@ export default class Renderer {
         <div class="header">
           <h3>${chrome.i18n.getMessage('magnets')} <span class="note">(${chrome.i18n.getMessage('notOfficial')})</span></h3>
           <div class="controls">
-            <a href="#" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
+            <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
           </div>
         </div>
         <div class="content">

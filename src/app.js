@@ -42,7 +42,7 @@ class CsfdMagnets {
   searchMovie(title) {
     this.movieTitle = this.cleaner.cleanTitle(title);
     this.searchUrl = this.buildSearchUrl(this.movieTitle);
-    this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle);
+    this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
     this.getItems(this.searchUrl);
   }
 
@@ -59,7 +59,10 @@ class CsfdMagnets {
    */
   getItems(searchUrl) {
     fetch(searchUrl).then(res => {
-      return res.text();
+      if (res.ok) {
+        return res.text();
+      }
+      throw new Error('Can\'t connect to movie provider :(');
     }).then(html => {
       // Create virtual node for DOM traversing
       let virtualNode = document.createElement('html');
@@ -73,6 +76,8 @@ class CsfdMagnets {
 
       // Handle items
       this.handleItems(this.wrapper, items);
+    }).catch(() => {
+      throw new Error('Can\'t talk with movie provider :(');
     });
   }
 
@@ -82,7 +87,6 @@ class CsfdMagnets {
   handleItems(wrapper, items) {
     let list = wrapper.getElementsByTagName('ul')[0];
     let sizePattern = /.+Size (.+?),.+/i;
-    wrapper.querySelector('.search-more').href = this.searchUrl;
 
     for (let item of items) {
       let description = item.querySelector('font.detDesc').textContent;
@@ -100,7 +104,6 @@ class CsfdMagnets {
     if (!items.length) {
       // Give me one more chance to find it for you!
       let altTitle = this.altTitles[this.attempt];
-
       if (altTitle) {
         // Remove box and do it again
         this.wrapper.parentNode.removeChild(this.wrapper);
