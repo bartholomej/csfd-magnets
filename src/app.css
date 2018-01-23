@@ -9,7 +9,7 @@
 
 #tpb-search h3 .note {
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
   color: #999;
 }
 
@@ -21,7 +21,7 @@
   display: block;
 }
 
-#tpb-search .search-term {
+#tpb-search .search-header {
   text-align: center;
   color: #999;
   margin-bottom: 5px;
@@ -61,3 +61,6 @@
   text-decoration: none;
 }
 
+.hidden {
+  display: none;
+}
