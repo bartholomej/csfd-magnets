@@ -18,6 +18,10 @@
   "searchingFor": {
     "message": "Searching for"
   },
+  "enjoy": {
+    "message": "Enjoy",
+    "description": "After success search."
+  },
   "magnets": {
     "message": "Magnets",
     "description": "Box title."
