@@ -62,6 +62,8 @@ class CsfdMagnets {
       if (res.ok) {
         return res.text();
       }
+      this.removeLoader();
+      this.setNotFound();
       throw new Error('Can\'t connect to movie provider :(');
     }).then(html => {
       // Create virtual node for DOM traversing
@@ -71,12 +73,13 @@ class CsfdMagnets {
       // Get first five search results
       let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
 
-      // Remove loader
-      this.wrapper.getElementsByClassName('loader')[0].remove();
+      this.removeLoader();
 
       // Handle items
-      this.handleItems(this.wrapper, items);
+      this.handleItems(items);
     }).catch(() => {
+      this.removeLoader();
+      this.setNotFound();
       throw new Error('Can\'t talk with movie provider :(');
     });
   }
@@ -84,8 +87,8 @@ class CsfdMagnets {
   /**
    * Parse and handle data for every loop
    */
-  handleItems(wrapper, items) {
-    let list = wrapper.getElementsByTagName('ul')[0];
+  handleItems(items) {
+    let list = this.wrapper.getElementsByTagName('ul')[0];
     let sizePattern = /.+Size (.+?),.+/i;
 
     for (let item of items) {
@@ -106,15 +109,27 @@ class CsfdMagnets {
       let altTitle = this.altTitles[this.attempt];
       if (altTitle) {
         // Remove box and do it again
-        this.wrapper.parentNode.removeChild(this.wrapper);
+        this.removeBox();
 
         let year = this.cleaner.getYear() || '';
         this.searchMovie(`${altTitle} ${year}`);
         this.attempt++;
       } else {
-        wrapper.querySelector('.not-found').classList.add('active');
+        this.setNotFound();
       }
     }
+  }
+
+  removeLoader() {
+    this.wrapper.getElementsByClassName('loader')[0].remove();
+  }
+
+  removeBox() {
+    this.wrapper.parentNode.removeChild(this.wrapper);
+  }
+
+  setNotFound() {
+    this.wrapper.querySelector('.not-found').classList.add('active');
   }
 }
 

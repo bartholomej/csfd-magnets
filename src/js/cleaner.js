@@ -11,19 +11,23 @@
 'use strict';
 
 export default class Cleaner {
+  constructor() {
+    this.yearPattern = /\([0-9]{4}\)/ig;
+    this.numSeriesPattern = /Série\s*(\d+)/;
+    this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
+  }
   /**
    * Clean page title and prepare for search
    */
   cleanTitle(pageTitle) {
     let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
-    let yearPattern = /\([0-9]{4}\)/ig;
 
-    pTitle = this.prepareTvSeries(pTitle, yearPattern);
-    pTitle = this.prepareSeasons(pTitle, yearPattern);
+    pTitle = this.prepareTvSeries(pTitle);
+    pTitle = this.prepareSeasons(pTitle);
     pTitle = this.prepareEpisode(pTitle);
 
     // set year for alternative titles eventually
-    this.setYear(pTitle.match(yearPattern));
+    this.setYear(pTitle.match(this.yearPattern));
 
     return pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
@@ -48,10 +52,10 @@ export default class Cleaner {
   /**
    * Prepare search query for TV Series
    */
-  prepareTvSeries(pTitle, yearPattern) {
+  prepareTvSeries(pTitle) {
     if (pTitle.includes('(TV seriál)')) {
       // Remove year
-      pTitle = pTitle.replace(yearPattern, '');
+      pTitle = pTitle.replace(this.yearPattern, '');
     }
     return pTitle;
   }
@@ -59,17 +63,16 @@ export default class Cleaner {
   /**
    * Prepare search query for Seasons
    */
-  prepareSeasons(pTitle, yearPattern) {
+  prepareSeasons(pTitle) {
     if (pTitle.includes('(série)')) {
-      let numSeriesPattern = /Série\s*(\d+)/;
-      let numSeries = pTitle.match(numSeriesPattern);
+      let numSeries = pTitle.match(this.numSeriesPattern);
 
       // Add info about series (add leading zero)
       pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
 
       // Clean unused string
-      pTitle = pTitle.replace(yearPattern, '')
-        .replace(numSeriesPattern, '');
+      pTitle = pTitle.replace(this.yearPattern, '')
+        .replace(this.numSeriesPattern, '');
     }
     return pTitle;
   }
@@ -80,8 +83,7 @@ export default class Cleaner {
   prepareEpisode(pTitle) {
     if (pTitle.includes('(epizoda)')) {
       let pTitleSplit = pTitle.split('-');
-      let episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
-      let episodeArray = pTitle.match(episodePattern);
+      let episodeArray = pTitle.match(this.episodePattern);
 
       let seasonSlug = `S`;
       let episodeSlug = `E`;
