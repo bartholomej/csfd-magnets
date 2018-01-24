@@ -61,6 +61,14 @@
   text-decoration: none;
 }
 
+#tpb-search .text-center {
+  text-align: center;
+}
+
+#tpb-search .elsewhere {
+  margin-top: 5px;
+}
+
 .hidden {
   display: none;
 }

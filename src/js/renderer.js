@@ -67,7 +67,12 @@ export default class Renderer {
           </svg>
 
           <ul></ul>
-          <span class="not-found">¯/\_(ツ)_/¯</span>
+          <span class="not-found">
+            ¯/\_(ツ)_/¯
+            <div class="elsewhere text-center ">
+              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${chrome.i18n.getMessage('elsewhere')}</a>
+            </div>
+          </span>
         </div>
       </div>`;
 

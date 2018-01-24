@@ -22,6 +22,10 @@
     "message": "Enjoy",
     "description": "After success search."
   },
+  "elsewhere": {
+    "message": "Try it somewhere else...",
+    "description": "Try it somewhere else link."
+  },
   "magnets": {
     "message": "Magnets",
     "description": "Box title."
