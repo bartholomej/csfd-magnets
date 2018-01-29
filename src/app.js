@@ -18,11 +18,14 @@ import Cleaner from './js/cleaner'
 
 class CsfdMagnets {
   constructor() {
-    this.attempt = 0;
-
     this.alternative = new Alternatives();
     this.cleaner = new Cleaner();
     this.renderer = new Renderer();
+    this.attempt = 0;
+
+    this.searchUrl = (movieUrl) => (
+      `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
+    );
 
     let url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
@@ -50,7 +53,7 @@ class CsfdMagnets {
    * Assemble search url
    */
   buildSearchUrl(movieTitle) {
-    var searchUrl = 'https://thepiratebay.org/search/' + encodeURIComponent(movieTitle) + '/0/99/0';
+    var searchUrl = this.searchUrl(movieTitle);
     return searchUrl;
   }
 
