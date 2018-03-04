@@ -13,10 +13,11 @@ module.exports = function (options) {
     var browserSpecificProperties = browserConfig[target];
   }
   return webpackMerge(commonConfig(), {
+    mode: 'production',
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({
-        compress: false
-      }),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   compress: false
+      // }),
       new CopyWebpackPlugin([
         {
           from: 'src/manifest-common.json',

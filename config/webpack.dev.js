@@ -17,6 +17,7 @@ var backgroundManifest = {
 
 module.exports = function (options) {
   return webpackMerge(commonConfig(), {
+    mode: 'development',
     entry: {
       'background': './src/background.js',
     },
