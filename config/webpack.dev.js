@@ -22,7 +22,14 @@ module.exports = function (options) {
       'background': './src/background.js',
     },
     plugins: [
-      new WebpackChromeReloaderPlugin(),
+      new WebpackChromeReloaderPlugin({
+        port: 9090, // Which port use to create the server
+        reloadPage: true, // Force the reload of the page also
+        entries: { //The entries used for the content/background scripts
+          contentScript: 'app', //Use the entry names, not the file name or the path
+          background: 'background'
+        }
+      }),
       new CopyWebpackPlugin([
         {
           from: 'src/manifest-common.json',
@@ -31,7 +38,7 @@ module.exports = function (options) {
             var manifest = JSON.parse(content.toString());
             manifest.version = version;
             var manifestObj = Object.assign(manifest, backgroundManifest);
-            return JSON.stringify(manifest, null, 2);
+            return JSON.stringify(manifestObj, null, 2);
           }
         }
       ])
