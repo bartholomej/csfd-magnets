@@ -3,6 +3,7 @@
 .bin/
 .DS_STORE
 dist/
+zip/
 
 # Logs
 logs
