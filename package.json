@@ -6,10 +6,15 @@
   "scripts": {
     "start": "webpack --config config/webpack.dev.js --env.dev --watch",
     "build": "npm run build:chrome",
+    "release:patch": "git checkout master && npm version patch -m \"chore(update): patch release %s 🐛 \"",
+    "release:minor": "git checkout master && npm version minor -m \"chore(update): release %s 🚀\"",
+    "release:major": "git checkout master && npm version major -m \"chore(update): major release %s 💥 \"",
     "build:chrome": "webpack --config config/webpack.prod.js --progress --env.production --env.target=chrome",
     "build:firefox": "webpack --config config/webpack.prod.js --env.production --env.target=firefox",
     "build:edge": "webpack --config config/webpack.prod.js --env.production --env.target=edge",
-    "build:opera": "webpack --config config/webpack.prod.js --env.production --env.target=opera"
+    "build:opera": "webpack --config config/webpack.prod.js --env.production --env.target=opera",
+    "version": "",
+    "postversion": "git push && git push --follow-tags"
   },
   "repository": {
     "url": "git+https://github.com/bartholomej/csfd-magnets.git",
