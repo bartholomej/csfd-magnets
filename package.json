@@ -22,18 +22,18 @@
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
     "es6-promise": "^4.2.4",
-    "webpack-cli": "^2.0.10",
+    "webpack-cli": "^2.0.11",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.3",
+    "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
-    "copy-webpack-plugin": "^4.5.0",
+    "copy-webpack-plugin": "^4.5.1",
     "exports-loader": "^0.7.0",
     "imports-loader": "^0.8.0",
-    "webpack": "^4.1.0",
-    "webpack-chrome-extension-reloader": "^0.6.5",
+    "webpack": "^4.1.1",
+    "webpack-chrome-extension-reloader": "^0.6.6",
     "webpack-merge": "^4.1.2",
     "zip-webpack-plugin": "^3.0.0"
   },
