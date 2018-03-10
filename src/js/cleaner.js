@@ -42,15 +42,13 @@ export default class Cleaner {
       .replace(/\(amatérský film\)/ig, '')
       .replace(/\(hudební videoklip\)/ig, '')
       .replace(/\(epizoda\)/ig, '')
-      .replace(/\'/ig, '')
-      .replace(/\)/ig, '')
-      .replace(/\(/ig, '')
-      .replace(/\./ig, '')
-      .replace(/\s+/g, ' ')
       .toLowerCase()
       .trim();
 
-      return this.accent.removeAccents(trimmedTitle);
+      let noAccentTitle = this.accent.removeAccents(trimmedTitle);
+
+      // Remove non-alhpanumerics
+      return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
   }
 
   /**
