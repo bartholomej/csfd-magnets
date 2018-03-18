@@ -23,7 +23,7 @@ class CsfdMagnets {
     this.renderer = new Renderer();
     this.attempt = 0;
 
-    this.searchUrl = (movieUrl) => (
+    this.searchPattern = (movieUrl) => (
       `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
     );
 
@@ -53,7 +53,7 @@ class CsfdMagnets {
    * Assemble search url
    */
   buildSearchUrl(movieTitle) {
-    var searchUrl = this.searchUrl(movieTitle);
+    var searchUrl = this.searchPattern(movieTitle);
     return searchUrl;
   }
 
