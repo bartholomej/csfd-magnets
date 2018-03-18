@@ -3,19 +3,22 @@
     "message": "CSFD Magnets"
   },
   "appDesc": {
-    "message": "Nájde ti tie správne \"magnet linky...\""
+    "message": "Okorení detail filmu o \"magnet linky...\""
+  },
+  "appContent": {
+    "message": "Okorení detail filmu na webe ČSFD Magnet linky. Toto rozšírenie je experimentálné a slúží len na zábavu. Nie je oficiálné a nemá nič spoločného se samostatnou službou ❤️ ČSFD."
   },
   "search": {
     "message": "hľadať"
   },
   "notOfficial": {
-    "message": "neoficiálne rozšírenie"
+    "message": "neoficiálně rozšírenie"
   },
   "searchingFor": {
     "message": "Hľadám"
   },
   "enjoy": {
-    "message": "Užij si"
+    "message": "Uži si"
   },
   "elsewhere": {
     "message": "Skús to inak..."
