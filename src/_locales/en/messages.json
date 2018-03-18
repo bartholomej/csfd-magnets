@@ -1,11 +1,15 @@
 {
   "appName": {
     "message": "CSFD Magnets",
-    "description": "The title of the application, displayed in the web store."
+    "description": "Title of the application, displayed in the web store."
   },
   "appDesc": {
     "message": "Magnet links for CSFD films",
-    "description": "The description of the application, displayed in the web store."
+    "description": "Description of the application, displayed in the web store."
+  },
+  "appContent": {
+    "message": "Simple Chrome extension for ČSFD (Czech-Slovak Movie Database). CSFD Magnets adds a small widget within each movie detail to show information about magnet links... or something like that... This is unofficial, experimental, made for fun and it has nothing to do with CSFD ❤️ itself",
+    "description": "Description content of the application, displayed in the web store. (Manually updated)"
   },
   "search": {
     "message": "search",

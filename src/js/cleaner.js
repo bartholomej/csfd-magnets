@@ -47,7 +47,7 @@ export default class Cleaner {
 
       let noAccentTitle = this.accent.removeAccents(trimmedTitle);
 
-      // Remove non-alhpanumerics
+      // Remove non-alhpanumeric
       return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
   }
 

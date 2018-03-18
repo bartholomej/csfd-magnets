@@ -5,6 +5,9 @@
   "appDesc": {
     "message": "Okořeňuje detail filmu o \"magnet linky...\""
   },
+  "appContent": {
+    "message": "Okořeňuje detail filmu na webu ČSFD o Magnet linky... nebo tak něco... Toto rozšíření je experimentální a vytvořeno pro zábavu. Není oficiální a nemá nic společného se samotnou službou ❤️ ČSFD."
+  },
   "search": {
     "message": "hledat"
   },
