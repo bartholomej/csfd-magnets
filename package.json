@@ -27,7 +27,7 @@
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
     "es6-promise": "^4.2.4",
-    "webpack-cli": "^2.0.12",
+    "webpack-cli": "^3.0.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
