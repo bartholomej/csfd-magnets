@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 
 const commonConfig = require('./webpack.common.js');
-const browserConfig = require('./browsers.config.json');
+const browserConfig = require('./browsers.manifest.json');
 const version = process.env.npm_package_version;
 
 module.exports = function (options) {
@@ -18,6 +18,9 @@ module.exports = function (options) {
       // new webpack.optimize.UglifyJsPlugin({
       //   compress: false
       // }),
+      new webpack.DefinePlugin({
+        'BROWSER': JSON.stringify(target)
+      }),
       new CopyWebpackPlugin([
         {
           from: 'src/manifest-common.json',

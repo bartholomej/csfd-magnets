@@ -30,6 +30,9 @@ module.exports = function (options) {
           background: 'background'
         }
       }),
+      new webpack.DefinePlugin({
+        'BROWSER': JSON.stringify('chrome')
+      }),
       new CopyWebpackPlugin([
         {
           from: 'src/manifest-common.json',
