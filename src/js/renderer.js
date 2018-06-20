@@ -7,7 +7,7 @@
  * @author Bartholomej
  * @see https://github.com/bartholomej/csfd-magnets
  */
-
+import { browserConfig } from '../../config/browser.config';
 'use strict';
 
 export default class Renderer {
@@ -21,7 +21,7 @@ export default class Renderer {
     let box = `
       <div id="tpb-search" class="ct-related">
         <div class="header">
-          <h3>${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
+          <h3>${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${browserConfig[BROWSER].repoUrl}" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
           <div class="controls">
             <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
           </div>
