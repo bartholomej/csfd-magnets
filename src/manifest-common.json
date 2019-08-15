@@ -24,7 +24,7 @@
         "https://www.csfd.cz/*"
       ],
       "css": [
-        "app.css"
+        "style.css"
       ],
       "js": [
         "libs/purify.min.js",

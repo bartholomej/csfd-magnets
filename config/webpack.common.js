@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // const version = process.env.npm_package_version;
 
@@ -9,6 +10,7 @@ module.exports = function (options) {
     entry: {
       app: './src/app.ts',
       background: './src/background.ts',
+      style: './src/app.scss'
     },
     resolve: {
       extensions: ['.ts', '.js', '.json']
@@ -23,7 +25,14 @@ module.exports = function (options) {
       rules: [{
         test: /\.ts$/,
         loader: "awesome-typescript-loader"
-      }
+      }, {
+        test: /\.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
+    }
      ]
     },
     plugins: [
@@ -31,6 +40,10 @@ module.exports = function (options) {
       //   Promise: 'es6-promise',
       //   fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
       // }),
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+        chunkFilename: "[id].css"
+      }),
       new CopyWebpackPlugin([
         // {
         //   from: 'src/manifest-common.json',
@@ -41,7 +54,6 @@ module.exports = function (options) {
         //     return JSON.stringify(manifest, null, 2);
         //   }
         // },
-        { from: 'src/app.css' },
         { from: 'node_modules/dompurify/dist/purify.min.js', to: 'libs' },
         { from: 'src/_locales/', to: '_locales' },
         { from: 'src/images/', to: 'images' }

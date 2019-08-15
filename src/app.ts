@@ -143,7 +143,7 @@ class CsfdMagnets {
   }
 }
 
-const csfdMagnets = new CsfdMagnets(
+new CsfdMagnets(
   new Cleaner(new Accent()),
   new Renderer(),
   new Alternatives()
