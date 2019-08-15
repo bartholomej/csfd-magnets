@@ -2,6 +2,8 @@ import Alternatives from './js/alternatives'
 import Renderer from './js/renderer'
 import Cleaner from './js/cleaner'
 
+import { MagnetData } from './interfaces/interfaces'
+import Accent from './js/accent';
 /**
  * @class CsfdMagnets
  *
@@ -17,16 +19,22 @@ import Cleaner from './js/cleaner'
 'use strict';
 
 class CsfdMagnets {
-  constructor() {
-    this.alternative = new Alternatives();
-    this.cleaner = new Cleaner();
-    this.renderer = new Renderer();
-    this.attempt = 0;
+  private attempt = 0;
+  private placingNode: NodeListOf<HTMLElement>;
+  private altTitles: string[];
+  private movieTitle: string;
+  private searchUrl: string;
+  private wrapper: HTMLDivElement;
 
-    this.searchPattern = (movieUrl) => (
-      `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
-    );
+  private searchPattern = (movieUrl: string) => (
+    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
+  );
 
+  constructor(
+    private cleaner: Cleaner,
+    private renderer: Renderer,
+    private alternative: Alternatives
+  ) {
     let url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
       this.placingNode = document.querySelectorAll('#my-rating');
@@ -42,7 +50,7 @@ class CsfdMagnets {
   /**
    * Search movie (trigger)
    */
-  searchMovie(title) {
+  private searchMovie(title: string): void {
     this.movieTitle = this.cleaner.cleanTitle(title);
     this.searchUrl = this.buildSearchUrl(this.movieTitle);
     this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
@@ -52,7 +60,7 @@ class CsfdMagnets {
   /**
    * Assemble search url
    */
-  buildSearchUrl(movieTitle) {
+  private buildSearchUrl(movieTitle: string): string {
     var searchUrl = this.searchPattern(movieTitle);
     return searchUrl;
   }
@@ -60,11 +68,11 @@ class CsfdMagnets {
   /**
    * Fetch items and create virtual node
    */
-  getItems(url) {
+  private getItems(url: string): void {
     chrome.runtime.sendMessage({
       contentScriptQuery: 'fetchData',
       url
-    }, (response) => {
+    }, (response: string) => {
       if (response) {
         // Create virtual node for DOM traversing
         let virtualNode = document.createElement('html');
@@ -72,7 +80,7 @@ class CsfdMagnets {
         virtualNode.innerHTML = DOMPurify.sanitize(response);
 
         // Get first five search results
-        let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
+        let items: HTMLTableRowElement[] = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
 
         this.removeLoader();
 
@@ -89,13 +97,13 @@ class CsfdMagnets {
   /**
    * Parse and handle data for every loop
    */
-  handleItems(items) {
+  private handleItems(items: HTMLTableRowElement[] | any[]): void {
     let list = this.wrapper.getElementsByTagName('ul')[0];
     let sizePattern = /.+Size (.+?),.+/i;
 
     for (let item of items) {
-      let description = item.querySelector('font.detDesc').textContent;
-      let data = {
+      let description: string = item.querySelector('font.detDesc').textContent;
+      let data: MagnetData = {
         description: description,
         size: sizePattern.exec(description)[1],
         seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
@@ -122,17 +130,17 @@ class CsfdMagnets {
     }
   }
 
-  removeLoader() {
+  private removeLoader() {
     this.wrapper.getElementsByClassName('loader')[0].remove();
   }
 
-  removeBox() {
+  private removeBox() {
     this.wrapper.parentNode.removeChild(this.wrapper);
   }
 
-  setNotFound() {
+  private setNotFound() {
     this.wrapper.querySelector('.not-found').classList.add('active');
   }
 }
 
-new CsfdMagnets();
+new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());

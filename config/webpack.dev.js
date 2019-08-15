@@ -20,7 +20,7 @@ module.exports = function (options) {
     mode: 'development',
     watch: true,
     entry: {
-      app: './src/app.js',
+      app: './src/app.ts',
       background: './src/background.js',
     },
     plugins: [

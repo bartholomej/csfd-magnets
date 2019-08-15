@@ -8,14 +8,16 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 import { browserConfig } from '../../config/browser.config';
-
+import { MagnetData } from '../interfaces/interfaces'
 'use strict';
+
+declare let BROWSER: 'chrome' | 'opera' | 'firefox' | 'edge';
 
 export default class Renderer {
   /**
    * Assemble box, wrapper and put it on the right place
    */
-  prepareBox(placingNode, movieTitle, searchUrl) {
+  public prepareBox(placingNode: HTMLElement, movieTitle: string, searchUrl: string): HTMLDivElement {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
 
@@ -87,7 +89,7 @@ export default class Renderer {
   /**
    * Assemble markup for every item
    */
-  createListItem(data, list) {
+  public createListItem(data: MagnetData, list: HTMLUListElement) {
     let item = document.createElement('li');
     let anchor = `
         <a href="${data.link}">
@@ -119,7 +121,7 @@ export default class Renderer {
   /**
    * Helper for inserting node after some element
    */
-  insertAfter(referenceNode, newNode) {
+  private insertAfter(referenceNode: HTMLElement, newNode: HTMLDivElement) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 }

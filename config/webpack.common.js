@@ -7,8 +7,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = function (options) {
   return {
     entry: {
-      app: './src/app.js',
+      app: './src/app.ts',
       background: './src/background.js',
+    },
+    resolve: {
+      extensions: ['.ts', '.js', '.json']
     },
     output: {
       publicPath: ".",
@@ -24,7 +27,11 @@ module.exports = function (options) {
         query: {
           presets: ['@babel/preset-env']
         }
-      }]
+      },{
+        test: /\.ts$/,
+        loader: "awesome-typescript-loader"
+      }
+     ]
     },
     plugins: [
       // new webpack.ProvidePlugin({
