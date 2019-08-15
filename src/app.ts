@@ -143,4 +143,8 @@ class CsfdMagnets {
   }
 }
 
-new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());
+const csfdMagnets = new CsfdMagnets(
+  new Cleaner(new Accent()),
+  new Renderer(),
+  new Alternatives()
+);

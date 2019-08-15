@@ -33,11 +33,8 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
     "@types/chrome": "0.0.88",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
     "exports-loader": "^0.7.0",
     "imports-loader": "^0.8.0",
