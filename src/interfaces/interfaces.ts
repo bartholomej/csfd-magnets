@@ -6,6 +6,10 @@ export interface MagnetData {
   link: string;
 }
 
+export interface CharMaps {
+  [field: string]: string;
+}
+
 export interface BrowserConfig {
   chrome: BrowserConfigInside;
   opera: BrowserConfigInside;

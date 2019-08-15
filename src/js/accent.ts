@@ -11,9 +11,7 @@
 
 'use strict';
 
-export interface CharMaps {
-  [field: string]: string;
-}
+import { CharMaps } from "../interfaces/interfaces";
 
 export default class Accent {
   private characterMap: CharMaps;

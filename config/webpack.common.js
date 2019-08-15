@@ -8,7 +8,7 @@ module.exports = function (options) {
   return {
     entry: {
       app: './src/app.ts',
-      background: './src/background.js',
+      background: './src/background.ts',
     },
     resolve: {
       extensions: ['.ts', '.js', '.json']
