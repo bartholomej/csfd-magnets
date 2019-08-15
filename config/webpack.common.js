@@ -27,10 +27,10 @@ module.exports = function (options) {
       }]
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        Promise: 'es6-promise',
-        fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
-      }),
+      // new webpack.ProvidePlugin({
+      //   Promise: 'es6-promise',
+      //   fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
+      // }),
       new CopyWebpackPlugin([
         // {
         //   from: 'src/manifest-common.json',

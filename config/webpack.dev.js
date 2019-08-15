@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const WebpackChromeReloaderPlugin = require('webpack-chrome-extension-reloader');
+const ExtensionReloader  = require('webpack-extension-reloader');
 const commonConfig = require('./webpack.common.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -18,12 +18,13 @@ var backgroundManifest = {
 module.exports = function (options) {
   return webpackMerge(commonConfig(), {
     mode: 'development',
+    watch: true,
     entry: {
       app: './src/app.js',
       background: './src/background.js',
     },
     plugins: [
-      new WebpackChromeReloaderPlugin({
+      new ExtensionReloader({
         port: 9090, // Which port use to create the server
         reloadPage: true, // Force the reload of the page also
         entries: { //The entries used for the content/background scripts
