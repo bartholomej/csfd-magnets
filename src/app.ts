@@ -1,9 +1,9 @@
-import Alternatives from './js/alternatives'
-import Renderer from './js/renderer'
-import Cleaner from './js/cleaner'
+import Alternatives from './services/alternatives'
+import Renderer from './services/renderer'
+import Cleaner from './services/cleaner'
 
 import { MagnetData } from './interfaces/interfaces'
-import Accent from './js/accent';
+import Accent from './services/accent';
 /**
  * @class CsfdMagnets
  *
