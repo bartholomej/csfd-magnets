@@ -7,7 +7,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = function (options) {
   return {
     entry: {
-      app: './src/app.js'
+      app: './src/app.js',
+      background: './src/background.js',
     },
     output: {
       publicPath: ".",
