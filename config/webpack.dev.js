@@ -19,14 +19,15 @@ module.exports = function (options) {
   return webpackMerge(commonConfig(), {
     mode: 'development',
     entry: {
-      'background': './src/background.js',
+      app: './src/app.js',
+      background: './src/background.js',
     },
     plugins: [
       new WebpackChromeReloaderPlugin({
         port: 9090, // Which port use to create the server
         reloadPage: true, // Force the reload of the page also
         entries: { //The entries used for the content/background scripts
-          contentScript: 'app', //Use the entry names, not the file name or the path
+          contentScript: 'app',
           background: 'background'
         }
       }),

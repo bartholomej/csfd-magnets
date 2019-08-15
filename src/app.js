@@ -60,30 +60,28 @@ class CsfdMagnets {
   /**
    * Fetch items and create virtual node
    */
-  getItems(searchUrl) {
-    fetch(searchUrl).then(res => {
-      if (res.ok) {
-        return res.text();
+  getItems(url) {
+    chrome.runtime.sendMessage({
+      contentScriptQuery: 'fetchData',
+      url
+    }, (response) => {
+      if (response) {
+        // Create virtual node for DOM traversing
+        let virtualNode = document.createElement('html');
+        virtualNode.innerHTML = response;
+
+        // Get first five search results
+        let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
+
+        this.removeLoader();
+
+        // Handle items
+        this.handleItems(items);
+      } else {
+        this.removeLoader();
+        this.setNotFound();
+        throw new Error('Can\'t connect to movie provider :(');
       }
-      this.removeLoader();
-      this.setNotFound();
-      throw new Error('Can\'t connect to movie provider :(');
-    }).then(html => {
-      // Create virtual node for DOM traversing
-      let virtualNode = document.createElement('html');
-      virtualNode.innerHTML = html;
-
-      // Get first five search results
-      let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
-
-      this.removeLoader();
-
-      // Handle items
-      this.handleItems(items);
-    }).catch(() => {
-      this.removeLoader();
-      this.setNotFound();
-      throw new Error('Can\'t talk with movie provider :(');
     });
   }
 
