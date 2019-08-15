@@ -21,7 +21,6 @@ export default class Alternatives {
    */
   getAltTitles() {
     let altTitles = [];
-    let altTitle;
     for (let value of this.altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }

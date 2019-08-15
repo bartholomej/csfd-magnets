@@ -21,14 +21,14 @@ module.exports = function (options) {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015']
+          presets: ['@babel/preset-env']
         }
       }]
     },
     plugins: [
       new webpack.ProvidePlugin({
         Promise: 'es6-promise',
-        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
       }),
       new CopyWebpackPlugin([
         // {
