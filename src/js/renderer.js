@@ -18,10 +18,12 @@ export default class Renderer {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
 
+    const devFlag = process.env.NODE_ENV ? '&lt;dev/&gt;' : '';
+
     let box = `
       <div id="tpb-search" class="ct-related">
         <div class="header">
-          <h3>${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${browserConfig[BROWSER].repoUrl}" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
+          <h3>${devFlag}${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${browserConfig[BROWSER].repoUrl}" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
           <div class="controls">
             <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
           </div>
