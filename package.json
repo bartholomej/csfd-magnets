@@ -34,6 +34,8 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.88",
+    "@types/dompurify": "^0.0.33",
+    "@types/node": "11",
     "awesome-typescript-loader": "^5.2.1",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",

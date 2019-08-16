@@ -9,6 +9,7 @@
  */
 import { browserConfig } from '../../config/browser.config';
 import { MagnetData } from '../interfaces/interfaces'
+import DOMPurify from 'dompurify';
 'use strict';
 
 declare let BROWSER: 'chrome' | 'opera' | 'firefox' | 'edge';

@@ -21,7 +21,7 @@ module.exports = function (options) {
     watch: true,
     entry: {
       app: './src/app.ts',
-      background: './src/background.js',
+      background: './src/background.ts',
     },
     plugins: [
       new ExtensionReloader({

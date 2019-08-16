@@ -6,7 +6,9 @@
       "es7"
     ],
     "types": [
-      "chrome"
+      "chrome",
+      "node",
+      "dompurify"
     ],
     "baseUrl": "./src",
     "paths": {

@@ -4,6 +4,7 @@ import Cleaner from './services/cleaner'
 
 import { MagnetData } from './interfaces/interfaces'
 import Accent from './services/accent';
+import DOMPurify from 'dompurify';
 /**
  * @class CsfdMagnets
  *
