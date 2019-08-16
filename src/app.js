@@ -68,7 +68,8 @@ class CsfdMagnets {
       if (response) {
         // Create virtual node for DOM traversing
         let virtualNode = document.createElement('html');
-        virtualNode.innerHTML = response;
+
+        virtualNode.innerHTML = DOMPurify.sanitize(response);
 
         // Get first five search results
         let items = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
