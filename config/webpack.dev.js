@@ -40,8 +40,12 @@ module.exports = function (options) {
           from: 'src/manifest-common.json',
           to: 'manifest.json',
           transform: function (content, path) {
+            const contentSecurityPolicy = "script-src 'self' 'unsafe-eval'; object-src 'self'";
             var manifest = JSON.parse(content.toString());
             manifest.version = version;
+            // Inject security policy only for dev
+            // because Chrome reloader is using eval
+            manifest['content_security_policy'] = contentSecurityPolicy;
             var manifestObj = Object.assign(manifest, backgroundManifest);
             return JSON.stringify(manifestObj, null, 2);
           }

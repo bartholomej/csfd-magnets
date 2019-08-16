@@ -15,13 +15,9 @@ module.exports = function (options) {
   return webpackMerge(commonConfig(), {
     mode: 'production',
     optimization: {
-      // We no not want to minimize our code.
       minimize: false
     },
     plugins: [
-      // new webpack.optimize.UglifyJsPlugin({
-      //   compress: false
-      // }),
       new webpack.DefinePlugin({
         'BROWSER': JSON.stringify(target)
       }),
