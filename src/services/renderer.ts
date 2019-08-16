@@ -8,7 +8,8 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 import { browserConfig } from '../../config/browser.config';
-import { MagnetData } from '../interfaces/interfaces'
+import { MagnetData } from '../interfaces/interfaces';
+import { isDev } from '../services/utils';
 import DOMPurify from 'dompurify';
 'use strict';
 
@@ -22,7 +23,7 @@ export default class Renderer {
     let wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
 
-    const devFlag = process.env.NODE_ENV ? '&lt;dev/&gt;' : '';
+    const devFlag = isDev ? '&lt;dev/&gt;' : '';
 
     let box = `
       <div id="tpb-search" class="ct-related">
