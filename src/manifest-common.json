@@ -27,6 +27,7 @@
         "app.css"
       ],
       "js": [
+        "libs/purify.min.js",
         "app.bundle.js"
       ]}
   ],

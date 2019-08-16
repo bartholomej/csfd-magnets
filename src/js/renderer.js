@@ -8,6 +8,7 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 import { browserConfig } from '../../config/browser.config';
+
 'use strict';
 
 export default class Renderer {
@@ -78,7 +79,7 @@ export default class Renderer {
         </div>
       </div>`;
 
-    wrapper.innerHTML = box;
+    wrapper.innerHTML = DOMPurify.sanitize(box);
     this.insertAfter(placingNode, wrapper);
     return wrapper;
   }
@@ -110,7 +111,8 @@ export default class Renderer {
             ${data.linkName}
           </span>
         </a>`;
-    item.innerHTML = anchor;
+
+    item.innerHTML = DOMPurify.sanitize(anchor);
     list.appendChild(item);
   }
 

@@ -42,6 +42,7 @@ module.exports = function (options) {
         //   }
         // },
         { from: 'src/app.css' },
+        { from: 'node_modules/dompurify/dist/purify.min.js', to: 'libs' },
         { from: 'src/_locales/', to: '_locales' },
         { from: 'src/images/', to: 'images' }
       ])
