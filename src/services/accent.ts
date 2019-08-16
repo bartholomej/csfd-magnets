@@ -11,7 +11,13 @@
 
 'use strict';
 
+import { CharMaps } from "../interfaces/interfaces";
+
 export default class Accent {
+  private characterMap: CharMaps;
+  private allAccents: RegExp;
+  private firstAccent: RegExp;
+
   constructor() {
     this.characterMap = {
       "À": "A",
@@ -420,13 +426,13 @@ export default class Accent {
     this.firstAccent = new RegExp(chars, '');
   }
 
-  removeAccents(string) {
+  public removeAccents(string: string) {
     return string.replace(this.allAccents, (match) => {
       return this.characterMap[match];
     });
   };
 
-  hasAccents(string) {
+  public hasAccents(string: string) {
     return !!string.match(this.firstAccent);
   };
 }

@@ -1,0 +1,78 @@
+.loader {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  fill: #999;
+}
+
+// Csfd-magnets container
+#tpb-search {
+  h3 .note {
+    font-weight: normal;
+    font-style: normal;
+    color: #999;
+  }
+
+  .not-found {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .search-header {
+    text-align: center;
+    color: #999;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    padding: 5px 10px;
+
+    &:hover {
+      background: #ddd;
+    }
+
+    a {
+      display: block !important;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    svg {
+      fill: #B01;
+      height: 12px;
+      padding-right: 3px;
+    }
+
+    .attr {
+      padding-right: 10px;
+      word-break: break-all;
+    }
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .elsewhere {
+    margin-top: 5px;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+#pg-web-film #tpb-search.ct-related {
+  margin-bottom: 10px;
+}

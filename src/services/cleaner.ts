@@ -12,16 +12,20 @@ import Accent from './accent';
 'use strict';
 
 export default class Cleaner {
-  constructor() {
+  private yearPattern: RegExp;
+  private numSeriesPattern: RegExp;
+  private episodePattern: RegExp;
+  private year: number = 0;
+
+  constructor(private accent: Accent) {
     this.yearPattern = /\([0-9]{4}\)/ig;
     this.numSeriesPattern = /Série\s*(\d+)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
-    this.accent = new Accent();
   }
   /**
    * Clean page title and prepare for search
    */
-  cleanTitle(pageTitle) {
+  public cleanTitle(pageTitle: string): string {
     let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
 
     pTitle = this.prepareTvSeries(pTitle);
@@ -29,7 +33,7 @@ export default class Cleaner {
     pTitle = this.prepareEpisode(pTitle);
 
     // set year for alternative titles eventually
-    this.setYear(pTitle.match(this.yearPattern));
+    this.setYear(+pTitle.match(this.yearPattern)[0]);
 
     let trimmedTitle = pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')
@@ -54,7 +58,7 @@ export default class Cleaner {
   /**
    * Prepare search query for TV Series
    */
-  prepareTvSeries(pTitle) {
+  private prepareTvSeries(pTitle: string) {
     if (pTitle.includes('(TV seriál)')) {
       // Remove year
       pTitle = pTitle.replace(this.yearPattern, '');
@@ -65,7 +69,7 @@ export default class Cleaner {
   /**
    * Prepare search query for Seasons
    */
-  prepareSeasons(pTitle) {
+  private prepareSeasons(pTitle: string) {
     if (pTitle.includes('(série)')) {
       let numSeries = pTitle.match(this.numSeriesPattern);
 
@@ -82,7 +86,7 @@ export default class Cleaner {
   /**
    * Prepare search query for Episodes
    */
-  prepareEpisode(pTitle) {
+  private prepareEpisode(pTitle: string) {
     if (pTitle.includes('(epizoda)')) {
       let pTitleSplit = pTitle.split('-');
       let episodeArray = pTitle.match(this.episodePattern);
@@ -91,23 +95,21 @@ export default class Cleaner {
       let episodeSlug = `E`;
 
       // If season doesn't exist, set as season 01
-      if (episodeArray[1]) {
-        seasonSlug += episodeArray[1].replace(/^\d$/, '0$&');
-      } else {
-        seasonSlug += `01`;
+      if (episodeArray) {
+        seasonSlug += episodeArray[1] ? episodeArray[1].replace(/^\d$/, '0$&') : `01`;
+        episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
       }
-      episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
 
       pTitle = `${pTitleSplit[0]} ${seasonSlug}${episodeSlug}`;
     }
     return pTitle;
   }
 
-  setYear(year) {
+  private setYear(year: number) {
     this.year = year;
   }
 
-  getYear() {
+  public getYear(): number {
     return this.year;
   }
 }

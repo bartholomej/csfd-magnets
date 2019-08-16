@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "es7"
+    ],
+    "types": [
+      "chrome",
+      "node",
+      "dompurify"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@interfaces/*": ["interfaces/*"],
+      "@services/*": ["services/*"]
+    },
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true
+  }
+}

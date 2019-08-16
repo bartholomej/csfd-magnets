@@ -1,6 +1,6 @@
-'use strict';
+import { BrowserConfig } from "../src/interfaces/interfaces";
 
-export const browserConfig = {
+export const browserConfig: BrowserConfig = {
   chrome: {
     repoUrl: "https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo"
   },
