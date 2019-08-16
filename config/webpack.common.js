@@ -8,9 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = function (options) {
   return {
     entry: {
-      app: './src/app.ts',
-      background: './src/background.ts',
-      style: './src/app.scss'
+      app: ['./src/app.ts', './src/app.scss'],
+      background: './src/background.ts'
     },
     resolve: {
       extensions: ['.ts', '.js', '.json']

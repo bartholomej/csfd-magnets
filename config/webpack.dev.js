@@ -19,10 +19,6 @@ module.exports = function (options) {
   return webpackMerge(commonConfig(), {
     mode: 'development',
     watch: true,
-    entry: {
-      app: './src/app.ts',
-      background: './src/background.ts',
-    },
     plugins: [
       new ExtensionReloader({
         port: 9090, // Which port use to create the server
