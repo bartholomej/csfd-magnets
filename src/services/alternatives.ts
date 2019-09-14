@@ -13,14 +13,12 @@
 export default class Alternatives {
   private altTitlesPattern = ['USA', 'anglický'];
 
-  constructor() { }
-
   /**
    * Get all alt titles
    */
   public getAltTitles(): string[] {
-    let altTitles = [];
-    for (let value of this.altTitlesPattern) {
+    const altTitles = [];
+    for (const value of this.altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
     return altTitles.filter(title => title);
@@ -31,7 +29,7 @@ export default class Alternatives {
    */
   public getAltTitle(name: string): string {
     let nextName;
-    let countryFlag = document.querySelector(".names img[alt=" + name + "]");
+    const countryFlag = document.querySelector('.names img[alt=' + name + ']');
     if (countryFlag) {
       nextName = countryFlag.nextElementSibling;
       if (nextName) {

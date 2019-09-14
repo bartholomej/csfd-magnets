@@ -7,11 +7,13 @@
  * @author Bartholomej
  * @see https://github.com/bartholomej/csfd-magnets
  */
+
+'use strict';
+
+import DOMPurify from 'dompurify';
 import { browserConfig } from '../../config/browser.config';
 import { MagnetData } from '../interfaces/interfaces';
 import { isDev } from '../services/utils';
-import DOMPurify from 'dompurify';
-'use strict';
 
 declare let BROWSER: 'chrome' | 'opera' | 'firefox' | 'edge';
 
@@ -19,22 +21,34 @@ export default class Renderer {
   /**
    * Assemble box, wrapper and put it on the right place
    */
-  public prepareBox(placingNode: HTMLElement, movieTitle: string, searchUrl: string): HTMLDivElement {
-    let wrapper = document.createElement('div');
+  public prepareBox(
+    placingNode: HTMLElement,
+    movieTitle: string,
+    searchUrl: string
+  ): HTMLDivElement {
+    const wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
 
     const devFlag = isDev ? '&lt;dev/&gt;' : '';
 
-    let box = `
+    const box = `
       <div id="tpb-search" class="ct-related">
         <div class="header">
-          <h3>${devFlag}${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${browserConfig[BROWSER].repoUrl}" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
+          <h3>${devFlag}${chrome.i18n.getMessage(
+      'magnets'
+    )}: <span class="note"><a href="${
+      browserConfig[BROWSER].repoUrl
+    }" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
           <div class="controls">
-            <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage('search')}</a>
+            <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage(
+      'search'
+    )}</a>
           </div>
         </div>
         <div class="content">
-          <!-- <div class="search-header search-state">${chrome.i18n.getMessage('searchingFor')}</a></div> -->
+          <!-- <div class="search-header search-state">${chrome.i18n.getMessage(
+            'searchingFor'
+          )}</a></div> -->
           <div class="search-header search-term">
             <strong>${movieTitle}</strong>
           </div>
@@ -77,7 +91,9 @@ export default class Renderer {
           <span class="not-found">
             ¯/\_(ツ)_/¯
             <div class="elsewhere text-center ">
-              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${chrome.i18n.getMessage('elsewhere')}</a>
+              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${chrome.i18n.getMessage(
+      'elsewhere'
+    )}</a>
             </div>
           </span>
         </div>
@@ -92,8 +108,8 @@ export default class Renderer {
    * Assemble markup for every item
    */
   public createListItem(data: MagnetData, list: HTMLUListElement) {
-    let item = document.createElement('li');
-    let anchor = `
+    const item = document.createElement('li');
+    const anchor = `
         <a href="${data.link}">
           <span class="attr">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="12" viewBox="0 0 13 12">

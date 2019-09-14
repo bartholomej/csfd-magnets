@@ -1,8 +1,8 @@
-import Alternatives from './services/alternatives'
-import Renderer from './services/renderer'
-import Cleaner from './services/cleaner'
+import Alternatives from './services/alternatives';
+import Renderer from './services/renderer';
+import Cleaner from './services/cleaner';
 
-import { MagnetData } from './interfaces/interfaces'
+import { MagnetData } from './interfaces/interfaces';
 import Accent from './services/accent';
 import DOMPurify from 'dompurify';
 /**
@@ -27,9 +27,8 @@ class CsfdMagnets {
   private searchUrl: string;
   private wrapper: HTMLDivElement;
 
-  private searchPattern = (movieUrl: string) => (
-    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
-  );
+  private searchPattern = (movieUrl: string) =>
+    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`;
 
   constructor(
     private cleaner: Cleaner,
@@ -40,7 +39,7 @@ class CsfdMagnets {
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
       this.placingNode = document.querySelectorAll('#my-rating');
       if (!this.placingNode.length) {
-        this.placingNode = document.querySelectorAll('#rating')
+        this.placingNode = document.querySelectorAll('#rating');
       }
       let pageTitle = document.title;
       this.searchMovie(pageTitle);
@@ -54,7 +53,11 @@ class CsfdMagnets {
   private searchMovie(title: string): void {
     this.movieTitle = this.cleaner.cleanTitle(title);
     this.searchUrl = this.buildSearchUrl(this.movieTitle);
-    this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
+    this.wrapper = this.renderer.prepareBox(
+      this.placingNode[0],
+      this.movieTitle,
+      this.searchUrl
+    );
     this.getItems(this.searchUrl);
   }
 
@@ -70,29 +73,34 @@ class CsfdMagnets {
    * Fetch items and create virtual node
    */
   private getItems(url: string): void {
-    chrome.runtime.sendMessage({
-      contentScriptQuery: 'fetchData',
-      url
-    }, (response: string) => {
-      if (response) {
-        // Create virtual node for DOM traversing
-        let virtualNode = document.createElement('html');
+    chrome.runtime.sendMessage(
+      {
+        contentScriptQuery: 'fetchData',
+        url,
+      },
+      (response: string) => {
+        if (response) {
+          // Create virtual node for DOM traversing
+          let virtualNode = document.createElement('html');
 
-        virtualNode.innerHTML = DOMPurify.sanitize(response);
+          virtualNode.innerHTML = DOMPurify.sanitize(response);
 
-        // Get first five search results
-        let items: HTMLTableRowElement[] = [].slice.call(virtualNode.querySelectorAll('#searchResult tbody tr')).slice(0, 5);
+          // Get first five search results
+          let items: HTMLTableRowElement[] = [].slice
+            .call(virtualNode.querySelectorAll('#searchResult tbody tr'))
+            .slice(0, 5);
 
-        this.removeLoader();
+          this.removeLoader();
 
-        // Handle items
-        this.handleItems(items);
-      } else {
-        this.removeLoader();
-        this.setNotFound();
-        throw new Error('Can\'t connect to movie provider :(');
+          // Handle items
+          this.handleItems(items);
+        } else {
+          this.removeLoader();
+          this.setNotFound();
+          throw new Error("Can't connect to movie provider :(");
+        }
       }
-    });
+    );
   }
 
   /**
@@ -109,8 +117,10 @@ class CsfdMagnets {
         size: sizePattern.exec(description)[1],
         seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
         linkName: item.querySelector('a.detLink').textContent,
-        link: item.querySelector('a[title="Download this torrent using magnet"]').href
-      }
+        link: item.querySelector(
+          'a[title="Download this torrent using magnet"]'
+        ).href,
+      };
       this.renderer.createListItem(data, list);
     }
 
@@ -144,8 +154,4 @@ class CsfdMagnets {
   }
 }
 
-new CsfdMagnets(
-  new Cleaner(new Accent()),
-  new Renderer(),
-  new Alternatives()
-);
+new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());

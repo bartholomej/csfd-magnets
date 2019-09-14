@@ -19,7 +19,7 @@ export default class Cleaner {
   private year: number = 0;
 
   constructor(private accent: Accent) {
-    this.yearPattern = /\([0-9]{4}\)/ig;
+    this.yearPattern = /\([0-9]{4}\)/gi;
     this.numSeriesPattern = /Season\s*(\d+)/;
     this.seasonTitlePattern = /\(série\)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
@@ -28,7 +28,12 @@ export default class Cleaner {
    * Clean page title and prepare for search
    */
   public cleanTitle(pageTitle: string): string {
-    let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
+    let pTitle = pageTitle
+      .split(' / ')
+      .pop()
+      .split('|')
+      .shift()
+      .trim();
 
     pTitle = this.prepareTvSeries(pTitle);
     pTitle = this.prepareSeasons(pTitle);
@@ -40,24 +45,25 @@ export default class Cleaner {
       this.setYear(+yearArray[0].replace(/[()]/g, ''));
     }
 
-    let trimmedTitle = pTitle.replace(/\(TV film\)/ig, '')
-      .replace(/\(TV pořad\)/ig, '')
-      .replace(/\(TV seriál\)/ig, '')
-      .replace(/\(divadelní záznam\)/ig, '')
-      .replace(/\(koncert\)/ig, '')
-      .replace(/\(série\)/ig, '')
-      .replace(/\(epizoda\)/ig, '')
-      .replace(/\(studentský film\)/ig, '')
-      .replace(/\(amatérský film\)/ig, '')
-      .replace(/\(hudební videoklip\)/ig, '')
-      .replace(/\(epizoda\)/ig, '')
+    let trimmedTitle = pTitle
+      .replace(/\(TV film\)/gi, '')
+      .replace(/\(TV pořad\)/gi, '')
+      .replace(/\(TV seriál\)/gi, '')
+      .replace(/\(divadelní záznam\)/gi, '')
+      .replace(/\(koncert\)/gi, '')
+      .replace(/\(série\)/gi, '')
+      .replace(/\(epizoda\)/gi, '')
+      .replace(/\(studentský film\)/gi, '')
+      .replace(/\(amatérský film\)/gi, '')
+      .replace(/\(hudební videoklip\)/gi, '')
+      .replace(/\(epizoda\)/gi, '')
       .toLowerCase()
       .trim();
 
-      let noAccentTitle = this.accent.removeAccents(trimmedTitle);
+    let noAccentTitle = this.accent.removeAccents(trimmedTitle);
 
-      // Remove non-alhpanumeric
-      return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
+    // Remove non-alhpanumeric
+    return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
   }
 
   /**
@@ -83,7 +89,8 @@ export default class Cleaner {
         pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
       }
       // Clean unused strings
-      pTitle = pTitle.replace(this.yearPattern, '')
+      pTitle = pTitle
+        .replace(this.yearPattern, '')
         .replace(this.numSeriesPattern, '')
         .replace(this.seasonTitlePattern, '');
     }
@@ -103,7 +110,9 @@ export default class Cleaner {
 
       // If season doesn't exist, set as season 01
       if (episodeArray) {
-        seasonSlug += episodeArray[1] ? episodeArray[1].replace(/^\d$/, '0$&') : `01`;
+        seasonSlug += episodeArray[1]
+          ? episodeArray[1].replace(/^\d$/, '0$&')
+          : `01`;
         episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
       }
 
