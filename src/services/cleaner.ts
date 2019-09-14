@@ -35,7 +35,10 @@ export default class Cleaner {
     pTitle = this.prepareEpisode(pTitle);
 
     // set year for alternative titles eventually
-    this.setYear(+pTitle.match(this.yearPattern)[0]);
+    const yearArray = pTitle.match(this.yearPattern);
+    if (yearArray && yearArray.length) {
+      this.setYear(+yearArray[0].replace(/[()]/g, ''));
+    }
 
     let trimmedTitle = pTitle.replace(/\(TV film\)/ig, '')
       .replace(/\(TV pořad\)/ig, '')

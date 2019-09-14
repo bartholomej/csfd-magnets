@@ -123,7 +123,7 @@ class CsfdMagnets {
         this.removeBox();
 
         let year = this.cleaner.getYear() || '';
-        this.searchMovie(`${altTitle} ${year}`);
+        this.searchMovie(`${altTitle} (${year})`);
         this.attempt++;
       } else {
         this.setNotFound();
