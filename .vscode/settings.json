@@ -1,9 +1,12 @@
 {
-  "json.schemas": [{
-    "fileMatch": [
-      "/manifest*.json"
-    ],
-    "url": "http://json.schemastore.org/chrome-manifest"
-  }]
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#b01"
+  },
+  "editor.formatOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/manifest*.json"],
+      "url": "http://json.schemastore.org/chrome-manifest"
+    }
+  ]
 }
-
