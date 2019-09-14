@@ -15,6 +15,7 @@
     "build:opera": "webpack --config config/webpack.prod.js --env.production --env.target=opera",
     "version": "",
     "tsc": "tsc",
+    "tslint": "tslint",
     "postversion": "git push && git push --follow-tags"
   },
   "repository": {
@@ -44,6 +45,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
+    "tslint": "^5.20.0",
     "typescript": "^3.6.3",
     "webpack": "^4.40.2",
     "webpack-extension-reloader": "^1.1.1",
