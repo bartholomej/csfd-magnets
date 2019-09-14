@@ -14,12 +14,14 @@ import Accent from './accent';
 export default class Cleaner {
   private yearPattern: RegExp;
   private numSeriesPattern: RegExp;
+  private seasonTitlePattern: RegExp;
   private episodePattern: RegExp;
   private year: number = 0;
 
   constructor(private accent: Accent) {
     this.yearPattern = /\([0-9]{4}\)/ig;
-    this.numSeriesPattern = /Série\s*(\d+)/;
+    this.numSeriesPattern = /Season\s*(\d+)/;
+    this.seasonTitlePattern = /\(série\)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
   }
   /**
@@ -73,12 +75,14 @@ export default class Cleaner {
     if (pTitle.includes('(série)')) {
       let numSeries = pTitle.match(this.numSeriesPattern);
 
-      // Add info about series (add leading zero)
-      pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
-
-      // Clean unused string
+      if (numSeries && numSeries.length) {
+        // Add info about series (add leading zero)
+        pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
+      }
+      // Clean unused strings
       pTitle = pTitle.replace(this.yearPattern, '')
-        .replace(this.numSeriesPattern, '');
+        .replace(this.numSeriesPattern, '')
+        .replace(this.seasonTitlePattern, '');
     }
     return pTitle;
   }
