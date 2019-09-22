@@ -45,7 +45,7 @@ export default class Cleaner {
       this.setYear(+yearArray[0].replace(/[()]/g, ''));
     }
 
-    let trimmedTitle = pTitle
+    const trimmedTitle = pTitle
       .replace(/\(TV film\)/gi, '')
       .replace(/\(TV pořad\)/gi, '')
       .replace(/\(TV seriál\)/gi, '')
@@ -60,7 +60,7 @@ export default class Cleaner {
       .toLowerCase()
       .trim();
 
-    let noAccentTitle = this.accent.removeAccents(trimmedTitle);
+    const noAccentTitle = this.accent.removeAccents(trimmedTitle);
 
     // Remove non-alhpanumeric
     return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
@@ -82,7 +82,7 @@ export default class Cleaner {
    */
   private prepareSeasons(pTitle: string) {
     if (pTitle.includes('(série)')) {
-      let numSeries = pTitle.match(this.numSeriesPattern);
+      const numSeries = pTitle.match(this.numSeriesPattern);
 
       if (numSeries && numSeries.length) {
         // Add info about series (add leading zero)
@@ -102,17 +102,17 @@ export default class Cleaner {
    */
   private prepareEpisode(pTitle: string) {
     if (pTitle.includes('(epizoda)')) {
-      let pTitleSplit = pTitle.split('-');
-      let episodeArray = pTitle.match(this.episodePattern);
+      const pTitleSplit = pTitle.split('-');
+      const episodeArray = pTitle.match(this.episodePattern);
 
-      let seasonSlug = `S`;
-      let episodeSlug = `E`;
+      let seasonSlug = 'S';
+      let episodeSlug = 'E';
 
       // If season doesn't exist, set as season 01
       if (episodeArray) {
         seasonSlug += episodeArray[1]
           ? episodeArray[1].replace(/^\d$/, '0$&')
-          : `01`;
+          : '01';
         episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
       }
 

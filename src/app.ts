@@ -1,6 +1,6 @@
 import Alternatives from './services/alternatives';
-import Renderer from './services/renderer';
 import Cleaner from './services/cleaner';
+import Renderer from './services/renderer';
 
 import { MagnetData } from './interfaces/interfaces';
 import Accent from './services/accent';
@@ -27,20 +27,20 @@ class CsfdMagnets {
   private wrapper: HTMLDivElement;
 
   private searchPattern = (movieUrl: string) =>
-    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`;
+    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
 
   constructor(
     private cleaner: Cleaner,
     private renderer: Renderer,
     private alternative: Alternatives
   ) {
-    let url = window.location.href.split('/');
+    const url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
       this.placingNode = document.querySelectorAll('#my-rating');
       if (!this.placingNode.length) {
         this.placingNode = document.querySelectorAll('#rating');
       }
-      let pageTitle = document.title;
+      const pageTitle = document.title;
       this.searchMovie(pageTitle);
       this.altTitles = this.alternative.getAltTitles();
     }
@@ -64,7 +64,7 @@ class CsfdMagnets {
    * Assemble search url
    */
   private buildSearchUrl(movieTitle: string): string {
-    var searchUrl = this.searchPattern(movieTitle);
+    const searchUrl = this.searchPattern(movieTitle);
     return searchUrl;
   }
 
@@ -80,12 +80,12 @@ class CsfdMagnets {
       (response: string) => {
         if (response) {
           // Create virtual node for DOM traversing
-          let virtualNode = document.createElement('html');
+          const virtualNode = document.createElement('html');
 
           virtualNode.innerHTML = response;
 
           // Get first five search results
-          let items: HTMLTableRowElement[] = [].slice
+          const items: HTMLTableRowElement[] = [].slice
             .call(virtualNode.querySelectorAll('#searchResult tbody tr'))
             .slice(0, 5);
 
@@ -106,13 +106,13 @@ class CsfdMagnets {
    * Parse and handle data for every loop
    */
   private handleItems(items: HTMLTableRowElement[] | any[]): void {
-    let list = this.wrapper.getElementsByTagName('ul')[0];
-    let sizePattern = /.+Size (.+?),.+/i;
+    const list = this.wrapper.getElementsByTagName('ul')[0];
+    const sizePattern = /.+Size (.+?),.+/i;
 
-    for (let item of items) {
-      let description: string = item.querySelector('font.detDesc').textContent;
-      let data: MagnetData = {
-        description: description,
+    for (const item of items) {
+      const description: string = item.querySelector('font.detDesc').textContent;
+      const data: MagnetData = {
+        description,
         size: sizePattern.exec(description)[1],
         seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
         linkName: item.querySelector('a.detLink').textContent,
@@ -126,12 +126,12 @@ class CsfdMagnets {
     // No items found
     if (!items.length) {
       // Give me one more chance to find it for you!
-      let altTitle = this.altTitles[this.attempt];
+      const altTitle = this.altTitles[this.attempt];
       if (altTitle) {
         // Remove box and do it again
         this.removeBox();
 
-        let year = this.cleaner.getYear() || '';
+        const year = this.cleaner.getYear() || '';
         this.searchMovie(`${altTitle} (${year})`);
         this.attempt++;
       } else {
