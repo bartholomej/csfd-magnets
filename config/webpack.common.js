@@ -53,7 +53,6 @@ module.exports = function (options) {
         //     return JSON.stringify(manifest, null, 2);
         //   }
         // },
-        { from: 'node_modules/dompurify/dist/purify.min.js', to: 'libs' },
         { from: 'src/_locales/', to: '_locales' },
         { from: 'src/images/', to: 'images' }
       ])

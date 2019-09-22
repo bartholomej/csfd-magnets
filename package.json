@@ -16,6 +16,7 @@
     "version": "",
     "tsc": "tsc",
     "tslint": "tslint",
+    "tslint-fix": "tslint --fix -p tsconfig.json",
     "postversion": "git push && git push --follow-tags"
   },
   "repository": {
@@ -28,14 +29,12 @@
   },
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
-    "dompurify": "^2.0.0",
     "es6-promise": "^4.2.8",
-    "webpack-cli": "^3.3.8",
+    "webpack-cli": "^3.3.9",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.88",
-    "@types/dompurify": "^0.0.33",
     "@types/node": "12",
     "awesome-typescript-loader": "^5.2.1",
     "copy-webpack-plugin": "^5.0.4",

@@ -10,7 +10,6 @@
 
 'use strict';
 
-import DOMPurify from 'dompurify';
 import { browserConfig } from '../../config/browser.config';
 import { MagnetData } from '../interfaces/interfaces';
 import { isDev } from '../services/utils';
@@ -99,7 +98,7 @@ export default class Renderer {
         </div>
       </div>`;
 
-    wrapper.innerHTML = DOMPurify.sanitize(box);
+    wrapper.innerHTML = box;
     this.insertAfter(placingNode, wrapper);
     return wrapper;
   }
@@ -132,7 +131,7 @@ export default class Renderer {
           </span>
         </a>`;
 
-    item.innerHTML = DOMPurify.sanitize(anchor);
+    item.innerHTML = anchor;
     list.appendChild(item);
   }
 

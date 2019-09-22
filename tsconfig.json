@@ -1,15 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "es7"
-    ],
-    "types": [
-      "chrome",
-      "node",
-      "dompurify"
-    ],
+    "lib": ["dom", "es7"],
+    "types": ["chrome", "node"],
     "baseUrl": "./src",
     "paths": {
       "@interfaces/*": ["interfaces/*"],
