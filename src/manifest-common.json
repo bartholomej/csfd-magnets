@@ -17,19 +17,13 @@
     "https://.thepiratebay.org/",
     "https://thepiratebay.org/"
   ],
-  "content_scripts": [{
+  "content_scripts": [
+    {
       "run_at": "document_end",
-      "matches": [
-        "http://www.csfd.cz/*",
-        "https://www.csfd.cz/*"
-      ],
-      "css": [
-        "app.css"
-      ],
-      "js": [
-        "libs/purify.min.js",
-        "app.bundle.js"
-      ]}
+      "matches": ["http://www.csfd.cz/*", "https://www.csfd.cz/*"],
+      "css": ["app.css"],
+      "js": ["app.bundle.js"]
+    }
   ],
   "background": {
     "scripts": ["background.bundle.js"]
