@@ -18,17 +18,12 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@types/chrome@0.0.88":
-  version "0.0.88"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.88.tgz#0041a101d69f78008910927c5b3299a00d8660db"
-  integrity sha512-JBsIrBZ2adJhlXvJ+1j0xLbcfOfwee/WAg7Lp2NE+Wf3m0vXMJFWv/PPjqNk5ZUXDeY/qDxPHe+PUjxnl8HWFg==
+"@types/chrome@0.0.89":
+  version "0.0.89"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.89.tgz#0d5baef543aaa0715b345b57b86cba6ca708b524"
+  integrity sha512-nWgL4U38SnIuMpG2rKMCGDknfZb193KFY15imqHUVFF4IJAVXvdEJOOgtcX9v2XsAaZiz2UUOInvWk5x1DhENQ==
   dependencies:
     "@types/filesystem" "*"
-
-"@types/dompurify@^0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@types/dompurify/-/dompurify-0.0.33.tgz#bec490ba5a5b4b31679fb9e5a70e4d2f405516bd"
-  integrity sha512-lUN9iC6b4txeaEef2PW7zIdhEKAp0Sw9bymOcXXZ7BaepB0nsDJYcLIrFfgpIkRSoZWBJ8IcYunB2hAXuHL1NA==
 
 "@types/filesystem@*":
   version "0.0.29"
@@ -1078,11 +1073,6 @@ dir-glob@^2.0.0:
 domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
-
-dompurify@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.0.0.tgz#2afb46460fc3f72096f4e77537edd9811dcdf512"
-  integrity sha512-i8LWSIMDpGmv7AbOcQOyy54L4TrRhjs6yrSessoNeYspsAtgaKiiGeBAG5959qLfhGvyndkHeyZWxx0dd4iDxw==
 
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.0"
@@ -3933,10 +3923,10 @@ webextension-polyfill@^0.4.0:
   resolved "https://registry.yarnpkg.com/webextension-polyfill/-/webextension-polyfill-0.4.0.tgz#9cc5a60f0f2bf907a6b349fdd7e61701f54956f9"
   integrity sha512-oreMp+EoAo1pzRMigx4jB5jInIpx6NTCySPSjGyLLee/dCIPiRqowCEfbFP8o20wz9SOtNwSsfkaJ9D/tRgpag==
 
-webpack-cli@^3.3.8:
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.8.tgz#caeaebcc26f685db1736e5decd3f01aac30123ec"
-  integrity sha512-RANYSXwikSWINjHMd/mtesblNSpjpDLoYTBtP99n1RhXqVI/wxN40Auqy42I7y4xrbmRBoA5Zy5E0JSBD5XRhw==
+webpack-cli@^3.3.9:
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.9.tgz#79c27e71f94b7fe324d594ab64a8e396b9daa91a"
+  integrity sha512-xwnSxWl8nZtBl/AFJCOn9pG7s5CYUYdZxmmukv+fAHLcBIHM36dImfpQg3WfShZXeArkWlf6QRw24Klcsv8a5A==
   dependencies:
     chalk "2.4.2"
     cross-spawn "6.0.5"
