@@ -28,7 +28,7 @@ jobs:
           npm run build:chrome
 
       - name: Deploy to Chrome Web Store
-        uses: trmcnvn/chrome-addon@v1
+        uses: trmcnvn/chrome-addon@v2
         with:
           extension: kkoccljoocknljaljhpifcnkmillmilo
           zip: zip/chrome.zip
