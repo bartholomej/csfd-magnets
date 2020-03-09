@@ -25,7 +25,7 @@ _- OK, it is easy..._
 - **[Install for Chrome](https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo)** from official **Chrome Web Store**
 - **[Install for Firefox](https://addons.mozilla.org/en-US/firefox/addon/csfd-magnets/)** from official **Mozilla Addons**
 - **[Install for Opera](https://addons.opera.com/en/extensions/details/csfd-magnets/)** from official **Opera add-ons**
-- **Install for Edge** coming soon...
+- **[Install for Edge](https://microsoftedge.microsoft.com/addons/detail/fdajhkomdidghloomhgghnpekpnpdhnj)** from official **Microsoft Edge Addons**
 
 ### Manually (for ~~robots~~ developers)
 
