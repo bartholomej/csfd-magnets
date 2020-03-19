@@ -27,7 +27,7 @@ class CsfdMagnets {
   private wrapper: HTMLDivElement;
 
   private searchPattern = (movieUrl: string) =>
-    `https://thepiratebay.org/search/${encodeURIComponent(movieUrl)}/0/0/0`
+    `https://mypiratebay.net/search.php?q=${encodeURIComponent(movieUrl)}`;
 
   constructor(
     private cleaner: Cleaner,
@@ -52,11 +52,7 @@ class CsfdMagnets {
   private searchMovie(title: string): void {
     this.movieTitle = this.cleaner.cleanTitle(title);
     this.searchUrl = this.buildSearchUrl(this.movieTitle);
-    this.wrapper = this.renderer.prepareBox(
-      this.placingNode[0],
-      this.movieTitle,
-      this.searchUrl
-    );
+    this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
     this.getItems(this.searchUrl);
   }
 
@@ -75,7 +71,7 @@ class CsfdMagnets {
     chrome.runtime.sendMessage(
       {
         contentScriptQuery: 'fetchData',
-        url,
+        url
       },
       (response: string) => {
         if (response) {
@@ -116,9 +112,7 @@ class CsfdMagnets {
         size: sizePattern.exec(description)[1],
         seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
         linkName: item.querySelector('a.detLink').textContent,
-        link: item.querySelector(
-          'a[title="Download this torrent using magnet"]'
-        ).href,
+        link: item.querySelector('a[title="Download this torrent using magnet"]').href
       };
       this.renderer.createListItem(data, list);
     }

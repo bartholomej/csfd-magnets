@@ -12,21 +12,27 @@
   },
   "permissions": [
     "tabs",
-    "http://.thepiratebay.org/",
-    "http://thepiratebay.org/",
-    "https://.thepiratebay.org/",
-    "https://thepiratebay.org/"
+    "https://mypiratebay.net/"
   ],
   "content_scripts": [
     {
       "run_at": "document_end",
-      "matches": ["http://www.csfd.cz/*", "https://www.csfd.cz/*"],
-      "css": ["app.css"],
-      "js": ["app.bundle.js"]
+      "matches": [
+        "http://www.csfd.cz/*",
+        "https://www.csfd.cz/*"
+      ],
+      "css": [
+        "app.css"
+      ],
+      "js": [
+        "app.bundle.js"
+      ]
     }
   ],
   "background": {
-    "scripts": ["background.bundle.js"]
+    "scripts": [
+      "background.bundle.js"
+    ]
   },
   "manifest_version": 2
 }
