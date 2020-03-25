@@ -34,7 +34,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.101",
+    "@types/chrome": "0.0.102",
     "@types/node": "^13.9.2",
     "awesome-typescript-loader": "^5.2.1",
     "copy-webpack-plugin": "^5.1.1",
