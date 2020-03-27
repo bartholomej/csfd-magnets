@@ -11,7 +11,6 @@
     "128": "images/icon-128.png"
   },
   "permissions": [
-    "tabs",
     "https://mypiratebay.net/"
   ],
   "content_scripts": [
