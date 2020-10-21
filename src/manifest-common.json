@@ -11,7 +11,7 @@
     "128": "images/icon-128.png"
   },
   "permissions": [
-    "https://mypiratebay.net/"
+    "https://tpb.party/"
   ],
   "content_scripts": [
     {

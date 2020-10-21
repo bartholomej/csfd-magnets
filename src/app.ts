@@ -27,7 +27,7 @@ class CsfdMagnets {
   private wrapper: HTMLDivElement;
 
   private searchPattern = (movieUrl: string) =>
-    `https://mypiratebay.net/search.php?q=${encodeURIComponent(movieUrl)}`;
+    `https://tpb.party/search/${encodeURIComponent(movieUrl)}/1/99/0`;
 
   constructor(
     private cleaner: Cleaner,
