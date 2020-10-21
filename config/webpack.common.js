@@ -1,6 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // const version = process.env.npm_package_version;
@@ -41,19 +40,21 @@ module.exports = function (options) {
         filename: '[name].css',
         chunkFilename: '[id].css'
       }),
-      new CopyWebpackPlugin([
-        // {
-        //   from: 'src/manifest-common.json',
-        //   to: 'manifest.json',
-        //   transform: function (content, path) {
-        //     var manifest = JSON.parse(content.toString());
-        //     manifest.version = version;
-        //     return JSON.stringify(manifest, null, 2);
-        //   }
-        // },
-        { from: 'src/_locales/', to: '_locales' },
-        { from: 'src/images/', to: 'images' }
-      ])
+      new CopyPlugin({
+        patterns: [
+          // {
+          //   from: 'src/manifest-common.json',
+          //   to: 'manifest.json',
+          //   transform: function (content, path) {
+          //     var manifest = JSON.parse(content.toString());
+          //     manifest.version = version;
+          //     return JSON.stringify(manifest, null, 2);
+          //   }
+          // },
+          { from: 'src/_locales/', to: '_locales' },
+          { from: 'src/images/', to: 'images' }
+        ]
+      })
     ]
   };
 };

@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const ExtensionReloader = require('webpack-extension-reloader');
 const commonConfig = require('./webpack.common.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const version = process.env.npm_package_version;
 
@@ -30,22 +30,24 @@ module.exports = function (options) {
       new webpack.DefinePlugin({
         BROWSER: JSON.stringify('chrome')
       }),
-      new CopyWebpackPlugin([
-        {
-          from: 'src/manifest-common.json',
-          to: 'manifest.json',
-          transform: function (content, path) {
-            const contentSecurityPolicy = "script-src 'self' 'unsafe-eval'; object-src 'self'";
-            var manifest = JSON.parse(content.toString());
-            manifest.version = version;
-            // Inject security policy only for dev
-            // because Chrome reloader is using eval
-            manifest['content_security_policy'] = contentSecurityPolicy;
-            var manifestObj = Object.assign(manifest, backgroundManifest);
-            return JSON.stringify(manifestObj, null, 2);
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'src/manifest-common.json',
+            to: 'manifest.json',
+            transform: function (content, path) {
+              const contentSecurityPolicy = "script-src 'self' 'unsafe-eval'; object-src 'self'";
+              var manifest = JSON.parse(content.toString());
+              manifest.version = version;
+              // Inject security policy only for dev
+              // because Chrome reloader is using eval
+              manifest['content_security_policy'] = contentSecurityPolicy;
+              var manifestObj = Object.assign(manifest, backgroundManifest);
+              return JSON.stringify(manifestObj, null, 2);
+            }
           }
-        }
-      ])
+        ]
+      })
     ]
   });
 };

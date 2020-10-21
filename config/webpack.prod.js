@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 
 const commonConfig = require('./webpack.common.js');
@@ -21,18 +21,20 @@ module.exports = (options) => {
       new webpack.DefinePlugin({
         BROWSER: JSON.stringify(target)
       }),
-      new CopyWebpackPlugin([
-        {
-          from: 'src/manifest-common.json',
-          to: 'manifest.json',
-          transform: (content, path) => {
-            var manifest = JSON.parse(content.toString());
-            manifest.version = version;
-            var manifestObj = Object.assign(manifest, browserSpecificProperties);
-            return JSON.stringify(manifestObj, null, 2);
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'src/manifest-common.json',
+            to: 'manifest.json',
+            transform: (content, path) => {
+              var manifest = JSON.parse(content.toString());
+              manifest.version = version;
+              var manifestObj = Object.assign(manifest, browserSpecificProperties);
+              return JSON.stringify(manifestObj, null, 2);
+            }
           }
-        }
-      ]),
+        ]
+      }),
       new ZipPlugin({
         // OPTIONAL: defaults to the Webpack output path (above)
         // can be relative (to Webpack output path) or absolute
@@ -82,14 +84,7 @@ module.exports = (options) => {
         zipOptions: {
           forceZip64Format: false
         }
-      }),
-      // Create build zip with version
-      new CopyWebpackPlugin([
-        {
-          from: './zip/' + target + '.zip',
-          to: '../zip/' + target + '-v' + version + '.zip'
-        }
-      ])
+      })
     ]
   });
 };

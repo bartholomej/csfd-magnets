@@ -37,7 +37,7 @@
     "@types/chrome": "0.0.125",
     "@types/node": "^14.14.1",
     "awesome-typescript-loader": "^5.2.1",
-    "copy-webpack-plugin": "^5.1.2",
+    "copy-webpack-plugin": "^6.1.2",
     "css-loader": "^5.0.0",
     "exports-loader": "^1.1.1",
     "imports-loader": "^1.2.0",
