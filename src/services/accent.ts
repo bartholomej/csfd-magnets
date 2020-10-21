@@ -417,7 +417,7 @@ export default class Accent {
       X̧: 'X',
       x̧: 'x',
       Z̧: 'Z',
-      z̧: 'z',
+      z̧: 'z'
     };
 
     const chars = Object.keys(this.characterMap).join('|');
@@ -426,7 +426,7 @@ export default class Accent {
   }
 
   public removeAccents(accents: string) {
-    return accents.replace(this.allAccents, match => {
+    return accents.replace(this.allAccents, (match) => {
       return this.characterMap[match];
     });
   }

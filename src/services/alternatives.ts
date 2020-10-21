@@ -21,7 +21,7 @@ export default class Alternatives {
     for (const value of this.altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
-    return altTitles.filter(title => title);
+    return altTitles.filter((title) => title);
   }
 
   /**

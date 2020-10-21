@@ -24,16 +24,12 @@ export default class Cleaner {
     this.seasonTitlePattern = /\(série\)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
   }
+
   /**
    * Clean page title and prepare for search
    */
   public cleanTitle(pageTitle: string): string {
-    let pTitle = pageTitle
-      .split(' / ')
-      .pop()
-      .split('|')
-      .shift()
-      .trim();
+    let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
 
     pTitle = this.prepareTvSeries(pTitle);
     pTitle = this.prepareSeasons(pTitle);
@@ -110,9 +106,7 @@ export default class Cleaner {
 
       // If season doesn't exist, set as season 01
       if (episodeArray) {
-        seasonSlug += episodeArray[1]
-          ? episodeArray[1].replace(/^\d$/, '0$&')
-          : '01';
+        seasonSlug += episodeArray[1] ? episodeArray[1].replace(/^\d$/, '0$&') : '01';
         episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
       }
 

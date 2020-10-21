@@ -33,9 +33,7 @@ export default class Renderer {
     const box = `
       <div id="tpb-search" class="ct-related">
         <div class="header">
-          <h3>${devFlag}${chrome.i18n.getMessage(
-      'magnets'
-    )}: <span class="note"><a href="${
+          <h3>${devFlag}${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${
       browserConfig[BROWSER].repoUrl
     }" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
           <div class="controls">
