@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 
@@ -7,19 +7,19 @@ const commonConfig = require('./webpack.common.js');
 const browserConfig = require('./browsers.manifest.json');
 const version = process.env.npm_package_version;
 
-module.exports = options => {
+module.exports = (options) => {
   var target = options.target;
   if (target) {
     var browserSpecificProperties = browserConfig[target];
   }
-  return webpackMerge(commonConfig(), {
+  return merge(commonConfig(), {
     mode: 'production',
     optimization: {
-      minimize: false,
+      minimize: false
     },
     plugins: [
       new webpack.DefinePlugin({
-        BROWSER: JSON.stringify(target),
+        BROWSER: JSON.stringify(target)
       }),
       new CopyWebpackPlugin([
         {
@@ -28,13 +28,10 @@ module.exports = options => {
           transform: (content, path) => {
             var manifest = JSON.parse(content.toString());
             manifest.version = version;
-            var manifestObj = Object.assign(
-              manifest,
-              browserSpecificProperties
-            );
+            var manifestObj = Object.assign(manifest, browserSpecificProperties);
             return JSON.stringify(manifestObj, null, 2);
-          },
-        },
+          }
+        }
       ]),
       new ZipPlugin({
         // OPTIONAL: defaults to the Webpack output path (above)
@@ -55,7 +52,7 @@ module.exports = options => {
 
         // OPTIONAL: defaults to the identity function
         // a function mapping asset paths to new paths
-        pathMapper: assetPath => {
+        pathMapper: (assetPath) => {
           // put all pngs in an `images` subdir
           // if (assetPath.endsWith('.png'))
           //   return path.join(path.dirname(assetPath), 'images', path.basename(assetPath));
@@ -78,21 +75,21 @@ module.exports = options => {
           mtime: new Date(),
           mode: 0o100664,
           compress: true,
-          forceZip64Format: false,
+          forceZip64Format: false
         },
 
         // OPTIONAL: see https://github.com/thejoshwolfe/yazl#endoptions-finalsizecallback
         zipOptions: {
-          forceZip64Format: false,
-        },
+          forceZip64Format: false
+        }
       }),
       // Create build zip with version
       new CopyWebpackPlugin([
         {
           from: './zip/' + target + '.zip',
-          to: '../zip/' + target + '-v' + version + '.zip',
-        },
-      ]),
-    ],
+          to: '../zip/' + target + '-v' + version + '.zip'
+        }
+      ])
+    ]
   });
 };

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const ExtensionReloader  = require('webpack-extension-reloader');
+const { merge } = require('webpack-merge');
+const ExtensionReloader = require('webpack-extension-reloader');
 const commonConfig = require('./webpack.common.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -9,27 +9,26 @@ const version = process.env.npm_package_version;
 // We have to use background script in dev mode. Required by WebpackChromeReloaderPlugin (workaround)
 var backgroundManifest = {
   background: {
-    scripts: [
-      "background.bundle.js"
-    ]
+    scripts: ['background.bundle.js']
   }
 };
 
 module.exports = function (options) {
-  return webpackMerge(commonConfig(), {
+  return merge(commonConfig(), {
     mode: 'development',
     watch: true,
     plugins: [
       new ExtensionReloader({
         port: 9090, // Which port use to create the server
         reloadPage: true, // Force the reload of the page also
-        entries: { //The entries used for the content/background scripts
+        entries: {
+          //The entries used for the content/background scripts
           contentScript: 'app',
           background: 'background'
         }
       }),
       new webpack.DefinePlugin({
-        'BROWSER': JSON.stringify('chrome')
+        BROWSER: JSON.stringify('chrome')
       }),
       new CopyWebpackPlugin([
         {
@@ -48,6 +47,5 @@ module.exports = function (options) {
         }
       ])
     ]
-  })
-}
-
+  });
+};

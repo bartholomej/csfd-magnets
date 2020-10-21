@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Use Node.js 13.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@master
         with:
-          node-version: 13.x
+          node-version: 14.x
 
       # - name: Get the version tag
       #   id: get_version

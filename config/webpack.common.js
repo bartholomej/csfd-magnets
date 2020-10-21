@@ -15,24 +15,22 @@ module.exports = function (options) {
       extensions: ['.ts', '.js', '.json']
     },
     output: {
-      publicPath: ".",
+      publicPath: '.',
       path: path.resolve(__dirname, '../dist'),
-      filename: '[name].bundle.js',
-      libraryTarget: "umd"
+      filename: '[name].[contenthash].bundle.js',
+      libraryTarget: 'umd'
     },
     module: {
-      rules: [{
-        test: /\.ts$/,
-        loader: "awesome-typescript-loader"
-      }, {
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
-        ]
-    }
-     ]
+      rules: [
+        {
+          test: /\.ts$/,
+          loader: 'awesome-typescript-loader'
+        },
+        {
+          test: /\.s?css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        }
+      ]
     },
     plugins: [
       // new webpack.ProvidePlugin({
@@ -40,8 +38,8 @@ module.exports = function (options) {
       //   fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
       // }),
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
+        filename: '[name].css',
+        chunkFilename: '[id].css'
       }),
       new CopyWebpackPlugin([
         // {
@@ -57,6 +55,5 @@ module.exports = function (options) {
         { from: 'src/images/', to: 'images' }
       ])
     ]
-  }
-}
-
+  };
+};
