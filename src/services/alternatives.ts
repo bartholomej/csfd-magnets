@@ -8,8 +8,6 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-'use strict';
-
 export default class Alternatives {
   private altTitlesPattern = ['USA', 'anglický'];
 

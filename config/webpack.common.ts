@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as path from 'path';
 import * as webpack from 'webpack';
 
+// tslint:disable:object-literal-sort-keys
 export const commonConfig: webpack.Configuration = {
   entry: {
     app: ['./src/app.ts', './src/app.scss'],

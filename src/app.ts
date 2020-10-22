@@ -1,5 +1,3 @@
-'use strict';
-
 import { MagnetData } from './interfaces/interfaces';
 import Accent from './services/accent';
 import Alternatives from './services/alternatives';
@@ -109,10 +107,10 @@ class CsfdMagnets {
       const description: string = item.querySelector('font.detDesc').textContent;
       const data: MagnetData = {
         description,
-        size: sizePattern.exec(description)[1],
-        seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
+        link: item.querySelector('a[title="Download this torrent using magnet"]').href,
         linkName: item.querySelector('a.detLink').textContent,
-        link: item.querySelector('a[title="Download this torrent using magnet"]').href
+        seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
+        size: sizePattern.exec(description)[1]
       };
       this.renderer.createListItem(data, list);
     }
@@ -134,15 +132,15 @@ class CsfdMagnets {
     }
   }
 
-  private removeLoader() {
+  private removeLoader(): void {
     this.wrapper.getElementsByClassName('loader')[0].remove();
   }
 
-  private removeBox() {
+  private removeBox(): void {
     this.wrapper.parentNode.removeChild(this.wrapper);
   }
 
-  private setNotFound() {
+  private setNotFound(): void {
     this.wrapper.querySelector('.not-found').classList.add('active');
   }
 }

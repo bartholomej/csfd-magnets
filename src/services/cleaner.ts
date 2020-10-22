@@ -1,5 +1,3 @@
-'use strict';
-
 import Accent from './accent';
 /**
  * @class Cleaner
@@ -65,7 +63,7 @@ export default class Cleaner {
   /**
    * Prepare search query for TV Series
    */
-  private prepareTvSeries(pTitle: string) {
+  private prepareTvSeries(pTitle: string): string {
     if (pTitle.includes('(TV seriál)')) {
       // Remove year
       pTitle = pTitle.replace(this.yearPattern, '');
@@ -76,7 +74,7 @@ export default class Cleaner {
   /**
    * Prepare search query for Seasons
    */
-  private prepareSeasons(pTitle: string) {
+  private prepareSeasons(pTitle: string): string {
     if (pTitle.includes('(série)')) {
       const numSeries = pTitle.match(this.numSeriesPattern);
 
@@ -96,7 +94,7 @@ export default class Cleaner {
   /**
    * Prepare search query for Episodes
    */
-  private prepareEpisode(pTitle: string) {
+  private prepareEpisode(pTitle: string): string {
     if (pTitle.includes('(epizoda)')) {
       const pTitleSplit = pTitle.split('-');
       const episodeArray = pTitle.match(this.episodePattern);
@@ -115,7 +113,7 @@ export default class Cleaner {
     return pTitle;
   }
 
-  private setYear(year: number) {
+  private setYear(year: number): void {
     this.year = year;
   }
 

@@ -8,10 +8,9 @@
  * @see https://github.com/tyxla/remove-accents
  */
 
-'use strict';
-
 import { CharMaps } from '../interfaces/interfaces';
 
+// tslint:disable:object-literal-sort-keys
 export default class Accent {
   private characterMap: CharMaps;
   private allAccents: RegExp;
@@ -425,13 +424,13 @@ export default class Accent {
     this.firstAccent = new RegExp(chars, '');
   }
 
-  public removeAccents(accents: string) {
+  public removeAccents(accents: string): string {
     return accents.replace(this.allAccents, (match) => {
       return this.characterMap[match];
     });
   }
 
-  public hasAccents(accents: string) {
+  public hasAccents(accents: string): boolean {
     return !!accents.match(this.firstAccent);
   }
 }

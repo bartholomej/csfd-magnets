@@ -8,6 +8,7 @@ import { BrowserProps, WebpackOptions } from './webpack.interface';
 
 const version = process.env.npm_package_version;
 
+// tslint:disable:object-literal-sort-keys
 export default (options: WebpackOptions) => {
   const target = options.target;
 

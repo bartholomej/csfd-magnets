@@ -8,8 +8,6 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-'use strict';
-
 import { browserConfig } from '../../config/browser.config';
 import { MagnetData } from '../interfaces/interfaces';
 import { isDev } from '../services/utils';
@@ -104,7 +102,7 @@ export default class Renderer {
   /**
    * Assemble markup for every item
    */
-  public createListItem(data: MagnetData, list: HTMLUListElement) {
+  public createListItem(data: MagnetData, list: HTMLUListElement): void {
     const item = document.createElement('li');
     const anchor = `
         <a href="${data.link}">
@@ -136,7 +134,7 @@ export default class Renderer {
   /**
    * Helper for inserting node after some element
    */
-  private insertAfter(referenceNode: HTMLElement, newNode: HTMLDivElement) {
+  private insertAfter(referenceNode: HTMLElement, newNode: HTMLDivElement): void {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 }

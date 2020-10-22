@@ -5,22 +5,20 @@
   "rules": {
     "arrow-return-shorthand": true,
     "arrow-parens": false,
-    "object-literal-sort-keys": false,
+    "object-literal-sort-keys": true,
     "interface-name": false,
     "member-access": true,
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "quotemark": [true, "single", "avoid-escape", "avoid-template"],
-    "trailing-comma": false
+    "trailing-comma": false,
+    "typedef-whitespace": false,
+    "whitespace": false,
+    "typedef": [true, "call-signature", "parameter"]
   },
   "rulesDirectory": []
 }

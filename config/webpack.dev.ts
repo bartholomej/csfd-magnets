@@ -13,7 +13,7 @@ const backgroundManifest = {
     scripts: ['background.bundle.js']
   }
 };
-
+// tslint:disable:object-literal-sort-keys
 export default () => {
   return merge(commonConfig, {
     mode: 'development',
