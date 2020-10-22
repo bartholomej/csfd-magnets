@@ -30,6 +30,7 @@
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
     "es6-promise": "^4.2.8",
+    "piratebay-scraper": "^0.5.3",
     "webpack-cli": "^4.1.0",
     "whatwg-fetch": "^3.4.1"
   },

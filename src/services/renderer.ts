@@ -8,8 +8,9 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
+import { TPBResult } from 'piratebay-scraper/interfaces';
 import { browserConfig } from '../../config/browser.config';
-import { Browser, MagnetData } from '../interfaces/interfaces';
+import { Browser } from '../interfaces/interfaces';
 import { isDev } from '../services/utils';
 
 declare let BROWSER: Browser;
@@ -102,7 +103,7 @@ export default class Renderer {
   /**
    * Assemble markup for every item
    */
-  public createListItem(data: MagnetData, list: HTMLUListElement): void {
+  public createListItem(data: TPBResult, list: HTMLUListElement): void {
     const item = document.createElement('li');
     const anchor = `
         <a href="${data.link}">
@@ -110,7 +111,7 @@ export default class Renderer {
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="12" viewBox="0 0 13 12">
               <path d="M3.971 6c-0.696 0.020-1.326 0.321-1.775 0.857h-0.897c-0.67 0-1.299-0.321-1.299-1.065 0-0.542-0.020-2.364 0.83-2.364 0.141 0 0.837 0.569 1.741 0.569 0.308 0 0.603-0.054 0.891-0.154-0.020 0.147-0.033 0.295-0.033 0.442 0 0.609 0.194 1.212 0.542 1.714zM11.143 10.266c0 1.085-0.717 1.734-1.788 1.734h-5.853c-1.071 0-1.788-0.65-1.788-1.734 0-1.513 0.355-3.837 2.317-3.837 0.228 0 1.058 0.931 2.397 0.931s2.17-0.931 2.397-0.931c1.962 0 2.317 2.324 2.317 3.837zM4.286 1.714c0 0.944-0.77 1.714-1.714 1.714s-1.714-0.77-1.714-1.714 0.77-1.714 1.714-1.714 1.714 0.77 1.714 1.714zM9 4.286c0 1.42-1.152 2.571-2.571 2.571s-2.571-1.152-2.571-2.571 1.152-2.571 2.571-2.571 2.571 1.152 2.571 2.571zM12.857 5.792c0 0.743-0.629 1.065-1.299 1.065h-0.897c-0.449-0.536-1.078-0.837-1.775-0.857 0.348-0.502 0.542-1.105 0.542-1.714 0-0.147-0.013-0.295-0.033-0.442 0.288 0.1 0.583 0.154 0.891 0.154 0.904 0 1.6-0.569 1.741-0.569 0.85 0 0.83 1.821 0.83 2.364zM12 1.714c0 0.944-0.77 1.714-1.714 1.714s-1.714-0.77-1.714-1.714 0.77-1.714 1.714-1.714 1.714 0.77 1.714 1.714z"></path>
             </svg>
-            ${data.seedLeech[0].textContent} seeds
+            ${data.seeders} seeds
           </span>
           <span class="attr">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11" height="12" viewBox="0 0 11 12">
@@ -123,7 +124,7 @@ export default class Renderer {
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="10" viewBox="0 0 10 13">
               <path d="M10.286 5.571v0.857c0 2.732-2.163 4.714-5.143 4.714s-5.143-1.982-5.143-4.714v-0.857c0-0.234 0.194-0.429 0.429-0.429h2.571c0.234 0 0.429 0.194 0.429 0.429v0.857c0 1.225 1.426 1.286 1.714 1.286s1.714-0.060 1.714-1.286v-0.857c0-0.234 0.194-0.429 0.429-0.429h2.571c0.234 0 0.429 0.194 0.429 0.429zM3.429 1.286v2.571c0 0.234-0.194 0.429-0.429 0.429h-2.571c-0.234 0-0.429-0.194-0.429-0.429v-2.571c0-0.234 0.194-0.429 0.429-0.429h2.571c0.234 0 0.429 0.194 0.429 0.429zM10.286 1.286v2.571c0 0.234-0.194 0.429-0.429 0.429h-2.571c-0.234 0-0.429-0.194-0.429-0.429v-2.571c0-0.234 0.194-0.429 0.429-0.429h2.571c0.234 0 0.429 0.194 0.429 0.429z"></path>
             </svg>
-            ${data.linkName}
+            ${data.title}
           </span>
         </a>`;
 

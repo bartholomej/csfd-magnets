@@ -1,19 +1,12 @@
+import { ThePirateBayScraper } from 'piratebay-scraper';
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.contentScriptQuery === 'fetchData') {
-    fetch(request.url)
-      .then((res) => {
-        if (res.ok) {
-          return res.text();
-        }
-        throw new Error("Can't connect to movie provider :(");
-      })
-      .then((html) => html)
+    const TPBScraper = new ThePirateBayScraper();
+    TPBScraper.search(request.url)
       .then((response) => {
         sendResponse(response);
       })
       .catch((error) => sendResponse(error));
-    return true;
-  } else {
-    return false;
   }
 });

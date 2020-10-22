@@ -1,4 +1,5 @@
-import { MagnetData } from './interfaces/interfaces';
+import { ThePirateBayScraper } from 'piratebay-scraper';
+import { TPBResult } from 'piratebay-scraper/interfaces';
 import Accent from './services/accent';
 import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
@@ -23,9 +24,7 @@ class CsfdMagnets {
   private movieTitle: string;
   private searchUrl: string;
   private wrapper: HTMLDivElement;
-
-  private searchPattern = (movieUrl: string) =>
-    `https://tpb.party/search/${encodeURIComponent(movieUrl)}/1/99/0`;
+  private scraper = new ThePirateBayScraper();
 
   constructor(
     private cleaner: Cleaner,
@@ -49,17 +48,8 @@ class CsfdMagnets {
    */
   private searchMovie(title: string): void {
     this.movieTitle = this.cleaner.cleanTitle(title);
-    this.searchUrl = this.buildSearchUrl(this.movieTitle);
     this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
-    this.getItems(this.searchUrl);
-  }
-
-  /**
-   * Assemble search url
-   */
-  private buildSearchUrl(movieTitle: string): string {
-    const searchUrl = this.searchPattern(movieTitle);
-    return searchUrl;
+    this.getItems(this.movieTitle);
   }
 
   /**
@@ -71,22 +61,12 @@ class CsfdMagnets {
         contentScriptQuery: 'fetchData',
         url
       },
-      (response: string) => {
+      (response: TPBResult[]) => {
         if (response) {
-          // Create virtual node for DOM traversing
-          const virtualNode = document.createElement('html');
-
-          virtualNode.innerHTML = response;
-
-          // Get first five search results
-          const items: HTMLTableRowElement[] = [].slice
-            .call(virtualNode.querySelectorAll('#searchResult tbody tr'))
-            .slice(0, 5);
-
           this.removeLoader();
 
           // Handle items
-          this.handleItems(items);
+          this.handleItems(response.slice(0, 5));
         } else {
           this.removeLoader();
           this.setNotFound();
@@ -99,20 +79,11 @@ class CsfdMagnets {
   /**
    * Parse and handle data for every loop
    */
-  private handleItems(items: HTMLTableRowElement[] | any[]): void {
+  private handleItems(items: TPBResult[]): void {
     const list = this.wrapper.getElementsByTagName('ul')[0];
-    const sizePattern = /.+Size (.+?),.+/i;
 
     for (const item of items) {
-      const description: string = item.querySelector('font.detDesc').textContent;
-      const data: MagnetData = {
-        description,
-        link: item.querySelector('a[title="Download this torrent using magnet"]').href,
-        linkName: item.querySelector('a.detLink').textContent,
-        seedLeech: [].slice.call(item.querySelectorAll('td[align="right"]')),
-        size: sizePattern.exec(description)[1]
-      };
-      this.renderer.createListItem(data, list);
+      this.renderer.createListItem(item, list);
     }
 
     // No items found

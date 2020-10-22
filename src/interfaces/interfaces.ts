@@ -1,13 +1,5 @@
 import { browserConfig } from '../../config/browser.config';
 
-export interface MagnetData {
-  description: string;
-  size: string;
-  seedLeech: HTMLTableColElement[];
-  linkName: string;
-  link: string;
-}
-
 export interface CharMaps {
   [field: string]: string;
 }
