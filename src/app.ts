@@ -1,5 +1,5 @@
-import { ThePirateBayScraper } from 'piratebay-scraper';
 import { TPBResult } from 'piratebay-scraper/interfaces';
+import { searchUrl } from 'piratebay-scraper/vars';
 import Accent from './services/accent';
 import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
@@ -22,9 +22,7 @@ class CsfdMagnets {
   private placingNode: NodeListOf<HTMLElement>;
   private altTitles: string[];
   private movieTitle: string;
-  private searchUrl: string;
   private wrapper: HTMLDivElement;
-  private scraper = new ThePirateBayScraper();
 
   constructor(
     private cleaner: Cleaner,
@@ -48,7 +46,11 @@ class CsfdMagnets {
    */
   private searchMovie(title: string): void {
     this.movieTitle = this.cleaner.cleanTitle(title);
-    this.wrapper = this.renderer.prepareBox(this.placingNode[0], this.movieTitle, this.searchUrl);
+    this.wrapper = this.renderer.prepareBox(
+      this.placingNode[0],
+      this.movieTitle,
+      searchUrl(this.movieTitle)
+    );
     this.getItems(this.movieTitle);
   }
 
