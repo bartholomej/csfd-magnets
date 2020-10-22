@@ -65,11 +65,15 @@ I physically can't. I have nowhere to store it. I don't even have a server datab
 
 That's why, with CSFD Magnets, what happens on your device stays on your device till disappear.
 
+## Donation
+
+If this project have helped you save time please consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
+
 ## License
 
-Copyright &copy; 2017 [Bartholomej](http://github.com/bartholomej)
+Copyright &copy; 2017 – 2020 [Bartholomej](http://github.com/bartholomej)
 
-Proudly powered by nature, tea, beer and curry ;)
+Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
 **This is unofficial, experimental, made for fun and it has nothing to do with CSFD ❤️ itself** ️ ️
 
