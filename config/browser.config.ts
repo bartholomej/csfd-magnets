@@ -6,7 +6,7 @@ export const browserConfig: BrowserConfig = {
       'https://chrome.google.com/webstore/detail/csfd-magnets/kkoccljoocknljaljhpifcnkmillmilo'
   },
   edge: {
-    repoUrl: ''
+    repoUrl: 'https://microsoftedge.microsoft.com/addons/detail/fdajhkomdidghloomhgghnpekpnpdhnj'
   },
   firefox: {
     repoUrl: 'https://addons.mozilla.org/en-US/firefox/addon/csfd-magnets/'
