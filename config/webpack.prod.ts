@@ -24,6 +24,7 @@ export default (options: WebpackOptions) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        // Set variable to find out what browser is compiled
         BROWSER: JSON.stringify(target)
       }),
       new CopyPlugin({

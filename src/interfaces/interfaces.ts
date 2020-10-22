@@ -1,3 +1,5 @@
+import { browserConfig } from '../../config/browser.config';
+
 export interface MagnetData {
   description: string;
   size: string;
@@ -20,3 +22,5 @@ export interface BrowserConfig {
 interface BrowserConfigInside {
   repoUrl: string;
 }
+
+export type Browser = keyof typeof browserConfig;

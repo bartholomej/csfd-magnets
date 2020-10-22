@@ -1,5 +1,7 @@
+import { Browser } from '@interfaces/interfaces';
+
 export interface WebpackOptions {
-  target: 'chrome' | 'firefox' | 'opera' | 'edge';
+  target: Browser;
 }
 
 export interface BrowserProps {

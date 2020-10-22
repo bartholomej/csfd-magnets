@@ -9,10 +9,10 @@
  */
 
 import { browserConfig } from '../../config/browser.config';
-import { MagnetData } from '../interfaces/interfaces';
+import { Browser, MagnetData } from '../interfaces/interfaces';
 import { isDev } from '../services/utils';
 
-declare let BROWSER: 'chrome' | 'opera' | 'firefox' | 'edge';
+declare let BROWSER: Browser;
 
 export default class Renderer {
   /**
