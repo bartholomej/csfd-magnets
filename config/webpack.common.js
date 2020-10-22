@@ -16,7 +16,7 @@ module.exports = function (options) {
     output: {
       publicPath: '.',
       path: path.resolve(__dirname, '../dist'),
-      filename: '[name].[contenthash].bundle.js',
+      filename: '[name].bundle.js',
       libraryTarget: 'umd'
     },
     module: {
