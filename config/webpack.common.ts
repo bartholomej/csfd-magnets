@@ -1,8 +1,7 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-
 import CopyPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import * as path from 'path';
+import * as webpack from 'webpack';
 
 export const commonConfig: webpack.Configuration = {
   entry: {

@@ -1,9 +1,11 @@
+'use strict';
+
+import { MagnetData } from './interfaces/interfaces';
+import Accent from './services/accent';
 import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 
-import { MagnetData } from './interfaces/interfaces';
-import Accent from './services/accent';
 /**
  * @class CsfdMagnets
  *
@@ -15,8 +17,6 @@ import Accent from './services/accent';
  * @author Bartholomej
  * @see https://github.com/bartholomej/csfd-magnets
  */
-
-'use strict';
 
 class CsfdMagnets {
   private attempt = 0;
@@ -147,4 +147,4 @@ class CsfdMagnets {
   }
 }
 
-new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());
+export default new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());

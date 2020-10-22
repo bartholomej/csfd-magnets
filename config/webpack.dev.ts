@@ -1,8 +1,7 @@
-import * as webpack from 'webpack';
-import { merge } from 'webpack-merge';
 import CopyPlugin from 'copy-webpack-plugin';
-
+import * as webpack from 'webpack';
 import ExtensionReloader from 'webpack-extension-reloader';
+import { merge } from 'webpack-merge';
 import { commonConfig } from './webpack.common';
 
 const version = process.env.npm_package_version;

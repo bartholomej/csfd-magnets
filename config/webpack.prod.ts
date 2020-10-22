@@ -1,11 +1,9 @@
-import * as webpack from 'webpack';
-
-import { merge } from 'webpack-merge';
 import CopyPlugin from 'copy-webpack-plugin';
+import * as webpack from 'webpack';
+import { merge } from 'webpack-merge';
 import ZipPlugin from 'zip-webpack-plugin';
-
-import { commonConfig } from './webpack.common';
 import browserConfig from './browsers.manifest.json';
+import { commonConfig } from './webpack.common';
 import { BrowserProps, WebpackOptions } from './webpack.interface';
 
 const version = process.env.npm_package_version;

@@ -1,3 +1,5 @@
+'use strict';
+
 import Accent from './accent';
 /**
  * @class Cleaner
@@ -8,8 +10,6 @@ import Accent from './accent';
  * @author Bartholomej
  * @see https://github.com/bartholomej/csfd-magnets
  */
-
-'use strict';
 
 export default class Cleaner {
   private yearPattern: RegExp;
