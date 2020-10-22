@@ -1,18 +1,24 @@
-const webpack = require('webpack');
-const { merge } = require('webpack-merge');
-const CopyPlugin = require('copy-webpack-plugin');
-const ZipPlugin = require('zip-webpack-plugin');
+import * as webpack from 'webpack';
 
-const commonConfig = require('./webpack.common.js');
-const browserConfig = require('./browsers.manifest.json');
+import { merge } from 'webpack-merge';
+import CopyPlugin from 'copy-webpack-plugin';
+import ZipPlugin from 'zip-webpack-plugin';
+
+import { commonConfig } from './webpack.common';
+import browserConfig from './browsers.manifest.json';
+import { BrowserProps, WebpackOptions } from './webpack.interface';
+
 const version = process.env.npm_package_version;
 
-module.exports = (options) => {
-  var target = options.target;
+export default (options: WebpackOptions) => {
+  const target = options.target;
+
+  // Set Chrome as default browser config
+  let browserSpecificProperties: BrowserProps = browserConfig.chrome;
   if (target) {
-    var browserSpecificProperties = browserConfig[target];
+    browserSpecificProperties = browserConfig[target];
   }
-  return merge(commonConfig(), {
+  return merge(commonConfig, {
     mode: 'production',
     optimization: {
       minimize: false
@@ -26,10 +32,10 @@ module.exports = (options) => {
           {
             from: 'src/manifest-common.json',
             to: 'manifest.json',
-            transform: (content, path) => {
-              var manifest = JSON.parse(content.toString());
+            transform: (content) => {
+              const manifest = JSON.parse(content.toString());
               manifest.version = version;
-              var manifestObj = Object.assign(manifest, browserSpecificProperties);
+              const manifestObj = Object.assign(manifest, browserSpecificProperties);
               return JSON.stringify(manifestObj, null, 2);
             }
           }
