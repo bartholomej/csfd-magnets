@@ -55,13 +55,13 @@ class CsfdMagnets {
   }
 
   /**
-   * Fetch items and create virtual node
+   * Fetch items
    */
-  private getItems(url: string): void {
+  private getItems(searchQuery: string): void {
     chrome.runtime.sendMessage(
       {
         contentScriptQuery: 'fetchData',
-        url
+        searchQuery
       },
       (response: TPBResult[]) => {
         if (response) {

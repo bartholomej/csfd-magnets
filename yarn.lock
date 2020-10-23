@@ -2609,10 +2609,10 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-piratebay-scraper@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-1.0.0.tgz#c719d1b2dccfca6b7b0467971e84ec6f62242565"
-  integrity sha512-nZHWfqFBwpoIGHLz2XEaFONoyadnW+DqtrFDJt2gA/PnyT7Ydhj2RI5oegid5/6psaJO5HaS1dd0jiKnMHNH6A==
+piratebay-scraper@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-1.0.1.tgz#a6a65a70bc72e97ef63d282a15672585a2da9c47"
+  integrity sha512-ffHQ9p97EKd9hKazF6kTTJTYQ5VPPbYqMBcbl3Pjbmi0OU7Gh9p+a8SCAb6jAWb909Adq96FfFfBxJ6F9JNU0Q==
 
 pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
