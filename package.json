@@ -9,10 +9,11 @@
     "release:patch": "git checkout master && npm version patch -m \"chore(update): patch release %s 🐛 \"",
     "release:minor": "git checkout master && npm version minor -m \"chore(update): release %s 🚀\"",
     "release:major": "git checkout master && npm version major -m \"chore(update): major release %s 💥 \"",
-    "build:chrome": "webpack --config config/webpack.prod.ts --progress --env production --env target=chrome",
-    "build:firefox": "webpack --config config/webpack.prod.ts --env production --env target=firefox",
-    "build:edge": "webpack --config config/webpack.prod.ts --env production --env target=edge",
-    "build:opera": "webpack --config config/webpack.prod.ts --env production --env target=opera",
+    "build:chrome": "yarn clean:dist && webpack --config config/webpack.prod.ts --progress --env production --env target=chrome",
+    "build:firefox": "yarn clean:dist && webpack --config config/webpack.prod.ts --env production --env target=firefox",
+    "build:edge": "yarn clean:dist && webpack --config config/webpack.prod.ts --env production --env target=edge",
+    "build:opera": "yarn clean:dist && webpack --config config/webpack.prod.ts --env production --env target=opera",
+    "clean:dist": "rimraf dist",
     "version": "",
     "tsc": "tsc",
     "tslint": "tslint",
@@ -29,7 +30,7 @@
   },
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
-    "piratebay-scraper": "^1.0.0"
+    "piratebay-scraper": "^1.0.1"
   },
   "devDependencies": {
     "@types/chrome": "0.0.125",
@@ -45,6 +46,7 @@
     "imports-loader": "^1.2.0",
     "mini-css-extract-plugin": "^1.1.2",
     "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2",
     "sass-loader": "^10.0.4",
     "ts-node": "^9.0.0",
     "tslint": "^6.1.3",
