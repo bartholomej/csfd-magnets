@@ -1,6 +1,8 @@
 $secondary-color: #999;
 $primary-color: #b01;
 
+$padding-x: 10px;
+
 .loader {
   display: block;
   text-align: center;
@@ -27,9 +29,23 @@ $primary-color: #b01;
   }
 
   .search-header {
-    text-align: center;
+    text-align: left;
     color: $secondary-color;
     margin-bottom: 5px;
+
+    p {
+      padding: $padding-x $padding-x 0;
+    }
+  }
+
+  &.old-csfd {
+    .search-header p {
+      padding: 0;
+    }
+    ul li {
+      border-bottom: none;
+      padding: 5px $padding-x;
+    }
   }
 
   ul {
@@ -37,7 +53,12 @@ $primary-color: #b01;
   }
 
   li {
-    padding: 5px 10px;
+    padding: 12px $padding-x;
+    border-bottom: 1px solid #d2d2d2;
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     &:hover {
       background: #ddd;
@@ -58,7 +79,7 @@ $primary-color: #b01;
     }
 
     .attr {
-      padding-right: 10px;
+      padding-right: $padding-x;
       word-break: break-all;
     }
   }
@@ -77,5 +98,5 @@ $primary-color: #b01;
 }
 
 #pg-web-film #tpb-search.ct-related {
-  margin-bottom: 10px;
+  margin-bottom: $padding-x;
 }

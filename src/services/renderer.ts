@@ -11,7 +11,7 @@
 import { TPBResult } from 'piratebay-scraper/interfaces';
 import { browserConfig } from '../../config/browser.config';
 import { Browser } from '../interfaces/interfaces';
-import { isDev } from '../services/utils';
+import { isDev, isOldCsfd } from '../services/utils';
 
 declare let BROWSER: Browser;
 
@@ -26,27 +26,26 @@ export default class Renderer {
   ): HTMLDivElement {
     const wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
+    const _ = chrome.i18n.getMessage;
 
-    const devFlag = isDev ? '&lt;dev/&gt;' : '';
+    const devFlag = isDev ? '<sup>&beta;</sup>' : '';
 
     const box = `
-      <div id="tpb-search" class="ct-related">
-        <div class="header">
-          <h3>${devFlag}${chrome.i18n.getMessage('magnets')}: <span class="note"><a href="${
+      <div id="tpb-search" class="ct-related box ${isOldCsfd() ? 'old-csfd' : ''}">
+        <div class="header box-header box-header-small">
+          <h3>${devFlag}${_('magnets')} <span class="note"><a href="${
       browserConfig[BROWSER].repoUrl
-    }" target="_blank">${chrome.i18n.getMessage('notOfficial')}</a></span></h3>
+    }" target="_blank">${_('notOfficial')}</a></span></h3>
           <div class="controls">
-            <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${chrome.i18n.getMessage(
+            <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${_(
       'search'
     )}</a>
           </div>
         </div>
-        <div class="content">
-          <!-- <div class="search-header search-state">${chrome.i18n.getMessage(
-            'searchingFor'
-          )}</a></div> -->
+        <div class="content box-content">
+          <!-- <div class="search-header search-state">${_('searchingFor')}</a></div> -->
           <div class="search-header search-term">
-            <strong>${movieTitle}</strong>
+            <p>${movieTitle}</p>
           </div>
 
           <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
@@ -87,7 +86,7 @@ export default class Renderer {
           <span class="not-found">
             ¯/\_(ツ)_/¯
             <div class="elsewhere text-center ">
-              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${chrome.i18n.getMessage(
+              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${_(
       'elsewhere'
     )}</a>
             </div>

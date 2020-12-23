@@ -4,6 +4,7 @@ import Accent from './services/accent';
 import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
+import { isOldCsfd } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -31,10 +32,16 @@ class CsfdMagnets {
   ) {
     const url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
-      this.placingNode = document.querySelectorAll('#my-rating');
-      if (!this.placingNode.length) {
-        this.placingNode = document.querySelectorAll('#rating');
+      // New or old CSFD
+      if (isOldCsfd()) {
+        this.placingNode = document.querySelectorAll('#my-rating');
+        if (!this.placingNode.length) {
+          this.placingNode = document.querySelectorAll('#rating');
+        }
+      } else {
+        this.placingNode = document.querySelectorAll('.box-rating-container');
       }
+
       const pageTitle = document.title;
       this.searchMovie(pageTitle);
       this.altTitles = this.alternative.getAltTitles();

@@ -10,28 +10,17 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "permissions": [
-    "https://tpb.party/"
-  ],
+  "permissions": ["https://tpb.party/"],
   "content_scripts": [
     {
       "run_at": "document_end",
-      "matches": [
-        "http://www.csfd.cz/*",
-        "https://www.csfd.cz/*"
-      ],
-      "css": [
-        "app.css"
-      ],
-      "js": [
-        "app.bundle.js"
-      ]
+      "matches": ["http://www.csfd.cz/*", "https://www.csfd.cz/*", "https://new.csfd.cz/*"],
+      "css": ["app.css"],
+      "js": ["app.bundle.js"]
     }
   ],
   "background": {
-    "scripts": [
-      "background.bundle.js"
-    ]
+    "scripts": ["background.bundle.js"]
   },
   "manifest_version": 2
 }
