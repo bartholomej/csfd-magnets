@@ -26,7 +26,7 @@ export default class AlternativesOld {
   /**
    * Get single alt title by country name
    */
-  public getAltTitle(name: string): string {
+  private getAltTitle(name: string): string {
     let nextName;
     const countryFlag = document.querySelector('.names img[alt=' + name + ']');
     if (countryFlag) {

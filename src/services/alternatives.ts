@@ -19,6 +19,8 @@ export default class Alternatives {
     for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
+    altTitles.push(this.firstTitleInTheList);
+    // Make it unique and remove blank values
     const altTitlesUnique = [...new Set(altTitles)];
     return altTitlesUnique.filter((title) => title);
   }
@@ -26,15 +28,23 @@ export default class Alternatives {
   /**
    * Get single alt title by country name
    */
-  public getAltTitle(name: string): string {
-    let nextName: string;
+  private getAltTitle(name: string): string {
     const countryFlag = document.querySelector('.film-names img[alt=' + name + ']');
-    if (countryFlag) {
-      nextName = countryFlag.parentElement.textContent.split('(')[0].trim();
-      if (nextName) {
-        return nextName;
-      }
-    }
-    return '';
+    return this.cleanTitle(countryFlag);
+  }
+
+  /**
+   * Get first alternative title in the list which is the most probably original name
+   */
+  private get firstTitleInTheList(): string {
+    const firstName = document.querySelector('.film-names img:first-child');
+    return this.cleanTitle(firstName);
+  }
+
+  /**
+   * Clean flag title
+   */
+  private cleanTitle(title: Element): string {
+    return title?.parentElement.textContent.split('(')[0].trim();
   }
 }

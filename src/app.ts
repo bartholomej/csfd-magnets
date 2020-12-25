@@ -46,6 +46,7 @@ class CsfdMagnets {
 
       const pageTitle = document.title;
       this.searchMovie(pageTitle);
+
       if (isOldCsfd()) {
         this.altTitles = this.alternativeOld.getAltTitles();
       } else {
