@@ -1,12 +1,12 @@
 [![Join the chat at https://gitter.im/csfd-magnets/Lobby](https://badges.gitter.im/csfd-magnets/Lobby.svg)](https://gitter.im/csfd-magnets/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Greenkeeper badge](https://badges.greenkeeper.io/bartholomej/csfd-magnets.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/bartholomej/csfd-magnets.svg?branch=master)](https://travis-ci.org/bartholomej/csfd-magnets)
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
 # CSFD Magnets
 
-Simple Chrome extension for ČSFD _(Czech-Slovak Movie Database)_.
+> Simple Chrome extension for ČSFD _(Czech-Slovak Movie Database)_.
+
+> ✅ Ready for new CSFD 2021 ([new.csfd.cz](https://new.csfd.cz))
 
 **CSFD Magnets** adds a small widget within each **movie detail** to show information about **magnet links**... or something like that...
 
@@ -71,7 +71,7 @@ If this project have helped you save time please consider [making a donation](ht
 
 ## License
 
-Copyright &copy; 2017 – 2020 [Bartholomej](http://github.com/bartholomej)
+Copyright &copy; 2017 – 2021 [Bartholomej](http://github.com/bartholomej)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
