@@ -1,14 +1,14 @@
 /**
  * @class Alternatives
  *
- * Class for finding and handling alternative movie titles
+ * Class for finding and handling alternative movie titles. [Legacy]
  *
  * @namespace CsfdMagnets
  * @author Bartholomej
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-export default class Alternatives {
+export default class AlternativesOld {
   private altTitlesPattern = ['USA', 'anglický'];
 
   /**
@@ -27,11 +27,11 @@ export default class Alternatives {
    */
   public getAltTitle(name: string): string {
     let nextName;
-    const countryFlag = document.querySelector('.film-names img[alt=' + name + ']');
+    const countryFlag = document.querySelector('.names img[alt=' + name + ']');
     if (countryFlag) {
-      nextName = countryFlag.parentElement.textContent.split('(')[0].trim();
+      nextName = countryFlag.nextElementSibling;
       if (nextName) {
-        return nextName;
+        return nextName.textContent;
       }
     }
     return '';

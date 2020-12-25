@@ -2,6 +2,7 @@ import { TPBResult } from 'piratebay-scraper/interfaces';
 import { searchUrl } from 'piratebay-scraper/vars';
 import Accent from './services/accent';
 import Alternatives from './services/alternatives';
+import AlternativesOld from './services/alternatives-old';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 import { isOldCsfd } from './services/utils';
@@ -28,7 +29,8 @@ class CsfdMagnets {
   constructor(
     private cleaner: Cleaner,
     private renderer: Renderer,
-    private alternative: Alternatives
+    private alternative: Alternatives,
+    private alternativeOld: AlternativesOld
   ) {
     const url = window.location.href.split('/');
     if (url[2].includes('csfd.cz') && url[3] === 'film') {
@@ -45,7 +47,7 @@ class CsfdMagnets {
       const pageTitle = document.title;
       this.searchMovie(pageTitle);
       if (isOldCsfd()) {
-        this.altTitles = this.alternative.getAltTitlesOld();
+        this.altTitles = this.alternativeOld.getAltTitles();
       } else {
         this.altTitles = this.alternative.getAltTitles();
       }
@@ -129,4 +131,9 @@ class CsfdMagnets {
   }
 }
 
-export default new CsfdMagnets(new Cleaner(new Accent()), new Renderer(), new Alternatives());
+export default new CsfdMagnets(
+  new Cleaner(new Accent()),
+  new Renderer(),
+  new Alternatives(),
+  new AlternativesOld()
+);
