@@ -8,15 +8,15 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-export default class Alternatives {
-  private altTitlesPattern = ['USA', 'anglický'];
+import { altTitlesPattern } from './utils';
 
+export default class Alternatives {
   /**
    * Get all alt titles
    */
   public getAltTitles(): string[] {
     const altTitles = [];
-    for (const value of this.altTitlesPattern) {
+    for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
     return altTitles.filter((title) => title);
@@ -26,7 +26,7 @@ export default class Alternatives {
    * Get single alt title by country name
    */
   public getAltTitle(name: string): string {
-    let nextName;
+    let nextName: string;
     const countryFlag = document.querySelector('.film-names img[alt=' + name + ']');
     if (countryFlag) {
       nextName = countryFlag.parentElement.textContent.split('(')[0].trim();

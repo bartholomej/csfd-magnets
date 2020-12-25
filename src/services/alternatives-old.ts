@@ -8,15 +8,15 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-export default class AlternativesOld {
-  private altTitlesPattern = ['USA', 'anglický'];
+import { altTitlesPattern } from './utils';
 
+export default class AlternativesOld {
   /**
    * Get all alt titles
    */
   public getAltTitles(): string[] {
     const altTitles = [];
-    for (const value of this.altTitlesPattern) {
+    for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
     return altTitles.filter((title) => title);

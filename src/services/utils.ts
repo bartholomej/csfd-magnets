@@ -16,3 +16,12 @@ export const isOldCsfd = (): boolean => {
   const newMovieProfile = document.querySelector('.main-movie-profile');
   return !(!!newBoxrating && !!newMovieProfile);
 };
+
+export const altTitlesPattern = [
+  'USA',
+  'angličtina',
+  'anglický',
+  '"Velká Británie"',
+  'Austrálie',
+  '"Nový Zéland"'
+];
