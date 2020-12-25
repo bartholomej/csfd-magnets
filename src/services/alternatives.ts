@@ -19,7 +19,8 @@ export default class Alternatives {
     for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
-    return altTitles.filter((title) => title);
+    const altTitlesUnique = [...new Set(altTitles)];
+    return altTitlesUnique.filter((title) => title);
   }
 
   /**
