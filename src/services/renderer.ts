@@ -84,13 +84,16 @@ export default class Renderer {
 
           <ul></ul>
           <span class="not-found">
-            ¯/\_(ツ)_/¯
-            <div class="elsewhere text-center ">
+            ¯/\_(ツ)_/¯                      
+            <div class="box-content-more text-center">
               <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${_(
       'elsewhere'
     )}</a>
-            </div>
-          </span>
+            </div>    
+          </span>                 
+          <div class="box-content-more more-found text-lowercase text-center">
+            <a href="${searchUrl}">${_('more')}</a>
+          </div>
         </div>
       </div>`;
 

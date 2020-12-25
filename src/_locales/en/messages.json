@@ -30,6 +30,10 @@
     "message": "Try it somewhere else...",
     "description": "Try it somewhere else link."
   },
+  "more": {
+    "message": "More",
+    "description": "Universal 'more' string"
+  },
   "magnets": {
     "message": "Magnets",
     "description": "Box title."

@@ -129,6 +129,7 @@ class CsfdMagnets {
 
   private setNotFound(): void {
     this.wrapper.querySelector('.not-found').classList.add('active');
+    this.wrapper.querySelector('.more-found').classList.add('hidden');
   }
 }
 
