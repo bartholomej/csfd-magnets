@@ -23,5 +23,8 @@ export const altTitlesPattern = [
   'anglický',
   '"Velká Británie"',
   'Austrálie',
-  '"Nový Zéland"'
+  '"Nový Zéland"',
+  // SK
+  '"Veľká Británia"',
+  '"Austrália"'
 ];

@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "run_at": "document_end",
-      "matches": ["http://www.csfd.cz/*", "https://www.csfd.cz/*", "https://new.csfd.cz/*"],
+      "matches": ["https://*.csfd.cz/*", "https://*.csfd.sk/*"],
       "css": ["app.css"],
       "js": ["app.bundle.js"]
     }

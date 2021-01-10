@@ -33,7 +33,7 @@ class CsfdMagnets {
     private alternativeOld: AlternativesOld
   ) {
     const url = window.location.href.split('/');
-    if (url[2].includes('csfd.cz') && url[3] === 'film') {
+    if (url[2].includes('csfd.') && url[3] === 'film') {
       // New or old CSFD
       if (isOldCsfd()) {
         this.placingNode = document.querySelectorAll('#my-rating');
