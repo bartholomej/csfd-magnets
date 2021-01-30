@@ -1,10 +1,9 @@
-import { ThePirateBayScraper } from 'piratebay-scraper';
+import { piratebay } from 'piratebay-scraper';
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const TPBScraper = new ThePirateBayScraper();
-
   if (request.contentScriptQuery === 'fetchData') {
-    TPBScraper.search(request.searchQuery)
+    piratebay
+      .search(request.searchQuery)
       .then((response) => {
         if (response) {
           return response;
