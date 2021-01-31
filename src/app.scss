@@ -14,6 +14,14 @@ $padding-x: 10px;
 
 // Csfd-magnets container
 #tpb-search {
+  h3 a.magnet-title {
+    color: initial;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   h3 .note {
     font-weight: normal;
     font-style: normal;

@@ -17,6 +17,10 @@ export const isOldCsfd = (): boolean => {
   return !(!!newBoxrating && !!newMovieProfile);
 };
 
+export const getFilmID = (url: string): number => {
+  return +url.split('-')[0];
+};
+
 export const altTitlesPattern = [
   'USA',
   'angličtina',

@@ -5,7 +5,8 @@ import Alternatives from './services/alternatives';
 import AlternativesOld from './services/alternatives-old';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
-import { isOldCsfd } from './services/utils';
+import Store from './services/store';
+import { getFilmID, isOldCsfd } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -30,7 +31,8 @@ class CsfdMagnets {
     private cleaner: Cleaner,
     private renderer: Renderer,
     private alternative: Alternatives,
-    private alternativeOld: AlternativesOld
+    private alternativeOld: AlternativesOld,
+    private store: Store
   ) {
     const url = window.location.href.split('/');
     if (url[2].includes('csfd.') && url[3] === 'film') {
@@ -43,6 +45,9 @@ class CsfdMagnets {
       } else {
         this.placingNode = document.querySelectorAll('.box-rating-container');
       }
+
+      // Save filmId into store
+      this.store.filmId = getFilmID(url[4]);
 
       const pageTitle = document.title;
       this.searchMovie(pageTitle);
@@ -133,9 +138,12 @@ class CsfdMagnets {
   }
 }
 
+const STORE = new Store();
+
 export default new CsfdMagnets(
   new Cleaner(new Accent()),
-  new Renderer(),
+  new Renderer(STORE),
   new Alternatives(),
-  new AlternativesOld()
+  new AlternativesOld(),
+  STORE
 );

@@ -37,5 +37,13 @@
   "magnets": {
     "message": "Magnets",
     "description": "Box title."
+  },
+  "switch2021": {
+    "message": "Switch to CSFD 2021",
+    "description": "Switch for new csfd"
+  },
+  "switchOld": {
+    "message": "Switch to old CSFD",
+    "description": "Switch for old csfd"
   }
 }
