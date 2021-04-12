@@ -25,6 +25,7 @@ class CsfdMagnets {
   private placingNode: NodeListOf<HTMLElement>;
   private altTitles: string[];
   private movieTitle: string;
+  private filmType: string;
   private wrapper: HTMLDivElement;
 
   constructor(
@@ -49,14 +50,17 @@ class CsfdMagnets {
       // Save filmId into store
       this.store.filmId = getFilmID(url[4]);
 
-      const pageTitle = document.title;
-      this.searchMovie(pageTitle);
-
       if (isOldCsfd()) {
         this.altTitles = this.alternativeOld.getAltTitles();
       } else {
         this.altTitles = this.alternative.getAltTitles();
       }
+
+      this.filmType = document.querySelector('.film-header-name .type')?.textContent;
+
+      const filmTitle = isOldCsfd() ? document.title : this.altTitles[0] || document.title;
+
+      this.searchMovie(filmTitle);
     }
   }
 
@@ -64,12 +68,13 @@ class CsfdMagnets {
    * Search movie (trigger)
    */
   private searchMovie(title: string): void {
-    this.movieTitle = this.cleaner.cleanTitle(title);
+    this.movieTitle = this.cleaner.cleanTitle(title, this.filmType);
     this.wrapper = this.renderer.prepareBox(
       this.placingNode[0],
       this.movieTitle,
       searchUrl(this.movieTitle)
     );
+    console.log(`CSFD MAGNETS: Searching for '${this.movieTitle}'...`);
     this.getItems(this.movieTitle);
   }
 

@@ -16,10 +16,14 @@ export default class Alternatives {
    */
   public getAltTitles(): string[] {
     const altTitles = [];
+
+    // Usually original title
+    altTitles.push(this.firstTitleInTheList);
+
     for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
     }
-    altTitles.push(this.firstTitleInTheList);
+
     // Make it unique and remove blank values
     const altTitlesUnique = [...new Set(altTitles)];
     return altTitlesUnique.filter((title) => title);
