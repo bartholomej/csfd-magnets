@@ -56,7 +56,7 @@ class CsfdMagnets {
         this.altTitles = this.alternative.getAltTitles();
       }
 
-      this.filmType = document.querySelector('.film-header-name .type')?.textContent;
+      this.filmType = document.querySelector('.film-header-name .type')?.textContent || '';
 
       const filmTitle = isOldCsfd() ? document.title : this.altTitles[0] || document.title;
 
