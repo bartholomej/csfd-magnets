@@ -20,9 +20,10 @@ export const commonConfig: webpack.Configuration = {
   },
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      { 
+        test: /\.tsx?$/, 
+        loader: "ts-loader" 
       },
       {
         test: /\.s?css$/,
