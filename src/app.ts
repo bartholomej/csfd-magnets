@@ -2,11 +2,10 @@ import { TPBResult } from 'piratebay-scraper/interfaces';
 import { searchUrl } from 'piratebay-scraper/vars';
 import Accent from './services/accent';
 import Alternatives from './services/alternatives';
-import AlternativesOld from './services/alternatives-old';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 import Store from './services/store';
-import { getFilmID, isOldCsfd } from './services/utils';
+import { getFilmID } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -32,33 +31,20 @@ class CsfdMagnets {
     private cleaner: Cleaner,
     private renderer: Renderer,
     private alternative: Alternatives,
-    private alternativeOld: AlternativesOld,
     private store: Store
   ) {
     const url = window.location.href.split('/');
     if (url[2].includes('csfd.') && url[3] === 'film') {
-      // New or old CSFD
-      if (isOldCsfd()) {
-        this.placingNode = document.querySelectorAll('#my-rating');
-        if (!this.placingNode.length) {
-          this.placingNode = document.querySelectorAll('#rating');
-        }
-      } else {
-        this.placingNode = document.querySelectorAll('.box-rating-container');
-      }
+      this.placingNode = document.querySelectorAll('.box-rating-container');
 
       // Save filmId into store
       this.store.filmId = getFilmID(url[4]);
 
-      if (isOldCsfd()) {
-        this.altTitles = this.alternativeOld.getAltTitles();
-      } else {
-        this.altTitles = this.alternative.getAltTitles();
-      }
+      this.altTitles = this.alternative.getAltTitles();
 
       this.filmType = document.querySelector('.film-header-name .type')?.textContent || '';
 
-      const filmTitle = isOldCsfd() ? document.title : this.altTitles[0] || document.title;
+      const filmTitle = this.altTitles[0] || document.title;
 
       this.searchMovie(filmTitle);
     }
@@ -149,6 +135,5 @@ export default new CsfdMagnets(
   new Cleaner(new Accent()),
   new Renderer(STORE),
   new Alternatives(),
-  new AlternativesOld(),
   STORE
 );

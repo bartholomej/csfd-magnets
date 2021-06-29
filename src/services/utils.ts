@@ -11,12 +11,6 @@
 export const isProd = process.env.NODE_ENV === 'production';
 export const isDev = process.env.NODE_ENV === 'development';
 
-export const isOldCsfd = (): boolean => {
-  const newBoxrating = document.querySelector('.box-rating-container');
-  const newMovieProfile = document.querySelector('.main-movie-profile');
-  return !(!!newBoxrating && !!newMovieProfile);
-};
-
 export const getFilmID = (url: string): number => {
   return +url.split('-')[0];
 };

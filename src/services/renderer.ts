@@ -11,7 +11,7 @@
 import { TPBResult } from 'piratebay-scraper/interfaces';
 import { browserConfig } from '../../config/browser.config';
 import { Browser } from '../interfaces/interfaces';
-import { isDev, isOldCsfd } from '../services/utils';
+import { isDev } from '../services/utils';
 import Store from './store';
 
 declare let BROWSER: Browser;
@@ -34,26 +34,17 @@ export default class Renderer {
     const devFlag = isDev ? '<sup>&beta;</sup>' : '';
 
     const box = `
-      <div id="tpb-search" class="ct-related box ${isOldCsfd() ? 'old-csfd' : ''}">
+      <div id="tpb-search" class="ct-related box">
         <div class="header box-header box-header-small">
           <h3>
             <a href="${
               browserConfig[BROWSER].repoUrl
             }" target="_blank" class="magnet-title" title="${_('notOfficial')}">
               ${devFlag}${_('magnets')}
-            </a>
-            <!--
+            </a>            
             <span class="note">
               <a href="${browserConfig[BROWSER].repoUrl}" target="_blank">${_('notOfficial')}</a>
-            </span>
-            -->            
-            <span class="note">
-              ${
-                isOldCsfd()
-                  ? `<a href="//new.csfd.cz/film/${this.store.filmId}">${_('switch2021')}</a>`
-                  : `<a href="//www.csfd.cz/film/${this.store.filmId}">${_('switchOld')}</a>`
-              }
-            </span>
+            </span>                       
           </h3>
           <div class="controls">
             <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${_(

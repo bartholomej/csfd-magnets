@@ -1,5 +1,5 @@
 import Accent from './accent';
-import { isOldCsfd } from './utils';
+
 /**
  * @class Cleaner
  *
@@ -30,15 +30,10 @@ export default class Cleaner {
   public cleanTitle(pageTitle: string, filmType: string): string {
     let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
 
-    if (isOldCsfd()) {
-      pTitle = this.prepareTvSeriesOld(pTitle);
-      pTitle = this.prepareSeasonsOld(pTitle);
-      pTitle = this.prepareEpisodeOld(pTitle);
-    } else {
-      pTitle = this.prepareTvSeries(pTitle, filmType);
-      pTitle = this.prepareSeasons(pTitle, filmType);
-      pTitle = this.prepareEpisode(pTitle, filmType);
-    }
+    pTitle = this.prepareTvSeries(pTitle, filmType);
+    pTitle = this.prepareSeasons(pTitle, filmType);
+    pTitle = this.prepareEpisode(pTitle, filmType);
+
     // if (filmType) {
 
     // }
@@ -108,58 +103,6 @@ export default class Cleaner {
    */
   private prepareEpisode(pTitle: string, filmType: string): string {
     if (filmType.includes('(epizoda)')) {
-      const pTitleSplit = pTitle.split('-');
-      const episodeArray = pTitle.match(this.episodePattern);
-
-      let seasonSlug = 'S';
-      let episodeSlug = 'E';
-
-      // If season doesn't exist, set as season 01
-      if (episodeArray) {
-        seasonSlug += episodeArray[1] ? episodeArray[1].replace(/^\d$/, '0$&') : '01';
-        episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
-      }
-
-      pTitle = `${pTitleSplit[0]} ${seasonSlug}${episodeSlug}`;
-    }
-    return pTitle;
-  }
-
-  /**
-   * Prepare search query for TV Series
-   */
-  private prepareTvSeriesOld(pTitle: string): string {
-    if (pTitle.includes('(TV seriál)')) {
-      // Remove year
-      pTitle = pTitle.replace(this.yearPattern, '');
-    }
-    return pTitle;
-  }
-
-  /**
-   * Prepare search query for Seasons
-   */
-  private prepareSeasonsOld(pTitle: string): string {
-    if (pTitle.includes('(série)')) {
-      const numSeries = pTitle.match(this.numSeriesPattern);
-      if (numSeries && numSeries.length) {
-        // Add info about series (add leading zero)
-        pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
-      }
-      // Clean unused strings
-      pTitle = pTitle
-        .replace(this.yearPattern, '')
-        .replace(this.numSeriesPattern, '')
-        .replace(this.seasonTitlePattern, '');
-    }
-    return pTitle;
-  }
-
-  /**
-   * Prepare search query for Episodes
-   */
-  private prepareEpisodeOld(pTitle: string): string {
-    if (pTitle.includes('(epizoda)')) {
       const pTitleSplit = pTitle.split('-');
       const episodeArray = pTitle.match(this.episodePattern);
 
