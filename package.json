@@ -18,7 +18,8 @@
     "tsc": "tsc",
     "tslint": "tslint",
     "tslint-fix": "tslint --fix -p tsconfig.json",
-    "postversion": "git push && git push --follow-tags"
+    "postversion": "git push && git push --follow-tags",
+    "prepare": "husky install"
   },
   "repository": {
     "url": "git+https://github.com/bartholomej/csfd-magnets.git",
@@ -41,9 +42,12 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
     "exports-loader": "^3.0.0",
+    "husky": "^6.0.0",
     "imports-loader": "^3.0.0",
     "mini-css-extract-plugin": "^1.6.2",
     "node-sass": "^6.0.1",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
     "rimraf": "^3.0.2",
     "sass-loader": "^12.1.0",
     "ts-loader": "^9.2.3",
