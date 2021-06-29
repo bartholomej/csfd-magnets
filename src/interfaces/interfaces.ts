@@ -16,3 +16,16 @@ interface BrowserConfigInside {
 }
 
 export type Browser = keyof typeof browserConfig;
+
+export type CSFDFilmTypes =
+  | 'film'
+  | 'TV film'
+  | 'TV pořad'
+  | 'TV seriál'
+  | 'divadelní záznam'
+  | 'koncert'
+  | 'série'
+  | 'studentský film'
+  | 'amatérský film'
+  | 'hudební videoklip'
+  | 'epizoda';

@@ -1,3 +1,4 @@
+import { CSFDFilmTypes } from '@interfaces/interfaces';
 import { TPBResult } from 'piratebay-scraper/interfaces';
 import { searchUrl } from 'piratebay-scraper/vars';
 import Accent from './services/accent';
@@ -5,7 +6,7 @@ import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 import Store from './services/store';
-import { getFilmID } from './services/utils';
+import { getFilmID, isDev } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -24,7 +25,6 @@ class CsfdMagnets {
   private placingNode: NodeListOf<HTMLElement>;
   private altTitles: string[];
   private movieTitle: string;
-  private filmType: string;
   private wrapper: HTMLDivElement;
 
   constructor(
@@ -40,9 +40,14 @@ class CsfdMagnets {
       // Save filmId into store
       this.store.filmId = getFilmID(url[4]);
 
-      this.altTitles = this.alternative.getAltTitles();
+      this.store.year = +document.querySelector('[itemprop=dateCreated]').textContent || null;
 
-      this.filmType = document.querySelector('.film-header-name .type')?.textContent || '';
+      this.store.filmType =
+        (document
+          .querySelector('.film-header-name .type')
+          ?.textContent.replace(/[{()}]/g, '') as CSFDFilmTypes) || 'film';
+
+      this.altTitles = this.alternative.getAltTitles();
 
       const filmTitle = this.altTitles[0] || document.title;
 
@@ -54,13 +59,14 @@ class CsfdMagnets {
    * Search movie (trigger)
    */
   private searchMovie(title: string): void {
-    this.movieTitle = this.cleaner.cleanTitle(title, this.filmType);
+    this.movieTitle = this.cleaner.cleanTitle(title);
+
     this.wrapper = this.renderer.prepareBox(
       this.placingNode[0],
       this.movieTitle,
       searchUrl(this.movieTitle)
     );
-    console.log(`CSFD MAGNETS: Searching for '${this.movieTitle}'...`);
+    console.log(`CSFD MAGNETS ${isDev ? 'β' : ''}: Searching for '${this.movieTitle}'...`);
     this.getItems(this.movieTitle);
   }
 
@@ -106,8 +112,7 @@ class CsfdMagnets {
         // Remove box and do it again
         this.removeBox();
 
-        const year = this.cleaner.getYear() || '';
-        this.searchMovie(`${altTitle} (${year})`);
+        this.searchMovie(altTitle);
         this.attempt++;
       } else {
         this.setNotFound();
@@ -132,7 +137,7 @@ class CsfdMagnets {
 const STORE = new Store();
 
 export default new CsfdMagnets(
-  new Cleaner(new Accent()),
+  new Cleaner(new Accent(), STORE),
   new Renderer(STORE),
   new Alternatives(),
   STORE

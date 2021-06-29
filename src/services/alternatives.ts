@@ -18,7 +18,7 @@ export default class Alternatives {
     const altTitles = [];
 
     // Usually original title
-    altTitles.push(this.firstTitleInTheList);
+    altTitles.push(this.getFirstTitleInTheList());
 
     for (const value of altTitlesPattern) {
       altTitles.push(this.getAltTitle(value));
@@ -40,7 +40,7 @@ export default class Alternatives {
   /**
    * Get first alternative title in the list which is the most probably original name
    */
-  private get firstTitleInTheList(): string {
+  private getFirstTitleInTheList(): string {
     const firstName = document.querySelector('.film-names img:first-child');
     return this.cleanTitle(firstName);
   }

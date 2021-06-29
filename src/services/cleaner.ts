@@ -1,4 +1,5 @@
 import Accent from './accent';
+import Store from './store';
 
 /**
  * @class Cleaner
@@ -15,11 +16,10 @@ export default class Cleaner {
   private numSeriesPattern: RegExp;
   private seasonTitlePattern: RegExp;
   private episodePattern: RegExp;
-  private year: number = 0;
 
-  constructor(private accent: Accent) {
+  constructor(private accent: Accent, private store: Store) {
     this.yearPattern = /\([0-9]{4}\)/gi;
-    this.numSeriesPattern = /Season\s*(\d+)/;
+    this.numSeriesPattern = /- Série\s*(\d+)/;
     this.seasonTitlePattern = /\(série\)/;
     this.episodePattern = /\(S?0*(\d+)?[xE]0*(\d+)\)/;
   }
@@ -27,84 +27,63 @@ export default class Cleaner {
   /**
    * Clean page title and prepare for search
    */
-  public cleanTitle(pageTitle: string, filmType: string): string {
-    let pTitle = pageTitle.split(' / ').pop().split('|').shift().trim();
+  public cleanTitle(title: string): string {
+    let filmTitle = title.split(' / ').pop().split('|').shift().trim();
 
-    pTitle = this.prepareTvSeries(pTitle, filmType);
-    pTitle = this.prepareSeasons(pTitle, filmType);
-    pTitle = this.prepareEpisode(pTitle, filmType);
+    filmTitle = this.addYear(filmTitle);
+    filmTitle = this.prepareSeasons(filmTitle);
+    filmTitle = this.prepareEpisode(filmTitle);
 
-    // if (filmType) {
-
-    // }
-    // set year for alternative titles eventually
-    const yearArray = pTitle.match(this.yearPattern);
-    if (yearArray && yearArray.length) {
-      this.setYear(+yearArray[0].replace(/[()]/g, ''));
-    }
-
-    const trimmedTitle = pTitle
-      .replace(/\(TV film\)/gi, '')
-      .replace(/\(TV pořad\)/gi, '')
-      .replace(/\(TV seriál\)/gi, '')
-      .replace(/\(divadelní záznam\)/gi, '')
-      .replace(/\(koncert\)/gi, '')
-      .replace(/\(série\)/gi, '')
-      .replace(/\(epizoda\)/gi, '')
-      .replace(/\(studentský film\)/gi, '')
-      .replace(/\(amatérský film\)/gi, '')
-      .replace(/\(hudební videoklip\)/gi, '')
-      .replace(/\(epizoda\)/gi, '')
-      .toLowerCase()
-      .trim();
-
-    const noAccentTitle = this.accent.removeAccents(trimmedTitle);
+    let noAccentTitle = this.accent.removeAccents(filmTitle);
 
     // Remove non-alhpanumeric
-    return noAccentTitle.replace(/[^a-zA-Z0-9\x20]/g, '');
+    return noAccentTitle
+      .replace(/[^a-zA-Z0-9\x20]/g, '')
+      .toLowerCase()
+      .trim();
   }
 
   /**
    * Prepare search query for TV Series
    */
-  private prepareTvSeries(pTitle: string, filmType: string): string {
-    if (
-      filmType.includes('(TV seriál)') ||
-      filmType.includes('(epizoda)') ||
-      filmType.includes('(série)')
-    ) {
-      // Remove year
-      pTitle = pTitle.replace(this.yearPattern, '');
+  private addYear(filmTitle: string): string {
+    const filmType = this.store.filmType;
+    if (filmType !== 'TV seriál' && filmType !== 'epizoda' && filmType !== 'série') {
+      return filmTitle + ' ' + this.store.year;
+    } else {
+      return filmTitle;
     }
-    return pTitle;
   }
 
   /**
    * Prepare search query for Seasons
    */
-  private prepareSeasons(pTitle: string, filmType: string): string {
-    if (filmType.includes('(série)')) {
-      const numSeries = pTitle.match(this.numSeriesPattern);
+  private prepareSeasons(title: string): string {
+    const filmType = this.store.filmType;
+    if (filmType === 'série') {
+      const numSeries = title.match(this.numSeriesPattern);
+
       if (numSeries && numSeries.length) {
         // Add info about series (add leading zero)
-        pTitle += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
+        title += `season ${numSeries[1].replace(/^\d$/, '0$&')}`;
       }
       // Clean unused strings
-      pTitle = pTitle
+      title = title
         .replace(this.yearPattern, '')
         .replace(this.numSeriesPattern, '')
         .replace(this.seasonTitlePattern, '');
     }
-    return pTitle;
+    return title;
   }
 
   /**
    * Prepare search query for Episodes
    */
-  private prepareEpisode(pTitle: string, filmType: string): string {
-    if (filmType.includes('(epizoda)')) {
-      const pTitleSplit = pTitle.split('-');
-      const episodeArray = pTitle.match(this.episodePattern);
+  private prepareEpisode(title: string): string {
+    const filmType = this.store.filmType;
+    if (filmType === 'epizoda') {
+      const titleSplit = title.split('-');
+      const episodeArray = title.match(this.episodePattern);
 
       let seasonSlug = 'S';
       let episodeSlug = 'E';
@@ -115,16 +94,8 @@ export default class Cleaner {
         episodeSlug += episodeArray[2].replace(/^\d$/, '0$&');
       }
 
-      pTitle = `${pTitleSplit[0]} ${seasonSlug}${episodeSlug}`;
+      title = `${titleSplit[0]} ${seasonSlug}${episodeSlug}`;
     }
-    return pTitle;
-  }
-
-  private setYear(year: number): void {
-    this.year = year;
-  }
-
-  public getYear(): number {
-    return this.year;
+    return title;
   }
 }
