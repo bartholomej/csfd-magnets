@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@master
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       # - name: Get the version tag
       #   id: get_version
@@ -24,8 +24,8 @@ jobs:
 
       - name: Build extension for Chrome
         run: |
-          npm install
-          npm run build:chrome
+          yarn
+          yarn build:chrome
 
       - name: Deploy to Chrome Web Store
         uses: trmcnvn/chrome-addon@v2
