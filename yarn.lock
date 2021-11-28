@@ -1950,10 +1950,10 @@ picomatch@^2.0.4, picomatch@^2.2.3:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
 
-piratebay-scraper@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-3.0.0.tgz#12de70f41e8cb02a1ba95f782040d54c7dde43bf"
-  integrity sha512-YsfkbAJ3pwb62A/wSOLYbpOEw94e80D+ufIh82XEAOYChczAbkEqPMb17/9dJdTuq2/jIP82HMMqPWKkEdWurw==
+piratebay-scraper@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-3.1.0.tgz#6c5191e0cc651cf94e14591650072dfd7fb74929"
+  integrity sha512-yedRh0LcH/rw0Ik6PMXyS/P7tqIpKNXVyZcksHZyd+Yau/CnBRc6L1e0r4+kjBKJ+XoV4KgUh+bcNyUCwocCOA==
   dependencies:
     cross-fetch "^3.1.4"
 
