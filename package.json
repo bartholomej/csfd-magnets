@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
-    "piratebay-scraper": "^2.0.5"
+    "piratebay-scraper": "^3.0.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.164",

@@ -6,7 +6,7 @@
 
 > Simple Chrome extension for ČSFD _(Czech-Slovak Movie Database)_.
 
-> ✅ Ready for new CSFD 2021 ([new.csfd.cz](https://new.csfd.cz))
+> ✅ Ready for new CSFD 2021
 
 **CSFD Magnets** adds a small widget within each **movie detail** to show information about **magnet links**... or something like that...
 
