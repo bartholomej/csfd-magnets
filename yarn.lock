@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@bartholomej/webpack-extension-reloader@^2.0.0-next.0":
-  version "2.0.0-next.0"
-  resolved "https://registry.yarnpkg.com/@bartholomej/webpack-extension-reloader/-/webpack-extension-reloader-2.0.0-next.0.tgz#36520e8223d99f0cde6cfbd2a41c2d39c868c1c4"
-  integrity sha512-BSiQ7mKdIqVTTyD+4t0GkNRBlHbpxm8Fl1ieOfo/e7dl1Y7BDckv1lBnSkcB+fdfkO+O1FX/JVRgvqC1Td9V2w==
+"@bartholomej/webpack-extension-reloader@^2.0.0-next.2":
+  version "2.0.0-next.2"
+  resolved "https://registry.yarnpkg.com/@bartholomej/webpack-extension-reloader/-/webpack-extension-reloader-2.0.0-next.2.tgz#f4e449189cdae136ae8fa11dbed76f45668d5851"
+  integrity sha512-L8ofQ9Tb8CNyv3NUTTkpGqzFb5XTXqMcE9GWZYTpCsC4/5gTCBZTrdaDxqbFLcu1fOy9CJ66aL+TzhuSQYlrPg==
   dependencies:
     "@types/webpack" "^4.41.0"
     "@types/webpack-sources" "^0.1.5"

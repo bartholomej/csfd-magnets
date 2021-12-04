@@ -10,13 +10,15 @@ const version = process.env.npm_package_version;
 // Required by WebpackChromeReloaderPlugin (workaround)
 const backgroundManifest = {
   background: {
-    scripts: ['background.bundle.js']
+    service_worker: 'background.bundle.js'
   }
 };
 // tslint:disable:object-literal-sort-keys
 export default () => {
   return merge(commonConfig, {
     mode: 'development',
+    // Sourcemaps produce eval() scripts in dev bundle which is not allowed in manifest v3
+    devtool: false,
     watch: true,
     plugins: [
       // There is an issue with types in ExtensionReloader
@@ -44,7 +46,8 @@ export default () => {
               manifest.version = version;
               // Inject security policy only for dev
               // because Chrome reloader is using eval
-              manifest.content_security_policy = contentSecurityPolicy;
+              // manifest.content_security_policy = {}
+              // manifest.content_security_policy.extension_pages = contentSecurityPolicy;
               const manifestObj = Object.assign(manifest, backgroundManifest);
               return JSON.stringify(manifestObj, null, 2);
             }
