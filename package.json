@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/bartholomej/csfd-magnets#readme",
   "dependencies": {
-    "piratebay-scraper": "^3.1.0"
+    "piratebay-scraper": "^4.0.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.164",
@@ -56,7 +56,7 @@
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
-    "webpack-extension-reloader": "^1.1.4",
+    "@bartholomej/webpack-extension-reloader": "^2.0.0-next.0",
     "webpack-merge": "^5.8.0",
     "zip-webpack-plugin": "^4.0.1"
   },

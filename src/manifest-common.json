@@ -10,7 +10,11 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "permissions": ["https://tpb.party/", "https://pirateproxy.live/", "https://thepiratebay.zone/"],
+  "host_permissions": [
+    "https://tpb.party/*",
+    "https://pirateproxy.live/*",
+    "https://thepiratebay.zone/*"
+  ],
   "content_scripts": [
     {
       "run_at": "document_end",
@@ -20,7 +24,7 @@
     }
   ],
   "background": {
-    "scripts": ["background.bundle.js"]
+    "service_worker": "background.bundle.js"
   },
-  "manifest_version": 2
+  "manifest_version": 3
 }
