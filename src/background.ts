@@ -27,7 +27,13 @@ const getData = (request: any, sender: any, sendResponse: any, provider: TPBProv
       sendResponse(response);
     })
     .catch((error) => {
-      index = index + 1;
-      getData(request, sender, sendResponse, PROVIDERS[index]);
+      if (index <= PROVIDERS.length - 1) {
+        console.log(PROVIDERS[index]);
+        index = index + 1;
+        getData(request, sender, sendResponse, PROVIDERS[index]);
+      } else {
+        console.log('csfd-magnets error:', error);
+        sendResponse(error);
+      }
     });
 };
