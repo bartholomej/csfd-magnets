@@ -40,7 +40,16 @@ class CsfdMagnets {
       // Save filmId into store
       this.store.filmId = getFilmID(url[4]);
 
-      this.store.year = +document.querySelector('[itemprop=dateCreated]').textContent || null;
+      // this.store.year = +document.querySelector('.origin span')?.textContent;
+      const movieInfoNode = document.querySelector(
+        'script[type="application/ld+json"]'
+      )?.textContent;
+      try {
+        var movieInfo = JSON.parse(movieInfoNode);
+      } catch (error) {
+        console.error('CSFD Magnets: Error parsing ld+json', error);
+      }
+      this.store.year = +movieInfo.dateCreated;
 
       this.store.filmType =
         (document

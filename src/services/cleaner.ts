@@ -49,7 +49,7 @@ export default class Cleaner {
   private addYear(filmTitle: string): string {
     const filmType = this.store.filmType;
     if (filmType !== 'TV seriál' && filmType !== 'epizoda' && filmType !== 'série') {
-      return filmTitle + ' ' + this.store.year;
+      return filmTitle + ' ' + (this.store.year || '');
     } else {
       return filmTitle;
     }
