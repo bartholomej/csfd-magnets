@@ -15,7 +15,7 @@ $padding-x: 10px;
 // Csfd-magnets container
 #tpb-search {
   h3 a.magnet-title {
-    color: initial;
+    color: inherit;
 
     &:hover {
       text-decoration: underline;
