@@ -1,6 +1,6 @@
 {
   "name": "csfd-magnets",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Magnet links for CSFD (WebExtension)",
   "main": "src/app.js",
   "scripts": {
