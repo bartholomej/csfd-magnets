@@ -1,6 +1,6 @@
-import ExtensionReloader from '@bartholomej/webpack-extension-reloader';
 import CopyPlugin from 'copy-webpack-plugin';
 import * as webpack from 'webpack';
+import ExtensionReloader from 'webpack-ext-reloader-mv3';
 import { merge } from 'webpack-merge';
 import { commonConfig } from './webpack.common';
 

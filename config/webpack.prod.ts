@@ -41,7 +41,7 @@ export default (options: WebpackOptions) => {
           }
         ]
       }),
-      new ZipPlugin({
+      new (ZipPlugin as any)({
         // OPTIONAL: defaults to the Webpack output path (above)
         // can be relative (to Webpack output path) or absolute
         path: '../zip',
@@ -60,7 +60,7 @@ export default (options: WebpackOptions) => {
 
         // OPTIONAL: defaults to the identity function
         // a function mapping asset paths to new paths
-        pathMapper: (assetPath) => {
+        pathMapper: (assetPath: any) => {
           // put all pngs in an `images` subdir
           // if (assetPath.endsWith('.png'))
           //   return path.join(path.dirname(assetPath), 'images', path.basename(assetPath));
