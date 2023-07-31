@@ -25,6 +25,17 @@ export const getCSFDSiteDomain = (url: string): CSFDSiteDomain | null => {
   return null;
 };
 
+export const getAlternativeDomain = (domain: CSFDSiteDomain): string => {
+  switch (domain) {
+    case 'csfd.*':
+      return 'filmbooster.com';
+    case 'filmbooster.*':
+      return 'csfd.cz';
+    default:
+      return 'filmbooster.com';
+  }
+};
+
 export const altTitlesPattern = [
   'USA',
   'angličtina',

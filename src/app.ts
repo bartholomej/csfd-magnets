@@ -6,7 +6,7 @@ import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 import Store from './services/store';
-import { getCSFDSiteDomain, getFilmID, isDev } from './services/utils';
+import { getAlternativeDomain, getCSFDSiteDomain, getFilmID, isDev } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -91,7 +91,9 @@ class CsfdMagnets {
     this.wrapper = this.renderer.prepareBox(
       this.placingNode[0],
       this.movieTitle,
-      searchUrl(this.movieTitle)
+      searchUrl(this.movieTitle),
+      window.location.pathname,
+      getAlternativeDomain(this.store.CSFDSiteDomain)
     );
     console.log(`CSFD MAGNETS ${isDev ? 'β' : ''}: Searching for '${this.movieTitle}'...`);
     this.getItems(this.movieTitle);
