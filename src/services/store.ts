@@ -8,10 +8,11 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-import { CSFDFilmTypes } from '@interfaces/interfaces';
+import { CSFDFilmTypes, CSFDSiteDomain } from '@interfaces/interfaces';
 
 export default class Store {
   private id: number;
+  private _CSFDSiteDomain: CSFDSiteDomain;
   private _year: number;
   private _filmType: CSFDFilmTypes;
 
@@ -37,5 +38,13 @@ export default class Store {
 
   public set filmType(filmType: CSFDFilmTypes) {
     this._filmType = filmType;
+  }
+
+  public set CSFDSiteDomain(CSFDSiteDomain: CSFDSiteDomain) {
+    this._CSFDSiteDomain = CSFDSiteDomain;
+  }
+
+  public get CSFDSiteDomain(): CSFDSiteDomain {
+    return this._CSFDSiteDomain;
   }
 }

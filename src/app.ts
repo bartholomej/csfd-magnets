@@ -6,7 +6,7 @@ import Alternatives from './services/alternatives';
 import Cleaner from './services/cleaner';
 import Renderer from './services/renderer';
 import Store from './services/store';
-import { getFilmID, isDev } from './services/utils';
+import { getCSFDSiteDomain, getFilmID, isDev } from './services/utils';
 
 /**
  * @class CsfdMagnets
@@ -34,7 +34,9 @@ class CsfdMagnets {
     private store: Store
   ) {
     const url = window.location.href.split('/');
-    if (url[2].includes('csfd.') && url[3] === 'film') {
+    this.store.CSFDSiteDomain = getCSFDSiteDomain(url[2]);
+
+    if (this.store.CSFDSiteDomain && url[3] === 'film') {
       this.placingNode = document.querySelectorAll('.box-rating-container');
 
       // Save filmId into store
@@ -58,9 +60,25 @@ class CsfdMagnets {
 
       this.altTitles = this.alternative.getAltTitles();
 
-      const filmTitle = this.altTitles[0] || document.title;
+      const filmTitle = this.getTitle();
 
       this.searchMovie(filmTitle);
+    }
+  }
+
+  /**
+   * Search movie (trigger)
+   */
+  private getTitle(): string {
+    switch (this.store.filmType) {
+      case 'episode':
+      case 'epizoda':
+        return document.title;
+
+      default:
+        return this.store.CSFDSiteDomain === 'csfd.*'
+          ? this.altTitles[0] || document.title
+          : document.title;
     }
   }
 

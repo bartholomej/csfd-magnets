@@ -48,7 +48,12 @@ export default class Cleaner {
    */
   private addYear(filmTitle: string): string {
     const filmType = this.store.filmType;
-    if (filmType !== 'TV seriál' && filmType !== 'epizoda' && filmType !== 'série') {
+    if (
+      filmType !== 'TV seriál' &&
+      filmType !== 'epizoda' &&
+      filmType !== 'episode' &&
+      filmType !== 'série'
+    ) {
       return filmTitle + ' ' + (this.store.year || '');
     } else {
       return filmTitle;
@@ -81,7 +86,7 @@ export default class Cleaner {
    */
   private prepareEpisode(title: string): string {
     const filmType = this.store.filmType;
-    if (filmType === 'epizoda') {
+    if (filmType === 'epizoda' || filmType === 'episode') {
       const titleSplit = title.split('-');
       const episodeArray = title.match(this.episodePattern);
 
