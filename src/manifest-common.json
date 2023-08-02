@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "run_at": "document_end",
-      "matches": ["https://*.csfd.cz/*", "https://*.csfd.sk/*"],
+      "matches": ["https://*.csfd.cz/*", "https://*.csfd.sk/*", "https://*.filmbooster.com/*"],
       "css": ["app.css"],
       "js": ["app.bundle.js"]
     }

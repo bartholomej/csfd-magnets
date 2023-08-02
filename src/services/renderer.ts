@@ -25,7 +25,9 @@ export default class Renderer {
   public prepareBox(
     placingNode: HTMLElement,
     movieTitle: string,
-    searchUrl: string
+    searchUrl: string,
+    urlPath: string,
+    alternativeSiteDomain: string
   ): HTMLDivElement {
     const wrapper = document.createElement('div');
     wrapper.classList.add('tpb-wrapper');
@@ -95,15 +97,21 @@ export default class Renderer {
           <ul></ul>
           <span class="not-found">
             ¯/\_(ツ)_/¯                      
-            <div class="box-content-more text-center">
-              <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${_(
-      'elsewhere'
-    )}</a>
-            </div>    
-          </span>                 
-          <div class="box-content-more more-found text-lowercase text-center">
+          </span>
+          <div class="box-content-more more-found text-lowercase">
             <a href="${searchUrl}">${_('more')}</a>
           </div>
+
+          <div class="link-alternatives text-center">
+          <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${_(
+      'elsewhere'
+    )}</a> <a href="https://webshare.cz/#/search?what=${movieTitle}">${_('elsewhere2')}</a>
+      
+        </div>    
+        
+          <div class="box-content-more text-right link-to-booster"><a href="https://${alternativeSiteDomain}/${urlPath}">${_(
+      'openOnSite'
+    )} ${alternativeSiteDomain}</a></div>     
         </div>
       </div>`;
 

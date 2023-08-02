@@ -83,6 +83,10 @@ $padding-x: 10px;
     text-align: center;
   }
 
+  .text-right {
+    text-align: right;
+  }
+
   .elsewhere {
     margin-top: 5px;
   }
@@ -93,6 +97,15 @@ $padding-x: 10px;
 
   .text-lowercase {
     text-transform: lowercase;
+  }
+
+  .link-to-booster {
+    padding-top: 8px;
+  }
+
+  .link-alternatives {
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 

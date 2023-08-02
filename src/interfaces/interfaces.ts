@@ -25,7 +25,11 @@ export type CSFDFilmTypes =
   | 'divadelní záznam'
   | 'koncert'
   | 'série'
+  | 'series'
   | 'studentský film'
   | 'amatérský film'
   | 'hudební videoklip'
-  | 'epizoda';
+  | 'epizoda'
+  | 'episode';
+
+export type CSFDSiteDomain = 'csfd.*' | 'filmbooster.*';
