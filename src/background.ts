@@ -1,7 +1,7 @@
 import { piratebay } from 'piratebay-scraper';
 import { TPBProvider } from 'piratebay-scraper/interfaces';
 
-const PROVIDERS = ['https://tpb.party', 'https://thepiratebay.zone/', 'https://pirateproxy.live/'];
+const PROVIDERS: TPBProvider[] = ['https://thepiratebay.zone', 'https://pirateproxy.live'];
 
 let index = 0;
 

@@ -2059,10 +2059,10 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha512-MnUuEycAemtSaeFSjXKW/aroV7akBbY+Sv+RkyqFjgAe73F+MR0TBWKBRDkmfWq/HiFmdavfZ1G7h4SPZXaCSg==
 
-piratebay-scraper@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-4.0.0.tgz#5527a7b67fca3482de2ec84b529a569d939036fa"
-  integrity sha512-/BMTxpr1ZIjeKE3A5RJwDNGVEN6fyghDWKpqXf2m9/uAd0/KjE4HPr8ZWeXNRal77Lvp1As5pj0+RnLnCMqCHA==
+piratebay-scraper@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/piratebay-scraper/-/piratebay-scraper-5.0.0.tgz#e178d069a79e4395e15baa5c783899558b812023"
+  integrity sha512-jAAxTJzdzz7nbn0AFk6ybJE/CQ4Hnh2zcAfrNiyAEQyDxHQjdm1JuxpCB17zHRFey2MeUHX6LwrGyHneFh180A==
   dependencies:
     node-fetch cjs
     node-html-parser "^5.1.0"
