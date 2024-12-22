@@ -30,10 +30,6 @@
     "message": "Try it somewhere else...",
     "description": "Try it somewhere else link."
   },
-  "elsewhere2": {
-    "message": "or search here",
-    "description": "Search link here"
-  },
   "openOnSite": {
     "message": "Open on",
     "description": "Open on different site"

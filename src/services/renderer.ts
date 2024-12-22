@@ -50,8 +50,8 @@ export default class Renderer {
           </h3>
           <div class="controls">
             <a href="${searchUrl}" target="_blank" class="search-more edit private" title="Hledat">${_(
-      'search'
-    )}</a>
+              'search'
+            )}</a>
           </div>
         </div>
         <div class="content box-content">
@@ -103,15 +103,16 @@ export default class Renderer {
           </div>
 
           <div class="link-alternatives text-center">
-          <a href="https://ulozto.cz/hledej?q=${movieTitle}" target="_blank">${_(
-      'elsewhere'
-    )}</a> <a href="https://webshare.cz/#/search?what=${movieTitle}">${_('elsewhere2')}</a>
-      
+          <a href="https://webshare.cz/#/search?what=${movieTitle}" target="_blank">
+            ${_('elsewhere')}
+          </a>
         </div>    
         
-          <div class="box-content-more text-right link-to-booster"><a href="https://${alternativeSiteDomain}/${urlPath}">${_(
-      'openOnSite'
-    )} ${alternativeSiteDomain}</a></div>     
+          <div class="box-content-more text-right link-to-booster">
+            <a href="https://${alternativeSiteDomain}/${urlPath}">
+              ${_('openOnSite')} ${alternativeSiteDomain}
+            </a>
+          </div>     
         </div>
       </div>`;
 
