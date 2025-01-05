@@ -1,7 +1,6 @@
-$secondary-color: #999;
-$primary-color: #b01;
-
-$padding-x: 10px;
+:root {
+  --padding-x: 10px;
+}
 
 .loader {
   display: block;
@@ -9,14 +8,12 @@ $padding-x: 10px;
   margin: 0 auto;
   width: 50px;
   height: 50px;
-  fill: $secondary-color;
+  fill: var(--color-grey-light2);
 }
 
-// Csfd-magnets container
 #tpb-search {
   h3 a.magnet-title {
     color: inherit;
-
     &:hover {
       text-decoration: underline;
     }
@@ -25,25 +22,23 @@ $padding-x: 10px;
   h3 .note {
     font-weight: normal;
     font-style: normal;
-    color: $secondary-color;
+    color: var(--color-grey-light2);
   }
 
   .not-found {
     text-align: center;
     display: none;
-
-    &.active {
+    .active {
       display: block;
     }
   }
 
   .search-header {
     text-align: left;
-    color: $secondary-color;
+    color: var(--color-grey-light2);
     margin-bottom: 5px;
-
     p {
-      padding: $padding-x $padding-x 0;
+      padding: var(--padding-x) var(--padding-x) 0;
     }
   }
 
@@ -52,29 +47,24 @@ $padding-x: 10px;
   }
 
   li {
-    padding: 12px $padding-x;
+    padding: 12px var(--padding-x);
     border-bottom: 1px solid #d2d2d2;
-
     &:hover {
       background: #ddd;
     }
-
     a {
       display: block !important;
-
       &:hover {
         text-decoration: none;
       }
     }
-
     svg {
-      fill: $primary-color;
+      fill: var(--color-red-dark-text);
       height: 12px;
       padding-right: 3px;
     }
-
     .attr {
-      padding-right: $padding-x;
+      padding-right: var(--padding-x);
       word-break: break-all;
     }
   }
@@ -110,5 +100,5 @@ $padding-x: 10px;
 }
 
 #pg-web-film #tpb-search.ct-related {
-  margin-bottom: $padding-x;
+  margin-bottom: var(--padding-x);
 }

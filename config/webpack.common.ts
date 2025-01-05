@@ -6,7 +6,7 @@ import * as webpack from 'webpack';
 // tslint:disable:object-literal-sort-keys
 export const commonConfig: webpack.Configuration = {
   entry: {
-    app: ['./src/app.ts', './src/app.scss'],
+    app: ['./src/app.ts', './src/app.css'],
     background: './src/background.ts'
   },
   resolve: {
