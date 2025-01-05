@@ -36,7 +36,8 @@
   .search-header {
     text-align: left;
     color: var(--color-grey-light2);
-    margin-bottom: 5px;
+    border-bottom: 1px solid var(--color-grey-dark);
+
     p {
       padding: var(--padding-x) var(--padding-x) 0;
     }
@@ -89,13 +90,16 @@
     text-transform: lowercase;
   }
 
+  .more-found {
+    border-bottom: 1px solid var(--color-grey-dark);
+  }
+
   .link-to-booster {
-    padding-top: 8px;
+    border-top: 1px solid var(--color-grey-dark);
   }
 
   .link-alternatives {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border-top: 1px solid var(--color-grey-dark);
   }
 }
 

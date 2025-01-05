@@ -102,13 +102,13 @@ export default class Renderer {
             <a href="${searchUrl}">${_('more')}</a>
           </div>
 
-          <div class="link-alternatives text-center">
+          <div class="box-content-more link-alternatives text-center">
           <a href="https://webshare.cz/#/search?what=${movieTitle}" target="_blank">
             ${_('elsewhere')}
           </a>
         </div>    
         
-          <div class="box-content-more text-right link-to-booster">
+          <div class="box-content-more text-center link-to-booster">
             <a href="https://${alternativeSiteDomain}/${urlPath}">
               ${_('openOnSite')} ${alternativeSiteDomain}
             </a>
