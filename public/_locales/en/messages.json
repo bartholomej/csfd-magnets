@@ -41,5 +41,13 @@
   "magnets": {
     "message": "Magnets",
     "description": "Box title."
+  },
+  "seeders": {
+    "message": "Seeders",
+    "description": "Seeders title."
+  },
+  "size": {
+    "message": "Size",
+    "description": "Size title."
   }
 }

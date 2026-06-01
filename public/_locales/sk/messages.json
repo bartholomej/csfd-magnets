@@ -28,5 +28,11 @@
   },
   "magnets": {
     "message": "Magnets"
+  },
+  "seeders": {
+    "message": "Sťahujúci"
+  },
+  "size": {
+    "message": "Veľkosť"
   }
 }

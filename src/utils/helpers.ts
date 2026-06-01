@@ -8,7 +8,7 @@
  * @see https://github.com/bartholomej/csfd-magnets
  */
 
-import { CSFDSiteDomain } from '@interfaces/interfaces';
+import { CSFDSiteDomain } from './interfaces';
 
 export const isProd = process.env.NODE_ENV === 'production';
 export const isDev = process.env.NODE_ENV === 'development';
