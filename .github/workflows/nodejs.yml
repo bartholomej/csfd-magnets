@@ -1,22 +1,30 @@
-name: Node CI
+name: 🧪 Build and Test
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    name: 🧪 Build and Test
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v6
+
+      - name: 📦 Enable Corepack
+        run: corepack enable
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: 16.x
-      - name: Install and build all browsers
-        run: |
-          yarn
-          yarn build:chrome
-          yarn build:firefox
-          yarn build:opera
-        env:
-          CI: true
+          node-version: 26
+          cache: 'yarn'
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      - name: 🏗️ Build chrome
+        run: yarn build
+
+      - name: 🏗️ Build firefox
+        run: yarn build:firefox
