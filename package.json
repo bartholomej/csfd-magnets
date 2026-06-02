@@ -1,6 +1,6 @@
 {
   "name": "csfd-magnets",
-  "version": "3.0.0-next.0",
+  "version": "3.0.0",
   "description": "Magnet links for CSFD (WebExtension)",
   "type": "module",
   "scripts": {
