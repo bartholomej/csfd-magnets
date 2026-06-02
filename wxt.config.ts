@@ -24,10 +24,5 @@ export default defineConfig({
     define: {
       BROWSER: JSON.stringify(browser),
     },
-    resolve: {
-      alias: {
-        'node-fetch': '/src/utils/fetch-polyfill.ts',
-      },
-    },
   }),
 });
